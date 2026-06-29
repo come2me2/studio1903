@@ -1,0 +1,42 @@
+/* ==========================================================================
+   STUDIO19.03 — Tilda compatibility
+   ========================================================================== */
+
+/* Tilda обнуляет высоту блока, если внутри fixed-элементы */
+#studio1903 {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Контейнеры T123 не должны обрезать контент */
+.t123 #studio1903,
+.t123 .t-container_100,
+.t123 .t-width_100 {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 1px;
+}
+
+/* Контент виден до загрузки JS (Tilda может не запустить reveal) */
+#studio1903 .s1903-hero__content {
+  opacity: 1;
+  transform: none;
+}
+
+#studio1903:not(.s1903-js-ready) .s1903-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* После init JS включает анимации */
+#studio1903.s1903-js-ready .s1903-reveal:not(.s1903-reveal--visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#studio1903.s1903-js-ready.s1903--loaded .s1903-hero__content {
+  opacity: 1;
+  transform: none;
+}

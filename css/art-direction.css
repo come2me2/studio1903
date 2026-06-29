@@ -1,0 +1,518 @@
+/* ==========================================================================
+   STUDIO19.03 — Art Direction Layer
+   Поверх styles.css. Не меняет структуру, тексты, сетку.
+   ========================================================================== */
+
+#studio1903 {
+  /* —— Типографика: больше контраста масштаба —— */
+  --s1903-text-hero: clamp(2.125rem, 3.2vw + 1.25rem, 3.75rem);
+  --s1903-text-h1: clamp(1.875rem, 2vw + 1.125rem, 2.75rem);
+  --s1903-text-h3: clamp(1.125rem, 1vw + 0.9rem, 1.375rem);
+  --s1903-text-body: clamp(1rem, 0.35vw + 0.92rem, 1.125rem);
+  --s1903-text-sm: clamp(0.9375rem, 0.2vw + 0.85rem, 1rem);
+  --s1903-text-caption: clamp(0.6875rem, 0.15vw + 0.65rem, 0.75rem);
+  --s1903-text-nav: 13px;
+  --s1903-text-btn: 13px;
+
+  /* —— Цвет: глубже текст, мягче фоны —— */
+  --s1903-bg-primary: #f6f3ee;
+  --s1903-bg-secondary: #ece8e1;
+  --s1903-text-primary: #141412;
+  --s1903-text-secondary: #5c5952;
+  --s1903-text-tertiary: #a39e94;
+  --s1903-text-inverse-muted: rgba(246, 243, 238, 0.72);
+  --s1903-border: #ddd8cf;
+  --s1903-border-subtle: #e9e4db;
+
+  /* —— Ритм: больше воздуха между секциями —— */
+  --s1903-section-pad: clamp(120px, 14vw, 240px);
+  --s1903-section-pad-sm: clamp(96px, 10vw, 200px);
+  --s1903-section-pad-compact: clamp(96px, 8vw, 180px);
+
+  /* —— Motion: медленнее, дороже —— */
+  --s1903-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --s1903-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --s1903-duration: 400ms;
+  --s1903-duration-slow: 900ms;
+
+  /* —— Hero: монументальнее —— */
+  --s1903-hero-height: 100vh;
+  --s1903-hero-overlay: linear-gradient(
+    to top,
+    rgba(20, 20, 18, 0.72) 0%,
+    rgba(20, 20, 18, 0.28) 38%,
+    rgba(20, 20, 18, 0.06) 68%,
+    transparent 100%
+  );
+
+  /* —— Фото: выше кадры —— */
+  --s1903-aspect-case: 3 / 4;
+  --s1903-aspect-founder: 2 / 3;
+
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Убрать «шаблонность»: uppercase-кнопки, scale-active, центрирование
+   ========================================================================== */
+
+#studio1903 .s1903-btn,
+#studio1903 .s1903-ghost,
+#studio1903 .s1903-menu__cta {
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+#studio1903 .s1903-btn:active {
+  transform: none;
+}
+
+/* Hero CTA: не белая «пилюля», а архитектурная рамка */
+#studio1903 .s1903-hero .s1903-btn--inverse {
+  background: transparent;
+  color: var(--s1903-text-inverse);
+  border: 1px solid rgba(246, 243, 238, 0.55);
+  min-height: 52px;
+  padding-inline: 40px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+#studio1903 .s1903-hero .s1903-btn--inverse:hover {
+  background: rgba(246, 243, 238, 0.08);
+  color: var(--s1903-text-inverse);
+  border-color: rgba(246, 243, 238, 0.9);
+}
+
+/* Форма: сплошная кнопка остаётся единственной заливкой на странице */
+#studio1903 .s1903-contact .s1903-btn {
+  min-height: 52px;
+  padding-inline: 48px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Ghost: редакционная ссылка, не маркетинговый CTA */
+#studio1903 .s1903-ghost {
+  font-size: var(--s1903-text-sm);
+  letter-spacing: 0;
+  text-transform: none;
+  gap: 12px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-ghost:hover {
+  border-bottom-color: var(--s1903-text-primary);
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-ghost .s1903-arrow {
+  font-size: 1.1em;
+  opacity: 0.5;
+  transition: transform var(--s1903-duration) var(--s1903-ease),
+    opacity var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-ghost:hover .s1903-arrow {
+  transform: translateX(6px);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Типографика и иерархия
+   ========================================================================== */
+
+#studio1903 .s1903-hero__title {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  max-width: 22ch;
+}
+
+#studio1903 .s1903-hero__subtitle {
+  margin-top: clamp(28px, 3vw, 40px);
+  line-height: 1.7;
+  max-width: 42ch;
+  font-weight: 400;
+}
+
+#studio1903 .s1903-hero__location {
+  margin-top: clamp(20px, 2.5vw, 32px);
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+#studio1903 .s1903-title {
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+#studio1903 .s1903-founder__name {
+  font-weight: 300;
+  letter-spacing: -0.025em;
+}
+
+#studio1903 .s1903-subtitle {
+  margin-top: clamp(20px, 2vw, 28px);
+  max-width: 38ch;
+  line-height: 1.75;
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-section-head .s1903-subtitle {
+  margin-inline: auto;
+}
+
+#studio1903 .s1903-item__label {
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  margin-bottom: clamp(12px, 1.5vw, 20px);
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-item__text {
+  line-height: 1.75;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-step__title {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+#studio1903 .s1903-step__text {
+  line-height: 1.75;
+  max-width: 52ch;
+}
+
+#studio1903 .s1903-case__title {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: clamp(20px, 2vw, 28px);
+}
+
+#studio1903 .s1903-case__meta {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+#studio1903 .s1903-micro {
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  max-width: 32ch;
+}
+
+#studio1903 .s1903-hero .s1903-micro {
+  color: rgba(246, 243, 238, 0.55);
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   Ритм, воздух, баланс пустоты
+   ========================================================================== */
+
+#studio1903 .s1903-section-head + .s1903-section-body,
+#studio1903 .s1903-section-head + .s1903-grid,
+#studio1903 .s1903-section-head + .s1903-steps,
+#studio1903 .s1903-section-head + .s1903-cases-grid {
+  margin-top: clamp(64px, 8vw, 112px);
+}
+
+#studio1903 .s1903-cta-block {
+  margin-top: clamp(72px, 8vw, 120px);
+}
+
+#studio1903 .s1903-founder {
+  padding-block: var(--s1903-section-pad-sm);
+}
+
+#studio1903 .s1903-process {
+  padding-block: var(--s1903-section-pad-compact);
+}
+
+#studio1903 .s1903-footer {
+  padding-block: clamp(64px, 8vw, 96px) clamp(32px, 4vw, 48px);
+  border-top-color: var(--s1903-border-subtle);
+}
+
+/* Секции: левое выравнивание заголовков — editorial, не лендинг */
+@media (min-width: 768px) {
+  #studio1903 .s1903-section-head {
+    text-align: left;
+    margin-inline: 0;
+    max-width: 36rem;
+  }
+
+  #studio1903 .s1903-section-head .s1903-subtitle {
+    margin-inline: 0;
+  }
+
+  #studio1903 .s1903-cta-block {
+    text-align: left;
+  }
+
+  #studio1903 .s1903-expertise__fact {
+    text-align: left;
+    margin-inline: 0;
+    max-width: 32rem;
+  }
+}
+
+/* Hero: один слой анимации, без двойного reveal */
+#studio1903 .s1903-hero .s1903-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+
+#studio1903 .s1903-hero__content {
+  max-width: 44rem;
+  padding-bottom: clamp(56px, 10vh, 96px);
+}
+
+#studio1903 .s1903-hero__actions {
+  margin-top: clamp(40px, 5vh, 56px);
+}
+
+#studio1903 .s1903-hero__img {
+  transform: scale(1.06);
+  animation: s1903-hero-ken 18s var(--s1903-ease-out) forwards;
+}
+
+#studio1903.s1903--loaded .s1903-hero__img {
+  animation: s1903-hero-ken 18s var(--s1903-ease-out) forwards;
+}
+
+@keyframes s1903-hero-ken {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+#studio1903 .s1903-hero__content {
+  transition: opacity 1s var(--s1903-ease), transform 1s var(--s1903-ease);
+  transition-delay: 0.15s;
+}
+
+/* ==========================================================================
+   Founder: масштаб портрета
+   ========================================================================== */
+
+#studio1903 .s1903-founder__media {
+  max-height: none;
+}
+
+#studio1903 .s1903-founder__text {
+  margin-top: clamp(24px, 3vw, 36px);
+  line-height: 1.8;
+}
+
+#studio1903 .s1903-founder__phone {
+  margin-top: clamp(40px, 4vw, 56px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-founder__content {
+    padding-block: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ==========================================================================
+   Trust / Expertise: воздух между пунктами
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-grid {
+    gap: clamp(64px, 6vw, 96px) var(--s1903-grid-gap);
+  }
+}
+
+#studio1903 .s1903-expertise__fact {
+  margin-top: clamp(72px, 8vw, 104px);
+  padding-top: clamp(40px, 4vw, 56px);
+  border-top-color: var(--s1903-border-subtle);
+  line-height: 1.75;
+  color: var(--s1903-text-secondary);
+}
+
+/* ==========================================================================
+   Process: ритм через линии, не карточки
+   ========================================================================== */
+
+#studio1903 .s1903-steps {
+  gap: 0;
+  max-width: 40rem;
+  margin-inline: 0;
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-steps {
+    margin-inline: 0;
+  }
+}
+
+#studio1903 .s1903-step {
+  padding-block: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--s1903-border-subtle);
+  gap: var(--s1903-space-5) clamp(24px, 3vw, 48px);
+}
+
+#studio1903 .s1903-step:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+#studio1903 .s1903-step__num {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  min-width: 2rem;
+}
+
+/* ==========================================================================
+   Cases: крупнее фото, тише подписи
+   ========================================================================== */
+
+#studio1903 .s1903-cases-grid {
+  gap: clamp(40px, 5vw, 72px) var(--s1903-grid-gap);
+}
+
+#studio1903 .s1903-case__img {
+  transition: opacity 600ms var(--s1903-ease), transform 1.2s var(--s1903-ease);
+  transform: scale(1.02);
+}
+
+#studio1903 .s1903-case__link:hover .s1903-case__img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#studio1903 .s1903-case__media {
+  background: var(--s1903-bg-primary);
+}
+
+/* ==========================================================================
+   Form: underline-поля вместо «конструктора»
+   ========================================================================== */
+
+#studio1903 .s1903-input {
+  height: auto;
+  min-height: 44px;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid var(--s1903-border);
+  background: transparent;
+}
+
+#studio1903 .s1903-input:hover {
+  background: transparent;
+  border-bottom-color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-input:focus {
+  border-bottom-color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-field__label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+  margin-bottom: 4px;
+}
+
+#studio1903 .s1903-contact__intro {
+  max-width: 32rem;
+}
+
+#studio1903 .s1903-contact__text {
+  line-height: 1.8;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-contact__aside {
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-contact__aside a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--s1903-border);
+  transition: border-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-contact__aside a:hover {
+  border-bottom-color: var(--s1903-text-primary);
+  color: var(--s1903-text-primary);
+}
+
+/* ==========================================================================
+   Header: тише, легче
+   ========================================================================== */
+
+#studio1903 {
+  --s1903-header-height: 80px;
+}
+
+#studio1903 .s1903-header__logo-text {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+#studio1903 .s1903-nav__link {
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+#studio1903 .s1903-nav__link:hover {
+  opacity: 1;
+}
+
+#studio1903 .s1903-header--scrolled {
+  background: rgba(246, 243, 238, 0.92);
+  box-shadow: none;
+  border-bottom: 1px solid var(--s1903-border-subtle);
+}
+
+/* ==========================================================================
+   Reveal: медленнее, меньше «pop-in»
+   ========================================================================== */
+
+#studio1903 .s1903-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--s1903-duration-slow) var(--s1903-ease),
+    transform var(--s1903-duration-slow) var(--s1903-ease);
+}
+
+#studio1903 .s1903-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  #studio1903 .s1903-hero__img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  #studio1903 .s1903-case__img {
+    transform: none !important;
+  }
+}

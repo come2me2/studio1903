@@ -1,0 +1,2512 @@
+<!-- STUDIO19.03 — часть 2: стили и скрипты. Поставьте блок НИЖЕ блока с разметкой -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   STUDIO19.03 — Design Tokens
+   Редактируйте переменные ниже для глобальных изменений
+   ========================================================================== */
+
+#studio1903 {
+  /* Layout */
+  --s1903-container-max: 1440px;
+  --s1903-container-pad: clamp(24px, 5vw, 80px);
+  --s1903-header-height: 72px;
+  --s1903-header-height-mobile: 64px;
+  --s1903-grid-gap: 24px;
+
+  /* Section padding */
+  --s1903-section-pad: clamp(100px, 12vw, 200px);
+  --s1903-section-pad-sm: clamp(80px, 8vw, 160px);
+
+  /* Colors */
+  --s1903-bg-primary: #f7f5f2;
+  --s1903-bg-secondary: #eeebe6;
+  --s1903-bg-elevated: #fdfcfa;
+  --s1903-text-primary: #1a1a18;
+  --s1903-text-secondary: #6b6860;
+  --s1903-text-tertiary: #9c9890;
+  --s1903-text-inverse: #f7f5f2;
+  --s1903-text-inverse-muted: rgba(247, 245, 242, 0.75);
+  --s1903-accent: #2c2a26;
+  --s1903-accent-hover: #1a1a18;
+  --s1903-border: #d8d4cc;
+  --s1903-border-focus: #1a1a18;
+  --s1903-error: #8b4518;
+  --s1903-focus-ring: rgba(26, 26, 24, 0.25);
+  --s1903-header-bg: rgba(247, 245, 242, 0.88);
+
+  /* Typography */
+  --s1903-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --s1903-text-hero: clamp(2rem, 4vw + 1rem, 3.5rem);
+  --s1903-text-h1: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+  --s1903-text-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+  --s1903-text-body: clamp(1rem, 0.5vw + 0.9rem, 1.0625rem);
+  --s1903-text-sm: clamp(0.875rem, 0.25vw + 0.8rem, 0.9375rem);
+  --s1903-text-caption: clamp(0.75rem, 0.2vw + 0.7rem, 0.8125rem);
+  --s1903-text-nav: 14px;
+  --s1903-text-btn: 14px;
+
+  /* Spacing */
+  --s1903-space-2: 8px;
+  --s1903-space-3: 12px;
+  --s1903-space-4: 16px;
+  --s1903-space-5: 24px;
+  --s1903-space-6: 32px;
+  --s1903-space-7: 48px;
+  --s1903-space-8: 64px;
+  --s1903-space-9: 80px;
+
+  /* Motion */
+  --s1903-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --s1903-duration: 300ms;
+  --s1903-duration-slow: 500ms;
+
+  /* Sizes */
+  --s1903-btn-height: 48px;
+  --s1903-input-height: 48px;
+  --s1903-radius: 0;
+
+  /* Hero */
+  --s1903-hero-height: min(100vh, 900px);
+  --s1903-hero-overlay: linear-gradient(
+    135deg,
+    rgba(26, 26, 24, 0.55) 0%,
+    rgba(26, 26, 24, 0.15) 45%,
+    transparent 70%
+  );
+
+  /* Aspect ratios */
+  --s1903-aspect-founder: 3 / 4;
+  --s1903-aspect-case: 4 / 5;
+  --s1903-aspect-founder-mobile: 4 / 3;
+
+  font-family: var(--s1903-font);
+  font-size: var(--s1903-text-body);
+  line-height: 1.65;
+  color: var(--s1903-text-primary);
+  background: var(--s1903-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+#studio1903 *,
+#studio1903 *::before,
+#studio1903 *::after {
+  box-sizing: border-box;
+}
+
+#studio1903 img {
+  display: block;
+  max-width: 100%;
+}
+
+#studio1903 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#studio1903 button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+#studio1903 .s1903-container {
+  width: 100%;
+  max-width: var(--s1903-container-max);
+  margin-inline: auto;
+  padding-inline: var(--s1903-container-pad);
+}
+
+#studio1903 .s1903-section-head {
+  text-align: center;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+#studio1903 .s1903-section-head--left {
+  text-align: left;
+  margin-inline: 0;
+}
+
+#studio1903 .s1903-title {
+  font-size: var(--s1903-text-h1);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+#studio1903 .s1903-subtitle {
+  font-size: var(--s1903-text-sm);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--s1903-text-secondary);
+  margin: var(--s1903-space-4) 0 0;
+}
+
+#studio1903 .s1903-section-head + .s1903-section-body,
+#studio1903 .s1903-section-head + .s1903-grid,
+#studio1903 .s1903-section-head + .s1903-steps,
+#studio1903 .s1903-section-head + .s1903-cases-grid {
+  margin-top: clamp(var(--s1903-space-7), 6vw, var(--s1903-space-9));
+}
+
+/* Buttons */
+#studio1903 .s1903-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--s1903-btn-height);
+  padding: 0 clamp(var(--s1903-space-5), 3vw, var(--s1903-space-6));
+  font-size: var(--s1903-text-btn);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--s1903-accent);
+  color: var(--s1903-text-inverse);
+  border-radius: var(--s1903-radius);
+  transition: background var(--s1903-duration) var(--s1903-ease),
+    transform 100ms var(--s1903-ease);
+}
+
+#studio1903 .s1903-btn:hover {
+  background: var(--s1903-accent-hover);
+}
+
+#studio1903 .s1903-btn:active {
+  transform: scale(0.98);
+}
+
+#studio1903 .s1903-btn:focus-visible {
+  outline: 2px solid var(--s1903-focus-ring);
+  outline-offset: 2px;
+}
+
+#studio1903 .s1903-btn--inverse {
+  background: var(--s1903-text-inverse);
+  color: var(--s1903-accent);
+}
+
+#studio1903 .s1903-btn--inverse:hover {
+  background: var(--s1903-text-inverse);
+  color: var(--s1903-accent-hover);
+}
+
+#studio1903 .s1903-btn--full {
+  width: 100%;
+}
+
+/* Ghost link */
+#studio1903 .s1903-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1903-space-2);
+  font-size: var(--s1903-text-btn);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--s1903-text-primary);
+  border-bottom: 1px solid transparent;
+  transition: color var(--s1903-duration) var(--s1903-ease),
+    border-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-ghost .s1903-arrow {
+  display: inline-block;
+  transition: transform var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-ghost:hover {
+  border-bottom-color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-ghost:hover .s1903-arrow {
+  transform: translateX(4px);
+}
+
+#studio1903 .s1903-ghost:focus-visible {
+  outline: 2px solid var(--s1903-focus-ring);
+  outline-offset: 4px;
+}
+
+#studio1903 .s1903-micro {
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-text-tertiary);
+  margin: var(--s1903-space-3) 0 0;
+  line-height: 1.45;
+}
+
+#studio1903 .s1903-cta-block {
+  margin-top: clamp(var(--s1903-space-7), 5vw, var(--s1903-space-8));
+  text-align: center;
+}
+
+#studio1903 .s1903-link-secondary {
+  display: inline-block;
+  margin-top: var(--s1903-space-5);
+  font-size: var(--s1903-text-sm);
+  color: var(--s1903-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#studio1903 .s1903-link-secondary:hover {
+  color: var(--s1903-text-primary);
+}
+
+/* Reveal */
+#studio1903 .s1903-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--s1903-duration-slow) var(--s1903-ease),
+    transform var(--s1903-duration-slow) var(--s1903-ease);
+}
+
+#studio1903 .s1903-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   BLOCK: HEADER
+   ========================================================================== */
+
+#studio1903 .s1903-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--s1903-header-height);
+  transition: background var(--s1903-duration) var(--s1903-ease),
+    box-shadow var(--s1903-duration) var(--s1903-ease),
+    backdrop-filter var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--s1903-space-5);
+}
+
+#studio1903 .s1903-header__logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header__logo-text {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--s1903-text-inverse);
+  transition: color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header__logo-img {
+  display: block;
+  width: auto;
+  height: var(--s1903-logo-height, 34px);
+  max-width: min(160px, 42vw);
+  object-fit: contain;
+  object-position: left center;
+}
+
+#studio1903 .s1903-header__logo-img--dark {
+  display: none;
+}
+
+#studio1903 .s1903-header--scrolled .s1903-header__logo-text,
+#studio1903 .s1903-header--light .s1903-header__logo-text {
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-header--scrolled .s1903-header__logo-img--light,
+#studio1903 .s1903-header--light .s1903-header__logo-img--light {
+  display: none;
+}
+
+#studio1903 .s1903-header--scrolled .s1903-header__logo-img--dark,
+#studio1903 .s1903-header--light .s1903-header__logo-img--dark {
+  display: block;
+}
+
+#studio1903 .s1903-header--scrolled .s1903-header__logo,
+#studio1903 .s1903-header--light .s1903-header__logo {
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-nav {
+  display: none;
+  align-items: center;
+  gap: var(--s1903-space-6);
+}
+
+#studio1903 .s1903-nav__link {
+  font-size: var(--s1903-text-nav);
+  letter-spacing: 0.02em;
+  color: var(--s1903-text-inverse);
+  border-bottom: 1px solid transparent;
+  transition: color var(--s1903-duration) var(--s1903-ease),
+    border-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header--scrolled .s1903-nav__link,
+#studio1903 .s1903-header--light .s1903-nav__link {
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-nav__link:hover {
+  border-bottom-color: currentColor;
+}
+
+#studio1903 .s1903-header__right {
+  display: none;
+  align-items: center;
+  gap: var(--s1903-space-6);
+}
+
+#studio1903 .s1903-header__phone {
+  font-size: var(--s1903-text-nav);
+  color: var(--s1903-text-inverse-muted);
+  transition: color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header--scrolled .s1903-header__phone,
+#studio1903 .s1903-header--light .s1903-header__phone {
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-header__cta {
+  font-size: var(--s1903-text-nav);
+  letter-spacing: 0.02em;
+  color: var(--s1903-text-inverse);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  transition: color var(--s1903-duration) var(--s1903-ease),
+    text-decoration-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header--scrolled .s1903-header__cta,
+#studio1903 .s1903-header--light .s1903-header__cta {
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-header__cta:hover {
+  text-decoration-color: currentColor;
+}
+
+#studio1903 .s1903-header--scrolled {
+  background: var(--s1903-header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(26, 26, 24, 0.06);
+}
+
+/* Burger */
+#studio1903 .s1903-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+}
+
+#studio1903 .s1903-burger__line {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--s1903-text-inverse);
+  transition: background var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-header--scrolled .s1903-burger__line,
+#studio1903 .s1903-header--light .s1903-burger__line {
+  background: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-burger--open .s1903-burger__line:nth-child(1) {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+#studio1903 .s1903-burger--open .s1903-burger__line:nth-child(2) {
+  opacity: 0;
+}
+
+#studio1903 .s1903-burger--open .s1903-burger__line:nth-child(3) {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+#studio1903 .s1903-burger__line {
+  transition: transform var(--s1903-duration) var(--s1903-ease),
+    opacity var(--s1903-duration) var(--s1903-ease),
+    background var(--s1903-duration) var(--s1903-ease);
+}
+
+/* Mobile menu */
+#studio1903 .s1903-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--s1903-bg-primary);
+  padding: calc(var(--s1903-header-height-mobile) + var(--s1903-space-7)) var(--s1903-container-pad)
+    var(--s1903-space-7);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--s1903-duration) var(--s1903-ease),
+    visibility var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-menu--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+#studio1903 .s1903-menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1903-space-6);
+}
+
+#studio1903 .s1903-menu__link {
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+#studio1903 .s1903-menu__footer {
+  margin-top: auto;
+  padding-top: var(--s1903-space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1903-space-4);
+}
+
+#studio1903 .s1903-menu__phone {
+  font-size: var(--s1903-text-body);
+}
+
+#studio1903 .s1903-menu__cta {
+  font-size: var(--s1903-text-btn);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#studio1903 .s1903-menu__address {
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-text-tertiary);
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-nav {
+    display: flex;
+  }
+
+  #studio1903 .s1903-header__right {
+    display: flex;
+  }
+
+  #studio1903 .s1903-burger {
+    display: none;
+  }
+
+  #studio1903 .s1903-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #studio1903 {
+    --s1903-header-height: var(--s1903-header-height-mobile);
+  }
+}
+
+/* ==========================================================================
+   BLOCK: HERO
+   ========================================================================== */
+
+#studio1903 .s1903-hero {
+  position: relative;
+  min-height: var(--s1903-hero-height);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+#studio1903 .s1903-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#studio1903 .s1903-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% center;
+}
+
+#studio1903 .s1903-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--s1903-hero-overlay);
+  z-index: 1;
+}
+
+#studio1903 .s1903-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: clamp(var(--s1903-space-7), 8vw, var(--s1903-space-9));
+  padding-top: calc(var(--s1903-header-height) + var(--s1903-space-7));
+  max-width: 38rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms var(--s1903-ease), transform 600ms var(--s1903-ease);
+}
+
+#studio1903.s1903--loaded .s1903-hero__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#studio1903 .s1903-hero__title {
+  font-size: var(--s1903-text-hero);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--s1903-text-inverse);
+  margin: 0;
+  max-width: 20ch;
+}
+
+#studio1903 .s1903-hero__subtitle {
+  font-size: var(--s1903-text-body);
+  line-height: 1.65;
+  color: var(--s1903-text-inverse-muted);
+  margin: var(--s1903-space-5) 0 0;
+  max-width: 36ch;
+}
+
+#studio1903 .s1903-hero__location {
+  font-size: var(--s1903-text-caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--s1903-text-inverse-muted);
+  margin: var(--s1903-space-4) 0 0;
+}
+
+#studio1903 .s1903-hero__actions {
+  margin-top: clamp(var(--s1903-space-5), 4vw, 40px);
+}
+
+@media (max-width: 767px) {
+  #studio1903 {
+    --s1903-hero-height: 85vh;
+  }
+
+  #studio1903 .s1903-hero__title {
+    max-width: none;
+  }
+
+  #studio1903 .s1903-hero__subtitle {
+    max-width: none;
+  }
+}
+
+/* ==========================================================================
+   BLOCK: FOUNDER
+   ========================================================================== */
+
+#studio1903 .s1903-founder {
+  background: var(--s1903-bg-secondary);
+  padding-block: var(--s1903-section-pad-sm);
+}
+
+#studio1903 .s1903-founder__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s1903-space-6);
+  align-items: start;
+}
+
+#studio1903 .s1903-founder__media {
+  overflow: hidden;
+}
+
+#studio1903 .s1903-founder__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+}
+
+#studio1903 .s1903-founder__name {
+  font-size: var(--s1903-text-h1);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+#studio1903 .s1903-founder__role {
+  font-size: var(--s1903-text-sm);
+  color: var(--s1903-text-secondary);
+  margin: var(--s1903-space-3) 0 0;
+}
+
+#studio1903 .s1903-founder__text {
+  font-size: var(--s1903-text-body);
+  margin: var(--s1903-space-5) 0 0;
+  max-width: 36ch;
+}
+
+#studio1903 .s1903-founder__phone {
+  display: inline-block;
+  margin-top: var(--s1903-space-7);
+  font-size: var(--s1903-text-body);
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-founder__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(var(--s1903-space-7), 6vw, var(--s1903-space-9));
+    align-items: center;
+  }
+
+  #studio1903 .s1903-founder__media {
+    aspect-ratio: var(--s1903-aspect-founder);
+  }
+
+  #studio1903 .s1903-founder__img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-founder__grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--s1903-grid-gap);
+  }
+
+  #studio1903 .s1903-founder__media {
+    grid-column: span 4;
+  }
+
+  #studio1903 .s1903-founder__content {
+    grid-column: span 5;
+  }
+}
+
+/* ==========================================================================
+   BLOCK: TRUST / EXPERTISE — Grid items
+   ========================================================================== */
+
+#studio1903 .s1903-trust {
+  background: var(--s1903-bg-primary);
+  padding-block: var(--s1903-section-pad);
+}
+
+#studio1903 .s1903-expertise {
+  background: var(--s1903-bg-secondary);
+  padding-block: var(--s1903-section-pad);
+}
+
+#studio1903 .s1903-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s1903-space-7);
+}
+
+#studio1903 .s1903-item__label {
+  font-size: var(--s1903-text-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+  margin: 0 0 var(--s1903-space-3);
+}
+
+#studio1903 .s1903-item__text {
+  font-size: var(--s1903-text-body);
+  margin: 0;
+  line-height: 1.65;
+}
+
+#studio1903 .s1903-expertise__fact {
+  margin-top: clamp(var(--s1903-space-6), 5vw, var(--s1903-space-8));
+  padding-top: var(--s1903-space-7);
+  border-top: 1px solid var(--s1903-border);
+  font-size: var(--s1903-text-body);
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s1903-space-7) var(--s1903-grid-gap);
+  }
+
+  #studio1903 .s1903-grid .s1903-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s1903-space-9) var(--s1903-grid-gap);
+  }
+
+  #studio1903 .s1903-grid .s1903-item:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: none;
+  }
+
+}
+
+/* ==========================================================================
+   BLOCK: PROCESS
+   ========================================================================== */
+
+#studio1903 .s1903-process {
+  background: var(--s1903-bg-primary);
+  padding-block: var(--s1903-section-pad);
+}
+
+#studio1903 .s1903-steps {
+  max-width: 52rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--s1903-space-6), 4vw, var(--s1903-space-7));
+}
+
+#studio1903 .s1903-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s1903-space-4) var(--s1903-space-5);
+  align-items: start;
+}
+
+#studio1903 .s1903-step__num {
+  font-size: var(--s1903-text-caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+  padding-top: 4px;
+}
+
+#studio1903 .s1903-step__title {
+  font-size: var(--s1903-text-h3);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+#studio1903 .s1903-step__text {
+  font-size: var(--s1903-text-sm);
+  color: var(--s1903-text-secondary);
+  margin: var(--s1903-space-2) 0 0;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-step {
+    gap: var(--s1903-space-5) var(--s1903-space-7);
+  }
+}
+
+/* ==========================================================================
+   BLOCK: CASES
+   ========================================================================== */
+
+#studio1903 .s1903-cases {
+  background: var(--s1903-bg-secondary);
+  padding-block: var(--s1903-section-pad);
+}
+
+#studio1903 .s1903-cases-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s1903-space-6);
+}
+
+#studio1903 .s1903-case__link {
+  display: block;
+}
+
+#studio1903 .s1903-case__media {
+  aspect-ratio: var(--s1903-aspect-case);
+  overflow: hidden;
+}
+
+#studio1903 .s1903-case__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 400ms var(--s1903-ease);
+}
+
+#studio1903 .s1903-case__link:hover .s1903-case__img {
+  opacity: 0.92;
+}
+
+#studio1903 .s1903-case__link:active .s1903-case__img {
+  opacity: 0.88;
+}
+
+#studio1903 .s1903-case__title {
+  font-size: var(--s1903-text-h3);
+  font-weight: 500;
+  margin: var(--s1903-space-4) 0 0;
+}
+
+#studio1903 .s1903-case__meta {
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-text-tertiary);
+  margin: var(--s1903-space-2) 0 0;
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s1903-grid-gap);
+  }
+
+  #studio1903 .s1903-case__media {
+    aspect-ratio: var(--s1903-aspect-case);
+  }
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-cases-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  #studio1903 .s1903-case__media {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ==========================================================================
+   BLOCK: FORM
+   ========================================================================== */
+
+#studio1903 .s1903-contact {
+  background: var(--s1903-bg-primary);
+  padding-block: var(--s1903-section-pad);
+}
+
+#studio1903 .s1903-contact__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s1903-space-7);
+}
+
+#studio1903 .s1903-contact__intro {
+  max-width: 36rem;
+}
+
+#studio1903 .s1903-contact__text {
+  font-size: var(--s1903-text-body);
+  margin: var(--s1903-space-5) 0 0;
+}
+
+#studio1903 .s1903-field {
+  margin-bottom: var(--s1903-space-4);
+}
+
+#studio1903 .s1903-field__label {
+  display: block;
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-text-secondary);
+  margin-bottom: var(--s1903-space-2);
+}
+
+#studio1903 .s1903-input {
+  width: 100%;
+  height: var(--s1903-input-height);
+  padding: 0 var(--s1903-space-4);
+  font-family: inherit;
+  font-size: var(--s1903-text-body);
+  color: var(--s1903-text-primary);
+  background: transparent;
+  border: 1px solid var(--s1903-border);
+  border-radius: var(--s1903-radius);
+  transition: border-color var(--s1903-duration) var(--s1903-ease),
+    background var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-input:hover {
+  background: var(--s1903-bg-elevated);
+}
+
+#studio1903 .s1903-input:focus {
+  outline: none;
+  border-color: var(--s1903-border-focus);
+}
+
+#studio1903 .s1903-input--error {
+  border-color: var(--s1903-error);
+}
+
+#studio1903 .s1903-field__error {
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-error);
+  margin-top: var(--s1903-space-2);
+  min-height: 1.2em;
+}
+
+#studio1903 .s1903-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s1903-space-3);
+  margin: var(--s1903-space-5) 0 var(--s1903-space-6);
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-text-tertiary);
+  line-height: 1.45;
+}
+
+#studio1903 .s1903-checkbox input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--s1903-accent);
+}
+
+#studio1903 .s1903-checkbox a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#studio1903 .s1903-contact__aside {
+  padding-top: var(--s1903-space-2);
+}
+
+#studio1903 .s1903-contact__aside p {
+  margin: 0 0 var(--s1903-space-3);
+  font-size: var(--s1903-text-body);
+}
+
+#studio1903 .s1903-contact__aside a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#studio1903 .s1903-form-success {
+  text-align: center;
+  max-width: 28rem;
+  margin-inline: auto;
+  padding-block: var(--s1903-space-8);
+}
+
+#studio1903 .s1903-form-success[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-contact__grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--s1903-grid-gap);
+    align-items: start;
+  }
+
+  #studio1903 .s1903-contact__form-wrap {
+    grid-column: span 5;
+  }
+
+  #studio1903 .s1903-contact__aside {
+    grid-column: 7 / span 4;
+    padding-top: var(--s1903-space-9);
+  }
+
+  #studio1903 .s1903-btn--full {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+/* ==========================================================================
+   BLOCK: FOOTER
+   ========================================================================== */
+
+#studio1903 .s1903-footer {
+  background: var(--s1903-bg-primary);
+  padding-block: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 40px);
+  border-top: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-footer__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1903-space-5);
+  padding-bottom: var(--s1903-space-5);
+  border-bottom: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-footer__logo {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#studio1903 .s1903-footer__social {
+  font-size: var(--s1903-text-nav);
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-footer__social-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  transition: color var(--s1903-duration) var(--s1903-ease),
+    text-decoration-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-footer__social-link:hover {
+  color: var(--s1903-text-primary);
+  text-decoration-color: currentColor;
+}
+
+#studio1903 .s1903-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1903-space-2);
+  padding-top: var(--s1903-space-5);
+  font-size: var(--s1903-text-caption);
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-footer__policy {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-footer__top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #studio1903 .s1903-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s1903-space-4);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  #studio1903 .s1903-reveal,
+  #studio1903 .s1903-hero__content,
+  #studio1903 .s1903-case__img,
+  #studio1903 .s1903-btn,
+  #studio1903 .s1903-ghost .s1903-arrow {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   STUDIO19.03 — Art Direction Layer
+   Поверх styles.css. Не меняет структуру, тексты, сетку.
+   ========================================================================== */
+
+#studio1903 {
+  /* —— Типографика: больше контраста масштаба —— */
+  --s1903-text-hero: clamp(2.125rem, 3.2vw + 1.25rem, 3.75rem);
+  --s1903-text-h1: clamp(1.875rem, 2vw + 1.125rem, 2.75rem);
+  --s1903-text-h3: clamp(1.125rem, 1vw + 0.9rem, 1.375rem);
+  --s1903-text-body: clamp(1rem, 0.35vw + 0.92rem, 1.125rem);
+  --s1903-text-sm: clamp(0.9375rem, 0.2vw + 0.85rem, 1rem);
+  --s1903-text-caption: clamp(0.6875rem, 0.15vw + 0.65rem, 0.75rem);
+  --s1903-text-nav: 13px;
+  --s1903-text-btn: 13px;
+
+  /* —— Цвет: глубже текст, мягче фоны —— */
+  --s1903-bg-primary: #f6f3ee;
+  --s1903-bg-secondary: #ece8e1;
+  --s1903-text-primary: #141412;
+  --s1903-text-secondary: #5c5952;
+  --s1903-text-tertiary: #a39e94;
+  --s1903-text-inverse-muted: rgba(246, 243, 238, 0.72);
+  --s1903-border: #ddd8cf;
+  --s1903-border-subtle: #e9e4db;
+
+  /* —— Ритм: больше воздуха между секциями —— */
+  --s1903-section-pad: clamp(120px, 14vw, 240px);
+  --s1903-section-pad-sm: clamp(96px, 10vw, 200px);
+  --s1903-section-pad-compact: clamp(96px, 8vw, 180px);
+
+  /* —— Motion: медленнее, дороже —— */
+  --s1903-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --s1903-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --s1903-duration: 400ms;
+  --s1903-duration-slow: 900ms;
+
+  /* —— Hero: монументальнее —— */
+  --s1903-hero-height: 100vh;
+  --s1903-hero-overlay: linear-gradient(
+    to top,
+    rgba(20, 20, 18, 0.72) 0%,
+    rgba(20, 20, 18, 0.28) 38%,
+    rgba(20, 20, 18, 0.06) 68%,
+    transparent 100%
+  );
+
+  /* —— Фото: выше кадры —— */
+  --s1903-aspect-case: 3 / 4;
+  --s1903-aspect-founder: 2 / 3;
+
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Убрать «шаблонность»: uppercase-кнопки, scale-active, центрирование
+   ========================================================================== */
+
+#studio1903 .s1903-btn,
+#studio1903 .s1903-ghost,
+#studio1903 .s1903-menu__cta {
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+#studio1903 .s1903-btn:active {
+  transform: none;
+}
+
+/* Hero CTA: не белая «пилюля», а архитектурная рамка */
+#studio1903 .s1903-hero .s1903-btn--inverse {
+  background: transparent;
+  color: var(--s1903-text-inverse);
+  border: 1px solid rgba(246, 243, 238, 0.55);
+  min-height: 52px;
+  padding-inline: 40px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+#studio1903 .s1903-hero .s1903-btn--inverse:hover {
+  background: rgba(246, 243, 238, 0.08);
+  color: var(--s1903-text-inverse);
+  border-color: rgba(246, 243, 238, 0.9);
+}
+
+/* Форма: сплошная кнопка остаётся единственной заливкой на странице */
+#studio1903 .s1903-contact .s1903-btn {
+  min-height: 52px;
+  padding-inline: 48px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Ghost: редакционная ссылка, не маркетинговый CTA */
+#studio1903 .s1903-ghost {
+  font-size: var(--s1903-text-sm);
+  letter-spacing: 0;
+  text-transform: none;
+  gap: 12px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-ghost:hover {
+  border-bottom-color: var(--s1903-text-primary);
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-ghost .s1903-arrow {
+  font-size: 1.1em;
+  opacity: 0.5;
+  transition: transform var(--s1903-duration) var(--s1903-ease),
+    opacity var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-ghost:hover .s1903-arrow {
+  transform: translateX(6px);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Типографика и иерархия
+   ========================================================================== */
+
+#studio1903 .s1903-hero__title {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  max-width: 22ch;
+}
+
+#studio1903 .s1903-hero__subtitle {
+  margin-top: clamp(28px, 3vw, 40px);
+  line-height: 1.7;
+  max-width: 42ch;
+  font-weight: 400;
+}
+
+#studio1903 .s1903-hero__location {
+  margin-top: clamp(20px, 2.5vw, 32px);
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+#studio1903 .s1903-title {
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+#studio1903 .s1903-founder__name {
+  font-weight: 300;
+  letter-spacing: -0.025em;
+}
+
+#studio1903 .s1903-subtitle {
+  margin-top: clamp(20px, 2vw, 28px);
+  max-width: 38ch;
+  line-height: 1.75;
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-section-head .s1903-subtitle {
+  margin-inline: auto;
+}
+
+#studio1903 .s1903-item__label {
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  margin-bottom: clamp(12px, 1.5vw, 20px);
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-item__text {
+  line-height: 1.75;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-step__title {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+#studio1903 .s1903-step__text {
+  line-height: 1.75;
+  max-width: 52ch;
+}
+
+#studio1903 .s1903-case__title {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: clamp(20px, 2vw, 28px);
+}
+
+#studio1903 .s1903-case__meta {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+#studio1903 .s1903-micro {
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  max-width: 32ch;
+}
+
+#studio1903 .s1903-hero .s1903-micro {
+  color: rgba(246, 243, 238, 0.55);
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   Ритм, воздух, баланс пустоты
+   ========================================================================== */
+
+#studio1903 .s1903-section-head + .s1903-section-body,
+#studio1903 .s1903-section-head + .s1903-grid,
+#studio1903 .s1903-section-head + .s1903-steps,
+#studio1903 .s1903-section-head + .s1903-cases-grid {
+  margin-top: clamp(64px, 8vw, 112px);
+}
+
+#studio1903 .s1903-cta-block {
+  margin-top: clamp(72px, 8vw, 120px);
+}
+
+#studio1903 .s1903-founder {
+  padding-block: var(--s1903-section-pad-sm);
+}
+
+#studio1903 .s1903-process {
+  padding-block: var(--s1903-section-pad-compact);
+}
+
+#studio1903 .s1903-footer {
+  padding-block: clamp(64px, 8vw, 96px) clamp(32px, 4vw, 48px);
+  border-top-color: var(--s1903-border-subtle);
+}
+
+/* Секции: левое выравнивание заголовков — editorial, не лендинг */
+@media (min-width: 768px) {
+  #studio1903 .s1903-section-head {
+    text-align: left;
+    margin-inline: 0;
+    max-width: 36rem;
+  }
+
+  #studio1903 .s1903-section-head .s1903-subtitle {
+    margin-inline: 0;
+  }
+
+  #studio1903 .s1903-cta-block {
+    text-align: left;
+  }
+
+  #studio1903 .s1903-expertise__fact {
+    text-align: left;
+    margin-inline: 0;
+    max-width: 32rem;
+  }
+}
+
+/* Hero: один слой анимации, без двойного reveal */
+#studio1903 .s1903-hero .s1903-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+
+#studio1903 .s1903-hero__content {
+  max-width: 44rem;
+  padding-bottom: clamp(56px, 10vh, 96px);
+}
+
+#studio1903 .s1903-hero__actions {
+  margin-top: clamp(40px, 5vh, 56px);
+}
+
+#studio1903 .s1903-hero__img {
+  transform: scale(1.06);
+  animation: s1903-hero-ken 18s var(--s1903-ease-out) forwards;
+}
+
+#studio1903.s1903--loaded .s1903-hero__img {
+  animation: s1903-hero-ken 18s var(--s1903-ease-out) forwards;
+}
+
+@keyframes s1903-hero-ken {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+#studio1903 .s1903-hero__content {
+  transition: opacity 1s var(--s1903-ease), transform 1s var(--s1903-ease);
+  transition-delay: 0.15s;
+}
+
+/* ==========================================================================
+   Founder: масштаб портрета
+   ========================================================================== */
+
+#studio1903 .s1903-founder__media {
+  max-height: none;
+}
+
+#studio1903 .s1903-founder__text {
+  margin-top: clamp(24px, 3vw, 36px);
+  line-height: 1.8;
+}
+
+#studio1903 .s1903-founder__phone {
+  margin-top: clamp(40px, 4vw, 56px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-founder__content {
+    padding-block: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ==========================================================================
+   Trust / Expertise: воздух между пунктами
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-grid {
+    gap: clamp(64px, 6vw, 96px) var(--s1903-grid-gap);
+  }
+}
+
+#studio1903 .s1903-expertise__fact {
+  margin-top: clamp(72px, 8vw, 104px);
+  padding-top: clamp(40px, 4vw, 56px);
+  border-top-color: var(--s1903-border-subtle);
+  line-height: 1.75;
+  color: var(--s1903-text-secondary);
+}
+
+/* ==========================================================================
+   Process: ритм через линии, не карточки
+   ========================================================================== */
+
+#studio1903 .s1903-steps {
+  gap: 0;
+  max-width: 40rem;
+  margin-inline: 0;
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-steps {
+    margin-inline: 0;
+  }
+}
+
+#studio1903 .s1903-step {
+  padding-block: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--s1903-border-subtle);
+  gap: var(--s1903-space-5) clamp(24px, 3vw, 48px);
+}
+
+#studio1903 .s1903-step:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+#studio1903 .s1903-step__num {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  min-width: 2rem;
+}
+
+/* ==========================================================================
+   Cases: крупнее фото, тише подписи
+   ========================================================================== */
+
+#studio1903 .s1903-cases-grid {
+  gap: clamp(40px, 5vw, 72px) var(--s1903-grid-gap);
+}
+
+#studio1903 .s1903-case__img {
+  transition: opacity 600ms var(--s1903-ease), transform 1.2s var(--s1903-ease);
+  transform: scale(1.02);
+}
+
+#studio1903 .s1903-case__link:hover .s1903-case__img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#studio1903 .s1903-case__media {
+  background: var(--s1903-bg-primary);
+}
+
+/* ==========================================================================
+   Form: underline-поля вместо «конструктора»
+   ========================================================================== */
+
+#studio1903 .s1903-input {
+  height: auto;
+  min-height: 44px;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid var(--s1903-border);
+  background: transparent;
+}
+
+#studio1903 .s1903-input:hover {
+  background: transparent;
+  border-bottom-color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-input:focus {
+  border-bottom-color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-field__label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+  margin-bottom: 4px;
+}
+
+#studio1903 .s1903-contact__intro {
+  max-width: 32rem;
+}
+
+#studio1903 .s1903-contact__text {
+  line-height: 1.8;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-contact__aside {
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-contact__aside a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--s1903-border);
+  transition: border-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-contact__aside a:hover {
+  border-bottom-color: var(--s1903-text-primary);
+  color: var(--s1903-text-primary);
+}
+
+/* ==========================================================================
+   Header: тише, легче
+   ========================================================================== */
+
+#studio1903 {
+  --s1903-header-height: 80px;
+}
+
+#studio1903 .s1903-header__logo-text {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+#studio1903 .s1903-nav__link {
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+#studio1903 .s1903-nav__link:hover {
+  opacity: 1;
+}
+
+#studio1903 .s1903-header--scrolled {
+  background: rgba(246, 243, 238, 0.92);
+  box-shadow: none;
+  border-bottom: 1px solid var(--s1903-border-subtle);
+}
+
+/* ==========================================================================
+   Reveal: медленнее, меньше «pop-in»
+   ========================================================================== */
+
+#studio1903 .s1903-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--s1903-duration-slow) var(--s1903-ease),
+    transform var(--s1903-duration-slow) var(--s1903-ease);
+}
+
+#studio1903 .s1903-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  #studio1903 .s1903-hero__img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  #studio1903 .s1903-case__img {
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   STUDIO19.03 — Tilda compatibility
+   ========================================================================== */
+
+/* Tilda обнуляет высоту блока, если внутри fixed-элементы */
+#studio1903 {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Контейнеры T123 не должны обрезать контент */
+.t123 #studio1903,
+.t123 .t-container_100,
+.t123 .t-width_100 {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 1px;
+}
+
+/* Контент виден до загрузки JS (Tilda может не запустить reveal) */
+#studio1903 .s1903-hero__content {
+  opacity: 1;
+  transform: none;
+}
+
+#studio1903:not(.s1903-js-ready) .s1903-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* После init JS включает анимации */
+#studio1903.s1903-js-ready .s1903-reveal:not(.s1903-reveal--visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#studio1903.s1903-js-ready.s1903--loaded .s1903-hero__content {
+  opacity: 1;
+  transform: none;
+}
+
+</style>
+<script>
+/**
+ * STUDIO19.03 — изображения
+ * Редактируйте только URL ниже.
+ */
+window.STUDIO1903_IMAGES = {
+  logo: {
+    src: 'https://static.tildacdn.com/tild3230-3861-4136-b438-333561646238/noroot.png',
+    srcDark: 'https://static.tildacdn.com/tild3461-3833-4233-b133-653831333637/noroot.png',
+    alt: 'Studio19.03 — дизайн и архитектура',
+    height: 34
+  },
+  hero: {
+    src: 'https://static.tildacdn.com/tild6136-3137-4838-b838-383333323237/7.jpg',
+    alt: 'Интерьер гостиной — Studio19.03',
+    position: '60% center'
+  },
+  founder: {
+    src: 'https://static.tildacdn.com/tild3262-3533-4739-a632-323938333265/__2026-06-29__174846.png',
+    alt: 'Роман Ахмадуллин — руководитель Studio19.03',
+    position: 'center top'
+  },
+  cases: [
+    {
+      src: 'https://static.tildacdn.com/tild6136-3137-4838-b838-383333323237/7.jpg',
+      alt: 'ROCHE 82',
+      href: '/portfolio'
+    },
+    {
+      src: 'https://static.tildacdn.com/tild6437-3465-4139-b431-646335363436/01_09_Post.jpg',
+      alt: 'SLOW 19',
+      href: '/portfolio'
+    },
+    {
+      src: 'https://static.tildacdn.com/tild6236-3466-4339-a330-353130623561/__92.jpg',
+      alt: 'BRODSKY-19',
+      href: '/portfolio'
+    },
+    {
+      src: 'https://static.tildacdn.com/tild3236-3934-4165-a565-663162366632/23-1.jpg',
+      alt: 'TITUL 70',
+      href: '/portfolio'
+    },
+    {
+      src: 'https://static.tildacdn.com/tild3565-3039-4263-b538-653861373038/__21.jpg',
+      alt: 'SAVIN HAUZ',
+      href: '/portfolio'
+    },
+    {
+      src: 'https://static.tildacdn.com/tild6665-3766-4063-b036-373638383338/1.jpg',
+      alt: 'FLATT 50',
+      href: '/portfolio'
+    }
+  ]
+};
+
+/**
+ * STUDIO19.03 — тексты
+ * Редактируйте только значения ниже.
+ */
+window.STUDIO1903_CONTENT = {
+  header: {
+    logo: 'Studio19.03',
+    phone: '+7 (966) 250-84-50',
+    phoneHref: 'tel:+79662508450',
+    cta: 'Обсудить проект',
+    menuAddress: 'Москва · ул. Нагатинская набережная, 10А, корп. Б',
+    nav: [
+      { label: 'Портфолио', href: '/portfolio' },
+      { label: 'Этапы', href: '/steps' },
+      { label: 'Цены', href: '/price' },
+      { label: 'О нас', href: '/about' },
+      { label: 'Контакты', href: '/contacts' }
+    ]
+  },
+
+  hero: {
+    title: 'Ваш интерьер пройдёт путь от проекта до реализации под контролем одной команды.',
+    subtitle:
+      'Создаём жилые и коммерческие интерьеры, сопровождаем ремонт, комплектацию и авторский надзор до полного завершения объекта.',
+    location: 'Москва',
+    cta: 'Обсудить проект',
+    micro: 'Первая встреча — в студии или на объекте'
+  },
+
+  founder: {
+    title: 'Одна команда — один человек, который отвечает за результат',
+    subtitle: 'Роман Ахмадуллин · руководитель студии',
+    text:
+      'Веду каждый проект лично: от обмеров до приёмки объекта. Если на стройке возникает вопрос — решаю его сам, а не передаю менеджеру.',
+    phone: '+7 (966) 250-84-50',
+    phoneMicro: 'Можно позвонить напрямую'
+  },
+
+  trust: {
+    title: 'За нами — объекты, которые уже сданы',
+    subtitle: 'Три факта, которые стоят за обещанием на первом экране',
+    items: [
+      {
+        label: 'Основание',
+        text: 'С 2018 года проектируем и реализуем интерьеры. Архитектура, дизайн, строительство — в одной студии, без передачи на субподряд.'
+      },
+      {
+        label: 'Опыт',
+        text: 'Более ста объектов от чертежа до финала — в Москве и других городах. Каждый можно посмотреть в портфолио.'
+      },
+      {
+        label: 'Единый цикл',
+        text: 'Проект, ремонт, надзор, комплектация — не отдельные договоры с разными исполнителями. Одна команда ведёт объект до завершения.'
+      }
+    ],
+    cta: 'Как мы это делаем на практике',
+    micro: 'Ремонт, надзор и комплектация — не дополнения к проекту, а его продолжение'
+  },
+
+  expertise: {
+    title: 'Визуализация — только начало пути',
+    subtitle: 'Что происходит после утверждения проекта',
+    items: [
+      {
+        label: 'Ремонт',
+        text: 'Строительные бригады, которые работают по нашей документации — без вольных интерпретаций на объекте.'
+      },
+      {
+        label: 'Авторский надзор',
+        text: 'Еженедельные выезды, фотофиксация, сверка с проектом. Отклонения — в чертежи, а не в отчёты, которые никто не читает.'
+      },
+      {
+        label: 'Комплектация',
+        text: 'Сметы, график закупок, подбор материалов и мебели с артикулами. Скидки от поставщиков остаются у вас.'
+      }
+    ],
+    fact: 'Работаем с объектами, где бюджет отделки — от 200 000 ₽ за квадратный метр.',
+    cta: 'Шесть этапов от заявки до сдачи',
+    micro: 'Вы знаете, что будет на каждом шаге'
+  },
+
+  process: {
+    title: 'Каждый этап — с вашим участием',
+    subtitle: 'Как устроена работа над проектом',
+    steps: [
+      {
+        num: '01',
+        title: 'Заявка и встреча',
+        text: 'Оставляете контакты — перезваниваем, отвечаем на вопросы, назначаем встречу в студии на Нагатинской или на объекте.'
+      },
+      {
+        num: '02',
+        title: 'Подготовка',
+        text: 'Договор, обмеры с фото- и видеофиксацией, техническое задание — заполняем вместе.'
+      },
+      {
+        num: '03',
+        title: 'Планировка',
+        text: 'Несколько вариантов зонирования: мебель, перегородки, снос — в рамках действующих норм.'
+      },
+      {
+        num: '04',
+        title: '3D-концепция',
+        text: 'Визуализация ключевого помещения. Утверждаем стиль, материалы, свет — и только потом двигаемся дальше.'
+      },
+      {
+        num: '05',
+        title: 'Проект',
+        text: 'Визуализации всех помещений, рабочая документация, развёртки, мебель в 3D, спецификация с артикулами.'
+      },
+      {
+        num: '06',
+        title: 'Реализация',
+        text: 'Надзор на объекте, комплектация, контроль подрядчиков — до полного завершения.'
+      }
+    ],
+    cta: 'Посмотреть, как это выглядит в готовых интерьерах',
+    micro: '18 проектов в портфолио',
+    link: 'Подробнее об этапах',
+    linkHref: '/steps'
+  },
+
+  cases: {
+    title: 'От проекта до реализации — без разрыва',
+    subtitle: 'Избранные интерьеры',
+    items: [
+      { title: 'ROCHE 82', meta: 'Квартира' },
+      { title: 'SLOW 19', meta: 'Квартира' },
+      { title: 'BRODSKY-19', meta: 'Квартира' },
+      { title: 'TITUL 70', meta: 'Квартира' },
+      { title: 'SAVIN HAUZ', meta: 'Таунхаус' },
+      { title: 'FLATT 50', meta: 'Квартира' }
+    ],
+    cta: 'Обсудить проект',
+    micro: 'Расскажите о помещении — договоримся о встрече',
+    link: 'Все проекты',
+    linkHref: '/portfolio'
+  },
+
+  form: {
+    title: 'Начните с разговора',
+    subtitle: 'Оставьте контакты — перезвоним и договоримся о встрече в студии или на объекте',
+    text: 'Готовый бриф не нужен. Достаточно площади и телефона — остальное обсудим лично.',
+    fields: {
+      name: { label: 'Имя', placeholder: 'Как к вам обращаться' },
+      phone: { label: 'Телефон', placeholder: '+7' },
+      area: { label: 'Площадь, м²', placeholder: 'Например, 120' }
+    },
+    privacy:
+      'Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности и даёте согласие на обработку персональных данных.',
+    privacyHref: '/privacy',
+    submit: 'Отправить',
+    phone: '+7 (966) 250-84-50',
+    email: 'info@studio1903.ru',
+    address: 'Москва, ул. Нагатинская набережная, 10А, корп. Б',
+    phoneMicro: 'Предпочитаете звонок — звоните напрямую',
+    errors: {
+      name: 'Укажите, как к вам обращаться',
+      phone: 'Нужен номер для связи',
+      phoneFormat: 'Проверьте номер',
+      area: 'Укажите примерную площадь',
+      privacy: 'Нужно согласие на обработку данных'
+    },
+    success: {
+      title: 'Получили вашу заявку',
+      subtitle: 'Перезвоним в течение рабочего дня',
+      text: 'Если вопрос срочный — +7 (966) 250-84-50',
+      cta: 'Вернуться к проектам'
+    }
+  },
+
+  footer: {
+    social: [
+      { label: 'Telegram', href: 'https://t.me/filsstudio_roman' },
+      { label: 'Pinterest', href: 'https://pin.it/5XD6AUn2I' },
+      { label: 'Max', href: 'https://max.ru/u/f9LHodD0cOIZGeGOa1q92cAjGvZdBPkjXwsj-Hj9WBjXsCC-B7RULCh4CR8' }
+    ],
+    copyright: '© 2026 Studio19.03',
+    address: 'Москва, ул. Нагатинская набережная, 10А, корп. Б',
+    policy: 'Политика конфиденциальности',
+    policyHref: '/privacy'
+  }
+};
+
+/**
+ * STUDIO19.03 — главный скрипт
+ * Vanilla JS: контент, изображения, меню, скролл, форма
+ */
+(function () {
+  'use strict';
+
+  var root = document.getElementById('studio1903');
+  if (!root) return;
+
+  var CONTENT = window.STUDIO1903_CONTENT || {};
+  var IMAGES = window.STUDIO1903_IMAGES || {};
+
+  /* ========== УТИЛИТЫ ========== */
+
+  function setText(selector, text) {
+    var el = root.querySelector(selector);
+    if (el && text != null) el.textContent = text;
+  }
+
+  function setHTML(selector, html) {
+    var el = root.querySelector(selector);
+    if (el && html != null) el.innerHTML = html;
+  }
+
+  function createArrow() {
+    var span = document.createElement('span');
+    span.className = 's1903-arrow';
+    span.setAttribute('aria-hidden', 'true');
+    span.textContent = '→';
+    return span;
+  }
+
+  /* ========== КОНТЕНТ ========== */
+
+  function applyContent() {
+    var c = CONTENT;
+    if (!c.header) return;
+
+    setText('[data-s1903="header.logo"]', c.header.logo);
+    setText('[data-s1903="header.phone"]', c.header.phone);
+    setText('[data-s1903="header.cta"]', c.header.cta);
+    setText('[data-s1903="header.menuAddress"]', c.header.menuAddress);
+
+    var phoneLinks = root.querySelectorAll('[data-s1903-href="header.phone"]');
+    phoneLinks.forEach(function (a) {
+      a.href = c.header.phoneHref;
+    });
+
+    var ctaLinks = root.querySelectorAll('[data-s1903-href="form"]');
+    ctaLinks.forEach(function (a) {
+      a.href = '#s1903-form';
+    });
+
+    /* Nav */
+    var navDesktop = root.querySelector('[data-s1903="nav.desktop"]');
+    var navMobile = root.querySelector('[data-s1903="nav.mobile"]');
+    if (navDesktop && c.header.nav) {
+      navDesktop.innerHTML = '';
+      c.header.nav.forEach(function (item) {
+        var a = document.createElement('a');
+        a.className = 's1903-nav__link';
+        a.href = item.href;
+        a.textContent = item.label;
+        navDesktop.appendChild(a);
+      });
+    }
+    if (navMobile && c.header.nav) {
+      navMobile.innerHTML = '';
+      c.header.nav.forEach(function (item) {
+        var a = document.createElement('a');
+        a.className = 's1903-menu__link';
+        a.href = item.href;
+        a.textContent = item.label;
+        navMobile.appendChild(a);
+      });
+    }
+
+    /* Hero */
+    if (c.hero) {
+      setText('[data-s1903="hero.title"]', c.hero.title);
+      setText('[data-s1903="hero.subtitle"]', c.hero.subtitle);
+      setText('[data-s1903="hero.location"]', c.hero.location);
+      setText('[data-s1903="hero.cta"]', c.hero.cta);
+      setText('[data-s1903="hero.micro"]', c.hero.micro);
+    }
+
+    /* Founder */
+    if (c.founder) {
+      setText('[data-s1903="founder.title"]', c.founder.title);
+      setText('[data-s1903="founder.subtitle"]', c.founder.subtitle);
+      setText('[data-s1903="founder.text"]', c.founder.text);
+      setText('[data-s1903="founder.phone"]', c.founder.phone);
+      setText('[data-s1903="founder.phoneMicro"]', c.founder.phoneMicro);
+    }
+
+    /* Trust */
+    if (c.trust) {
+      setText('[data-s1903="trust.title"]', c.trust.title);
+      setText('[data-s1903="trust.subtitle"]', c.trust.subtitle);
+      setText('[data-s1903="trust.cta"]', c.trust.cta);
+      setText('[data-s1903="trust.micro"]', c.trust.micro);
+      renderItems('[data-s1903="trust.items"]', c.trust.items);
+    }
+
+    /* Expertise */
+    if (c.expertise) {
+      setText('[data-s1903="expertise.title"]', c.expertise.title);
+      setText('[data-s1903="expertise.subtitle"]', c.expertise.subtitle);
+      setText('[data-s1903="expertise.fact"]', c.expertise.fact);
+      setText('[data-s1903="expertise.cta"]', c.expertise.cta);
+      setText('[data-s1903="expertise.micro"]', c.expertise.micro);
+      renderItems('[data-s1903="expertise.items"]', c.expertise.items);
+    }
+
+    /* Process */
+    if (c.process) {
+      setText('[data-s1903="process.title"]', c.process.title);
+      setText('[data-s1903="process.subtitle"]', c.process.subtitle);
+      setText('[data-s1903="process.cta"]', c.process.cta);
+      setText('[data-s1903="process.micro"]', c.process.micro);
+      setText('[data-s1903="process.link"]', c.process.link);
+      var processLink = root.querySelector('[data-s1903-href="process.link"]');
+      if (processLink) processLink.href = c.process.linkHref;
+      renderSteps('[data-s1903="process.steps"]', c.process.steps);
+    }
+
+    /* Cases */
+    if (c.cases) {
+      setText('[data-s1903="cases.title"]', c.cases.title);
+      setText('[data-s1903="cases.subtitle"]', c.cases.subtitle);
+      setText('[data-s1903="cases.cta"]', c.cases.cta);
+      setText('[data-s1903="cases.micro"]', c.cases.micro);
+      setText('[data-s1903="cases.link"]', c.cases.link);
+      var casesLink = root.querySelector('[data-s1903-href="cases.link"]');
+      if (casesLink) casesLink.href = c.cases.linkHref;
+      renderCases('[data-s1903="cases.grid"]', c.cases.items);
+    }
+
+    /* Form */
+    if (c.form) {
+      setText('[data-s1903="form.title"]', c.form.title);
+      setText('[data-s1903="form.subtitle"]', c.form.subtitle);
+      setText('[data-s1903="form.text"]', c.form.text);
+      setText('[data-s1903="form.submit"]', c.form.submit);
+      setText('[data-s1903="form.phone"]', c.form.phone);
+      setText('[data-s1903="form.email"]', c.form.email);
+      var emailLink = root.querySelector('[data-s1903-href="form.email"]');
+      if (emailLink) emailLink.href = 'mailto:' + c.form.email;
+      setText('[data-s1903="form.address"]', c.form.address);
+      setText('[data-s1903="form.phoneMicro"]', c.form.phoneMicro);
+      setText('[data-s1903-label="form.name"]', c.form.fields.name.label);
+      setText('[data-s1903-label="form.phone"]', c.form.fields.phone.label);
+      setText('[data-s1903-label="form.area"]', c.form.fields.area.label);
+      setPlaceholder('#s1903-name', c.form.fields.name.placeholder);
+      setPlaceholder('#s1903-phone', c.form.fields.phone.placeholder);
+      setPlaceholder('#s1903-area', c.form.fields.area.placeholder);
+      setText('[data-s1903="form.success.title"]', c.form.success.title);
+      setText('[data-s1903="form.success.subtitle"]', c.form.success.subtitle);
+      setText('[data-s1903="form.success.text"]', c.form.success.text);
+      setText('[data-s1903="form.success.cta"]', c.form.success.cta);
+      var privacyEl = root.querySelector('[data-s1903="form.privacy"]');
+      if (privacyEl && c.form.privacy) {
+        privacyEl.innerHTML =
+          c.form.privacy.replace(
+            'политикой конфиденциальности',
+            '<a href="' + c.form.privacyHref + '">политикой конфиденциальности</a>'
+          );
+      }
+    }
+
+    /* Footer */
+    if (c.footer) {
+      setText('[data-s1903="footer.logo"]', c.header.logo);
+      setText('[data-s1903="footer.copyright"]', c.footer.copyright);
+      setText('[data-s1903="footer.address"]', c.footer.address);
+      setText('[data-s1903="footer.policy"]', c.footer.policy);
+      var policyLink = root.querySelector('[data-s1903-href="footer.policy"]');
+      if (policyLink) policyLink.href = c.footer.policyHref;
+      var socialWrap = root.querySelector('[data-s1903="footer.social"]');
+      if (socialWrap && c.footer.social) {
+        socialWrap.innerHTML = '';
+        c.footer.social.forEach(function (s, i) {
+          if (i > 0) socialWrap.appendChild(document.createTextNode(' · '));
+          var a = document.createElement('a');
+          a.href = s.href;
+          a.className = 's1903-footer__social-link';
+          a.textContent = s.label;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          socialWrap.appendChild(a);
+        });
+      }
+    }
+  }
+
+  function setPlaceholder(id, text) {
+    var el = root.querySelector(id);
+    if (el) el.placeholder = text;
+  }
+
+  function renderItems(selector, items) {
+    var wrap = root.querySelector(selector);
+    if (!wrap || !items) return;
+    wrap.innerHTML = '';
+    items.forEach(function (item, index) {
+      var div = document.createElement('div');
+      div.className = 's1903-item s1903-reveal';
+      div.style.transitionDelay = index * 0.1 + 's';
+      div.innerHTML =
+        '<p class="s1903-item__label">' +
+        item.label +
+        '</p><p class="s1903-item__text">' +
+        item.text +
+        '</p>';
+      wrap.appendChild(div);
+    });
+  }
+
+  function renderSteps(selector, steps) {
+    var wrap = root.querySelector(selector);
+    if (!wrap || !steps) return;
+    wrap.innerHTML = '';
+    steps.forEach(function (step, index) {
+      var div = document.createElement('div');
+      div.className = 's1903-step s1903-reveal';
+      div.style.transitionDelay = index * 0.07 + 's';
+      div.innerHTML =
+        '<span class="s1903-step__num">' +
+        step.num +
+        '</span>' +
+        '<div class="s1903-step__body">' +
+        '<h3 class="s1903-step__title">' +
+        step.title +
+        '</h3>' +
+        '<p class="s1903-step__text">' +
+        step.text +
+        '</p>' +
+        '</div>';
+      wrap.appendChild(div);
+    });
+  }
+
+  function renderCases(selector, items) {
+    var wrap = root.querySelector(selector);
+    var imgs = IMAGES.cases || [];
+    if (!wrap || !items) return;
+    wrap.innerHTML = '';
+    items.forEach(function (item, i) {
+      var imgData = imgs[i] || {};
+      var article = document.createElement('article');
+      article.className = 's1903-case s1903-reveal';
+      article.style.transitionDelay = i * 0.09 + 's';
+      article.innerHTML =
+        '<a class="s1903-case__link" href="' +
+        (imgData.href || '/portfolio') +
+        '">' +
+        '<div class="s1903-case__media">' +
+        '<img class="s1903-case__img" src="' +
+        (imgData.src || '') +
+        '" alt="' +
+        (imgData.alt || item.title) +
+        '" loading="lazy" width="800" height="1000">' +
+        '</div>' +
+        '<h3 class="s1903-case__title">' +
+        item.title +
+        '</h3>' +
+        '<p class="s1903-case__meta">' +
+        item.meta +
+        '</p>' +
+        '</a>';
+      wrap.appendChild(article);
+    });
+  }
+
+  /* ========== ИЗОБРАЖЕНИЯ ========== */
+
+  function applyImages() {
+    if (IMAGES.logo && IMAGES.logo.src) {
+      var logoLink = root.querySelector('.s1903-header__logo');
+      var logoAlt =
+        IMAGES.logo.alt || (CONTENT.header && CONTENT.header.logo) || 'Studio19.03';
+      var logoHeight = IMAGES.logo.height || 28;
+      var imgLight = root.querySelector('[data-s1903-img="header.logo"]');
+      var imgDark = root.querySelector('[data-s1903-img="header.logoDark"]');
+      var logoText = root.querySelector('.s1903-header__logo-text');
+
+      if (imgLight) {
+        imgLight.src = IMAGES.logo.src;
+        imgLight.alt = logoAlt;
+        imgLight.height = logoHeight;
+        imgLight.removeAttribute('width');
+        imgLight.removeAttribute('hidden');
+      }
+      if (imgDark) {
+        imgDark.src = IMAGES.logo.srcDark || IMAGES.logo.src;
+        imgDark.alt = logoAlt;
+        imgDark.height = logoHeight;
+        imgDark.removeAttribute('width');
+        imgDark.removeAttribute('hidden');
+      }
+      if (logoText) logoText.setAttribute('hidden', '');
+      if (logoLink) {
+        logoLink.setAttribute('aria-label', logoAlt);
+        logoLink.style.setProperty('--s1903-logo-height', logoHeight + 'px');
+      }
+    }
+
+    if (IMAGES.hero) {
+      var heroImg = root.querySelector('[data-s1903-img="hero"]');
+      if (heroImg) {
+        heroImg.src = IMAGES.hero.src;
+        heroImg.alt = IMAGES.hero.alt;
+        if (IMAGES.hero.position) heroImg.style.objectPosition = IMAGES.hero.position;
+      }
+    }
+    if (IMAGES.founder) {
+      var founderImg = root.querySelector('[data-s1903-img="founder"]');
+      if (founderImg) {
+        founderImg.src = IMAGES.founder.src;
+        founderImg.alt = IMAGES.founder.alt;
+        if (IMAGES.founder.position) founderImg.style.objectPosition = IMAGES.founder.position;
+      }
+    }
+  }
+
+  /* ========== HEADER SCROLL ========== */
+
+  function initHeader() {
+    var header = root.querySelector('.s1903-header');
+    if (!header) return;
+
+    function onScroll() {
+      if (window.scrollY > 80) {
+        header.classList.add('s1903-header--scrolled');
+      } else {
+        header.classList.remove('s1903-header--scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ========== MOBILE MENU ========== */
+
+  function initMenu() {
+    var burger = root.querySelector('.s1903-burger');
+    var menu = root.querySelector('.s1903-menu');
+    if (!burger || !menu) return;
+
+    function close() {
+      burger.classList.remove('s1903-burger--open');
+      menu.classList.remove('s1903-menu--open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    function open() {
+      burger.classList.add('s1903-burger--open');
+      menu.classList.add('s1903-menu--open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    burger.addEventListener('click', function () {
+      if (menu.classList.contains('s1903-menu--open')) close();
+      else open();
+    });
+
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
+  }
+
+  /* ========== SMOOTH SCROLL ========== */
+
+  function initAnchors() {
+    root.querySelectorAll('a[href^="#s1903"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        var headerH = parseInt(
+          getComputedStyle(root).getPropertyValue('--s1903-header-height') || '72',
+          10
+        );
+        var top = target.getBoundingClientRect().top + window.scrollY - headerH;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  }
+
+  /* ========== SCROLL REVEAL ========== */
+
+  function initReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      root.querySelectorAll('.s1903-reveal').forEach(function (el) {
+        el.classList.add('s1903-reveal--visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('s1903-reveal--visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    root.querySelectorAll('.s1903-reveal').forEach(function (el, index) {
+      el.style.transitionDelay = Math.min(index * 0.08, 0.48) + 's';
+      observer.observe(el);
+    });
+  }
+
+  /* ========== HERO ENTRANCE ========== */
+
+  function initHeroEntrance() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    requestAnimationFrame(function () {
+      root.classList.add('s1903--loaded');
+    });
+  }
+
+  /* ========== FORM ========== */
+
+  function initForm() {
+    var form = root.querySelector('#s1903-form-element');
+    var formBlock = root.querySelector('#s1903-form');
+    var success = root.querySelector('#s1903-form-success');
+    if (!form || !formBlock) return;
+
+    var errors = (CONTENT.form && CONTENT.form.errors) || {};
+
+    function showError(id, msg) {
+      var input = root.querySelector('#' + id);
+      var err = root.querySelector('[data-error-for="' + id + '"]');
+      if (input) input.classList.add('s1903-input--error');
+      if (err) err.textContent = msg;
+    }
+
+    function clearErrors() {
+      form.querySelectorAll('.s1903-input').forEach(function (i) {
+        i.classList.remove('s1903-input--error');
+      });
+      form.querySelectorAll('.s1903-field__error').forEach(function (e) {
+        e.textContent = '';
+      });
+    }
+
+    function validatePhone(val) {
+      var digits = val.replace(/\D/g, '');
+      return digits.length >= 10;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearErrors();
+      var valid = true;
+
+      var name = root.querySelector('#s1903-name');
+      var phone = root.querySelector('#s1903-phone');
+      var area = root.querySelector('#s1903-area');
+      var privacy = root.querySelector('#s1903-privacy');
+
+      if (!name.value.trim()) {
+        showError('s1903-name', errors.name || '');
+        valid = false;
+      }
+      if (!phone.value.trim()) {
+        showError('s1903-phone', errors.phone || '');
+        valid = false;
+      } else if (!validatePhone(phone.value)) {
+        showError('s1903-phone', errors.phoneFormat || '');
+        valid = false;
+      }
+      if (!area.value.trim()) {
+        showError('s1903-area', errors.area || '');
+        valid = false;
+      }
+      if (!privacy.checked) {
+        var privacyErr = root.querySelector('[data-error-for="s1903-privacy"]');
+        if (privacyErr) privacyErr.textContent = errors.privacy || '';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      /*
+       * TILDA: подключите отправку через форму Tilda.
+       * Замените блок ниже на вызов tildaForm или action вашей CRM.
+       */
+      form.hidden = true;
+      if (success) success.hidden = false;
+      formBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    var backBtn = root.querySelector('[data-s1903="form.success.cta"]');
+    if (backBtn) {
+      backBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var cases = root.querySelector('#s1903-cases');
+        if (cases) cases.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  }
+
+  /* ========== INIT ========== */
+
+  function init() {
+    applyContent();
+    applyImages();
+    initHeader();
+    initMenu();
+    initAnchors();
+    initReveal();
+    initHeroEntrance();
+    initForm();
+
+    root.classList.add('s1903-js-ready');
+
+    /* Повторный reveal для динамических элементов */
+    setTimeout(initReveal, 100);
+    return true;
+  }
+
+  function boot() {
+    if (!document.getElementById('studio1903')) {
+      return false;
+    }
+    init();
+    return true;
+  }
+
+  function scheduleBoot() {
+    if (boot()) return;
+    setTimeout(function () {
+      if (boot()) return;
+      setTimeout(boot, 1000);
+    }, 250);
+  }
+
+  if (typeof window.t_onReady === 'function') {
+    window.t_onReady(scheduleBoot);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleBoot);
+  } else {
+    scheduleBoot();
+  }
+
+  window.addEventListener('load', scheduleBoot);
+})();
+
+</script>
