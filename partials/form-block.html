@@ -1,0 +1,51 @@
+      <section class="s1903-contact" id="s1903-form" aria-labelledby="s1903-form-title">
+        <div class="s1903-container">
+          <div class="s1903-contact__grid">
+            <div class="s1903-contact__form-wrap">
+              <header class="s1903-contact__intro s1903-reveal">
+                <h2 class="s1903-title" id="s1903-form-title" data-s1903="form.title"></h2>
+                <p class="s1903-subtitle" data-s1903="form.subtitle"></p>
+                <p class="s1903-contact__text" data-s1903="form.text"></p>
+              </header>
+
+              <form class="s1903-form s1903-reveal" id="s1903-form-element" novalidate>
+                <div class="s1903-field">
+                  <label class="s1903-field__label" for="s1903-name" data-s1903-label="form.name">Имя</label>
+                  <input class="s1903-input" type="text" id="s1903-name" name="name" autocomplete="name" required>
+                  <p class="s1903-field__error" data-error-for="s1903-name" role="alert"></p>
+                </div>
+                <div class="s1903-field">
+                  <label class="s1903-field__label" for="s1903-phone" data-s1903-label="form.phone">Телефон</label>
+                  <input class="s1903-input" type="tel" id="s1903-phone" name="phone" autocomplete="tel" required>
+                  <p class="s1903-field__error" data-error-for="s1903-phone" role="alert"></p>
+                </div>
+                <div class="s1903-field">
+                  <label class="s1903-field__label" for="s1903-area" data-s1903-label="form.area">Площадь, м²</label>
+                  <input class="s1903-input" type="text" id="s1903-area" name="area" inputmode="numeric" required>
+                  <p class="s1903-field__error" data-error-for="s1903-area" role="alert"></p>
+                </div>
+                <label class="s1903-checkbox">
+                  <input type="checkbox" id="s1903-privacy" name="privacy" required>
+                  <span data-s1903="form.privacy"></span>
+                </label>
+                <p class="s1903-field__error" data-error-for="s1903-privacy" role="alert"></p>
+                <button class="s1903-btn s1903-btn--full" type="submit" data-s1903="form.submit">Отправить</button>
+              </form>
+
+              <div class="s1903-form-success" id="s1903-form-success" hidden>
+                <h3 class="s1903-title" data-s1903="form.success.title"></h3>
+                <p class="s1903-subtitle" data-s1903="form.success.subtitle"></p>
+                <p class="s1903-contact__text" data-s1903="form.success.text"></p>
+                <a class="s1903-ghost" href="/portfolio" data-s1903="form.success.cta"></a>
+              </div>
+            </div>
+
+            <aside class="s1903-contact__aside s1903-reveal" aria-label="Контакты">
+              <p><a data-s1903="form.phone" data-s1903-href="header.phone" href="tel:+79662508450"></a></p>
+              <p><a data-s1903="form.email" data-s1903-href="form.email" href="mailto:info@studio1903.ru"></a></p>
+              <p data-s1903="form.address"></p>
+              <p class="s1903-micro" data-s1903="form.phoneMicro"></p>
+            </aside>
+          </div>
+        </div>
+      </section>

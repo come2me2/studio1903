@@ -1,0 +1,9 @@
+{
+  "name": "studio1903",
+  "private": true,
+  "description": "Studio19.03 — сайт студии дизайна интерьеров",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "preview": "npx --yes serve dist -l 8080"
+  }
+}

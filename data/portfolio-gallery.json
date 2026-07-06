@@ -1,0 +1,28 @@
+[
+  { "slug": "slow19", "layout": "landscape" },
+  { "slug": "brodsky-19", "layout": "landscape" },
+  { "slug": "hp-52", "layout": "landscape" },
+  { "slug": "darqhouse", "layout": "landscape" },
+  { "slug": "roche82", "layout": "featured" },
+  { "slug": "airhaus", "layout": "portrait" },
+  { "slug": "french64", "layout": "portrait" },
+  { "slug": "titul70", "layout": "landscape" },
+  { "slug": "zcitty", "layout": "landscape" },
+  {
+    "slug": "u-cave139",
+    "layout": "detail",
+    "image": "https://static.tildacdn.com/tild3433-3232-4533-b432-653862636366/__31.jpg"
+  },
+  { "slug": "playhauz", "layout": "landscape" },
+  { "slug": "flatt50", "layout": "landscape" },
+  { "slug": "square29", "layout": "featured" },
+  { "slug": "dp-41", "layout": "portrait" },
+  { "slug": "t-house03", "layout": "portrait" },
+  { "slug": "levelm", "layout": "landscape" },
+  { "slug": "levelp", "layout": "landscape" },
+  {
+    "slug": "savinhauz",
+    "layout": "detail",
+    "image": "https://static.tildacdn.com/tild3063-3036-4732-b335-656161363832/__31.jpg"
+  }
+]

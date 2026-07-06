@@ -1,0 +1,119 @@
+# Генерируется scripts/build.js — чистые URL для продакшена
+schema = "EDGE_RULE_SET_V1"
+source = { origin = "build" }
+
+[[rule]]
+id = "rewrite-portfolio"
+when.path = { exact = "/portfolio" }
+action.rewrite = { target = "/pages/portfolio.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-steps"
+when.path = { exact = "/steps" }
+action.rewrite = { target = "/pages/steps.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-price"
+when.path = { exact = "/price" }
+action.rewrite = { target = "/pages/price.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-about"
+when.path = { exact = "/about" }
+action.rewrite = { target = "/pages/about.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-contacts"
+when.path = { exact = "/contacts" }
+action.rewrite = { target = "/pages/contacts.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-airhaus"
+when.path = { exact = "/airhaus" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-french64"
+when.path = { exact = "/french64" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-levelm"
+when.path = { exact = "/levelm" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-levelp"
+when.path = { exact = "/levelp" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-roche82"
+when.path = { exact = "/roche82" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-slow19"
+when.path = { exact = "/slow19" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-brodsky-19"
+when.path = { exact = "/brodsky-19" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-hp-52"
+when.path = { exact = "/hp-52" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-t-house03"
+when.path = { exact = "/t-house03" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-darqhouse"
+when.path = { exact = "/darqhouse" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-titul70"
+when.path = { exact = "/titul70" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-zcitty"
+when.path = { exact = "/zcitty" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-playhauz"
+when.path = { exact = "/playhauz" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-dp-41"
+when.path = { exact = "/dp-41" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-flatt50"
+when.path = { exact = "/flatt50" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-u-cave139"
+when.path = { exact = "/u-cave139" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-savinhauz"
+when.path = { exact = "/savinhauz" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+
+[[rule]]
+id = "rewrite-project-square29"
+when.path = { exact = "/square29" }
+action.rewrite = { target = "/pages/project.html", if_no_file = false }
+

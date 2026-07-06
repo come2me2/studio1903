@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио — Studio19.03</title>
+  <meta name="description" content="Реализованные интерьеры Studio19.03">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/art-direction.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/pages/portfolio.css">
+  <link rel="stylesheet" href="../css/tilda-fixes.css">
+</head>
+<body>
+  <div id="studio1903" class="s1903-page s1903-page--inner">
+    <header class="s1903-header s1903-header--light" role="banner">
+      <div class="s1903-container s1903-header__inner">
+        <a href="/" class="s1903-header__logo" aria-label="Studio19.03">
+          <img class="s1903-header__logo-img s1903-header__logo-img--light" data-s1903-img="header.logo" alt="Studio19.03 — дизайн и архитектура" width="144" height="34" hidden>
+          <img class="s1903-header__logo-img s1903-header__logo-img--dark" data-s1903-img="header.logoDark" alt="Studio19.03 — дизайн и архитектура" width="144" height="34" hidden>
+          <span class="s1903-header__logo-text" data-s1903="header.logo">Studio19.03</span>
+        </a>
+
+        <nav class="s1903-nav" aria-label="Основная навигация" data-s1903="nav.desktop"></nav>
+
+        <div class="s1903-header__right">
+          <a class="s1903-header__phone" data-s1903="header.phone" data-s1903-href="header.phone" href="tel:+79662508450"></a>
+          <a class="s1903-header__cta" data-s1903="header.cta" data-s1903-href="form" href="/contacts"></a>
+        </div>
+
+        <button class="s1903-burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="s1903-menu">
+          <span class="s1903-burger__line"></span>
+          <span class="s1903-burger__line"></span>
+          <span class="s1903-burger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="s1903-menu" id="s1903-menu" aria-hidden="true">
+      <nav class="s1903-menu__links" data-s1903="nav.mobile" aria-label="Мобильная навигация"></nav>
+      <div class="s1903-menu__footer">
+        <a class="s1903-menu__phone" data-s1903="header.phone" data-s1903-href="header.phone" href="tel:+79662508450"></a>
+        <a class="s1903-menu__cta" data-s1903="header.cta" data-s1903-href="form" href="/contacts"></a>
+        <p class="s1903-menu__address" data-s1903="header.menuAddress"></p>
+      </div>
+    </div>
+
+    <main class="s1903-page--inner s1903-portfolio-page">
+      <section class="s1903-portfolio-hero" aria-labelledby="portfolio-title">
+        <div class="s1903-portfolio-hero__media">
+          <img class="s1903-portfolio-hero__img" data-s1903-img="portfolio.hero" alt="" width="1920" height="1080" fetchpriority="high">
+        </div>
+        <div class="s1903-portfolio-hero__scrim" aria-hidden="true"></div>
+        <div class="s1903-container s1903-portfolio-hero__content">
+          <h1 class="s1903-portfolio-hero__title s1903-reveal" id="portfolio-title" data-s1903="portfolio.title"></h1>
+          <p class="s1903-portfolio-hero__subtitle s1903-reveal" data-s1903="portfolio.subtitle"></p>
+        </div>
+      </section>
+      <section class="s1903-portfolio-feed" data-s1903="portfolio.feed" aria-label="Проекты"></section>
+      <section class="s1903-portfolio-cta s1903-portfolio-cta--visual">
+        <div class="s1903-portfolio-cta__media">
+          <img class="s1903-portfolio-cta__img" data-s1903-img="portfolio.cta" alt="" width="1920" height="1080" loading="lazy">
+        </div>
+        <div class="s1903-portfolio-cta__scrim" aria-hidden="true"></div>
+        <div class="s1903-portfolio-cta__content s1903-reveal">
+          <p class="s1903-portfolio-cta__title" data-s1903="portfolio.ctaTitle"></p>
+          <a class="s1903-btn" data-s1903="portfolio.cta" data-s1903-href="form" href="/contacts"></a>
+        </div>
+      </section>
+    </main>
+    <footer class="s1903-footer" role="contentinfo">
+      <div class="s1903-container">
+        <div class="s1903-footer__top">
+          <span class="s1903-footer__logo" data-s1903="footer.logo">Studio19.03</span>
+          <div class="s1903-footer__social" data-s1903="footer.social"></div>
+        </div>
+        <div class="s1903-footer__bottom">
+          <span data-s1903="footer.copyright"></span>
+          <span data-s1903="footer.address"></span>
+          <a class="s1903-footer__policy" data-s1903="footer.policy" data-s1903-href="footer.policy" href="/privacy"></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../js/images.js"></script>
+  <script src="../js/projects.js?v=1783348126075.6465"></script>
+  <script src="../js/paths.js"></script>
+  <script src="../js/content-shared.js"></script>
+  <script src="../js/content-portfolio.js"></script>
+  <script src="../js/content.js"></script>
+  <script src="../js/core.js"></script>
+  <script src="../js/portfolio.js"></script>
+</body>
+</html>

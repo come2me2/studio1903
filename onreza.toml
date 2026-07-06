@@ -1,0 +1,17 @@
+#:schema https://docs.onreza.ru/schemas/onreza-project-v1.schema.json
+
+[project]
+name = "studio1903"
+# После регистрации на onreza.ru выполните:
+#   nrz login
+#   nrz init --create --name studio1903
+# или привяжите существующий проект:
+#   nrz link
+
+[build]
+command = "npm run build"
+output_directory = "dist"
+output_dirs = ["dist"]
+
+[deploy]
+compute = "static"

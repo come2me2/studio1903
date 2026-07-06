@@ -1,0 +1,184 @@
+/* ==========================================================================
+   STUDIO19.03 — внутренние страницы
+   ========================================================================== */
+
+#studio1903.s1903-page--inner {
+  background: var(--s1903-bg-primary);
+}
+
+#studio1903 .s1903-page-hero {
+  padding-block: clamp(120px, 14vw, 180px) clamp(48px, 6vw, 80px);
+  background: var(--s1903-bg-secondary);
+}
+
+#studio1903 .s1903-page-hero .s1903-title {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+#studio1903 .s1903-page-hero .s1903-subtitle {
+  margin-top: clamp(20px, 2vw, 28px);
+  max-width: 42ch;
+}
+
+#studio1903 .s1903-page-section {
+  padding-block: var(--s1903-section-pad-sm);
+}
+
+#studio1903 .s1903-page-cta {
+  padding-block: clamp(80px, 10vw, 120px);
+  background: var(--s1903-bg-secondary);
+}
+
+#studio1903 .s1903-header--light {
+  background: rgba(247, 245, 242, 0.95);
+  border-bottom: 1px solid var(--s1903-border-subtle, var(--s1903-border));
+}
+
+#studio1903 .s1903-header--light .s1903-header__logo-img--light {
+  display: none;
+}
+
+#studio1903 .s1903-header--light .s1903-header__logo-img--dark {
+  display: block;
+}
+
+#studio1903 .s1903-header--light .s1903-header__logo-text {
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-project-hero {
+  position: relative;
+  min-height: min(70vh, 720px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+#studio1903 .s1903-project-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+  #studio1903 .s1903-project-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#studio1903 .s1903-project-hero__media--contain .s1903-project-hero__img,
+#studio1903 .s1903-project-hero__img.s1903-project-hero__img--contain {
+  object-fit: contain;
+  background: var(--s1903-bg-secondary);
+}
+
+#studio1903 .s1903-project-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 20, 18, 0.55) 0%, transparent 55%);
+}
+
+#studio1903 .s1903-project-hero__content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(48px, 8vw, 80px);
+  padding-top: calc(var(--s1903-header-height) + 32px);
+  color: var(--s1903-text-inverse);
+}
+
+#studio1903 .s1903-project-hero__content .s1903-title {
+  color: inherit;
+  font-weight: 300;
+}
+
+#studio1903 .s1903-project-hero__meta {
+  margin-top: 16px;
+  font-size: var(--s1903-text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 242, 0.75);
+}
+
+#studio1903 .s1903-project-body {
+  padding-block: var(--s1903-section-pad-sm);
+}
+
+#studio1903 .s1903-project-body__text {
+  max-width: 42ch;
+  line-height: 1.75;
+  color: var(--s1903-text-secondary);
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+#studio1903 .s1903-project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-project-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#studio1903 .s1903-project-gallery__item {
+  margin: 0;
+  overflow: hidden;
+}
+
+#studio1903 .s1903-project-gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+#studio1903 .s1903-project-gallery__item--contain img {
+  object-fit: contain;
+  background: var(--s1903-bg-secondary);
+  max-height: min(85vh, 900px);
+  margin-inline: auto;
+}
+
+#studio1903 .s1903-project-nav {
+  padding-block: clamp(48px, 6vw, 80px);
+  border-top: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-price__fact {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--s1903-border);
+  font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem);
+  font-weight: 300;
+  max-width: 36ch;
+  line-height: 1.4;
+}
+
+#studio1903 .s1903-about-founder__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s1903-space-7);
+  margin-top: clamp(64px, 8vw, 96px);
+}
+
+@media (min-width: 1024px) {
+  #studio1903 .s1903-about-founder__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+  }
+}
+
+#studio1903 .s1903-about-founder__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+#studio1903 .s1903-contacts-page .s1903-contact {
+  padding-block: 0;
+  background: transparent;
+}
