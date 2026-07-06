@@ -368,8 +368,82 @@ window.STUDIO1903_CONTENT = Object.assign({}, window.STUDIO1903_SHARED || {}, wi
 window.STUDIO1903Core = (function () {
   'use strict';
 
+  var menuEscapeBound = false;
+
   function getRoot() {
     return document.getElementById('studio1903');
+  }
+
+  function bindMenu(root) {
+    if (!root) return false;
+
+    var burger = root.querySelector('.s1903-burger');
+    var menu = root.querySelector('.s1903-menu');
+    if (!burger || !menu) return false;
+    if (burger.dataset.s1903MenuBound === '1') return true;
+
+    burger.dataset.s1903MenuBound = '1';
+
+    function close() {
+      burger.classList.remove('s1903-burger--open');
+      menu.classList.remove('s1903-menu--open');
+      burger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function open() {
+      burger.classList.add('s1903-burger--open');
+      menu.classList.add('s1903-menu--open');
+      burger.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function toggle(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      if (menu.classList.contains('s1903-menu--open')) close();
+      else open();
+    }
+
+    burger.addEventListener('click', toggle);
+    menu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) close();
+    });
+
+    if (!menuEscapeBound) {
+      menuEscapeBound = true;
+      document.addEventListener('keydown', function (event) {
+        if (event.key !== 'Escape') return;
+        var activeRoot = getRoot();
+        var activeMenu = activeRoot && activeRoot.querySelector('.s1903-menu');
+        if (activeMenu && activeMenu.classList.contains('s1903-menu--open')) {
+          var activeBurger = activeRoot.querySelector('.s1903-burger');
+          if (activeBurger) {
+            activeBurger.classList.remove('s1903-burger--open');
+            activeBurger.setAttribute('aria-expanded', 'false');
+          }
+          activeMenu.classList.remove('s1903-menu--open');
+          activeMenu.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    return true;
+  }
+
+  function ensureMenu(root) {
+    if (bindMenu(root)) return;
+    window.setTimeout(function () {
+      bindMenu(getRoot());
+    }, 0);
+    window.setTimeout(function () {
+      bindMenu(getRoot());
+    }, 100);
   }
 
   function getContent() {
@@ -634,31 +708,7 @@ window.STUDIO1903Core = (function () {
     }
 
     function initMenu() {
-      var burger = root.querySelector('.s1903-burger');
-      var menu = root.querySelector('.s1903-menu');
-      if (!burger || !menu) return;
-      function close() {
-        burger.classList.remove('s1903-burger--open');
-        menu.classList.remove('s1903-menu--open');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-      function open() {
-        burger.classList.add('s1903-burger--open');
-        menu.classList.add('s1903-menu--open');
-        burger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      }
-      burger.addEventListener('click', function () {
-        if (menu.classList.contains('s1903-menu--open')) close();
-        else open();
-      });
-      menu.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', close);
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') close();
-      });
+      ensureMenu(root);
     }
 
     function initAnchors() {
@@ -789,15 +839,19 @@ window.STUDIO1903Core = (function () {
     var root = getRoot();
     if (!root) return false;
     var api = createApi(root);
+    var firstBoot = !root.classList.contains('s1903-js-ready');
+
     api.applySharedContent();
     api.applyLogos();
-    if (typeof pageInit === 'function') pageInit(api, root);
+    if (typeof pageInit === 'function' && firstBoot) pageInit(api, root);
     api.initHeader();
     api.initMenu();
-    api.initAnchors();
-    api.initReveal();
-    root.classList.add('s1903-js-ready');
-    setTimeout(api.initReveal, 100);
+    if (firstBoot) {
+      api.initAnchors();
+      api.initReveal();
+      root.classList.add('s1903-js-ready');
+      setTimeout(api.initReveal, 100);
+    }
     return true;
   }
 

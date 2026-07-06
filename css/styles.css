@@ -419,6 +419,14 @@
   width: 32px;
   height: 32px;
   margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #studio1903 .s1903-burger__line {
