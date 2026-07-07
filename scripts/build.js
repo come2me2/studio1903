@@ -21,6 +21,7 @@ const cssBundle = [
   read('css/pages/portfolio.css'),
   read('css/pages/project.css'),
   read('css/pages/inner.css'),
+  read('css/typography.css'),
   read('css/tilda-fixes.css')
 ].join('\n');
 
@@ -32,6 +33,7 @@ function cssBundleFor(extraFiles) {
     ...(extraFiles || []).map(function (f) {
       return read(f);
     }),
+    read('css/typography.css'),
     read('css/tilda-fixes.css')
   ].join('\n');
 }
@@ -63,6 +65,7 @@ const siteHead = `<!-- STUDIO19.03 — вставьте ОДИН РАЗ в На�
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
 <style>
 ${cssBundle}
 </style>
@@ -94,17 +97,15 @@ function mergeContentScripts(extraFiles) {
 const tildaFonts = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
 `;
 
 function buildTildaBlock(name, bodyHtml, pageScripts, inlineCss) {
   const scripts = mergeContentScripts(pageScripts.content) + read('js/core.js') + pageScripts.runtime;
   const css = inlineCss ? '<style>\n' + cssBundle + '\n</style>\n' : '';
   const fonts = inlineCss
-    ? `<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-`
-  : '';
+    ? tildaFonts
+    : '';
   const core = inlineCss ? imagesRaw + '\n' + scripts : pageScripts.standalone || '';
 
   return `<!-- STUDIO19.03 — ${name} -->
@@ -184,7 +185,6 @@ ${homeBlock}
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
 <style>
 ${cssBundle}
-${read('css/pages/home.css')}
 </style>
 <script>
 ${imagesRaw}
@@ -485,6 +485,7 @@ function pageHtml(title, desc, bodyMain, contentScript, runtimeScript, extraCss)
     '../css/art-direction.css',
     '../css/pages.css',
     ...(extraCss || []),
+    '../css/typography.css',
     '../css/tilda-fixes.css'
   ]
     .map(function (h) {
@@ -502,6 +503,7 @@ function pageHtml(title, desc, bodyMain, contentScript, runtimeScript, extraCss)
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
 ${cssLinks}
 </head>
 <body>

@@ -261,7 +261,9 @@
   --s1903-header-bg: rgba(247, 245, 242, 0.88);
 
   /* Typography */
-  --s1903-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --s1903-font: 'STIX Two Text', Georgia, 'Times New Roman', serif;
+  --s1903-font-display: 'STIX Two Text', Georgia, 'Times New Roman', serif;
+  --s1903-font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --s1903-text-hero: clamp(2rem, 4vw + 1rem, 3.5rem);
   --s1903-text-h1: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
   --s1903-text-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
@@ -3361,6 +3363,72 @@
   }
 }
 
+/* STUDIO19.03 — STIX Two Text Medium (весь сайт) */
+
+#studio1903 {
+  --s1903-font: 'STIX Two Text', Georgia, 'Times New Roman', serif;
+  --s1903-font-display: 'STIX Two Text', Georgia, 'Times New Roman', serif;
+  --s1903-font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--s1903-font);
+  font-weight: 500;
+}
+
+#studio1903 .s1903-hero__title,
+#studio1903 .s1903-title,
+#studio1903 .s1903-founder__name,
+#studio1903 .s1903-case__title,
+#studio1903 .s1903-trust__title,
+#studio1903 .s1903-portfolio-hero__title,
+#studio1903 .s1903-portfolio-item__title,
+#studio1903 .s1903-project-hero__title,
+#studio1903 .s1903-project-next-hero__title,
+#studio1903 .s1903-price-card__title,
+#studio1903 .s1903-price-card__price,
+#studio1903 h1,
+#studio1903 h2,
+#studio1903 h3 {
+  font-family: var(--s1903-font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+#studio1903 .s1903-hero__subtitle,
+#studio1903 .s1903-subtitle,
+#studio1903 .s1903-body,
+#studio1903 p,
+#studio1903 .s1903-btn,
+#studio1903 .s1903-ghost,
+#studio1903 .s1903-nav__link,
+#studio1903 .s1903-menu__link,
+#studio1903 .s1903-step__title,
+#studio1903 .s1903-step__text,
+#studio1903 .s1903-item__text,
+#studio1903 .s1903-advantage__text,
+#studio1903 .s1903-price-card__features li,
+#studio1903 .s1903-project-story__caption,
+#studio1903 .s1903-project-story__text {
+  font-family: var(--s1903-font);
+  font-weight: 500;
+}
+
+#studio1903 .s1903-hero__location,
+#studio1903 .s1903-micro,
+#studio1903 .s1903-caption,
+#studio1903 .s1903-footer__bottom,
+#studio1903 .s1903-item__label,
+#studio1903 .s1903-advantage__label,
+#studio1903 .s1903-contacts-info__label,
+#studio1903 .s1903-price-card__note,
+#studio1903 .s1903-project-hero__meta,
+#studio1903 .s1903-project-next-hero__label,
+#studio1903 input,
+#studio1903 textarea,
+#studio1903 select,
+#studio1903 .s1903-field__label {
+  font-family: var(--s1903-font-ui);
+  font-weight: 400;
+}
+
 /* ==========================================================================
    STUDIO19.03 — Tilda compatibility
    ========================================================================== */
@@ -3402,47 +3470,6 @@
 #studio1903.s1903-js-ready.s1903--loaded .s1903-hero__content {
   opacity: 1;
   transform: none;
-}
-
-/* STUDIO19.03 — главная: STIX Two Text Medium */
-
-#studio1903.s1903-page--home {
-  --s1903-font: 'STIX Two Text', Georgia, 'Times New Roman', serif;
-  font-family: var(--s1903-font);
-  font-weight: 500;
-}
-
-#studio1903.s1903-page--home .s1903-hero__title,
-#studio1903.s1903-page--home .s1903-title,
-#studio1903.s1903-page--home .s1903-founder__name,
-#studio1903.s1903-page--home .s1903-case__title,
-#studio1903.s1903-page--home .s1903-trust__title,
-#studio1903.s1903-page--home h1,
-#studio1903.s1903-page--home h2,
-#studio1903.s1903-page--home h3 {
-  font-family: var(--s1903-font);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-
-#studio1903.s1903-page--home .s1903-hero__subtitle,
-#studio1903.s1903-page--home .s1903-subtitle,
-#studio1903.s1903-page--home .s1903-body,
-#studio1903.s1903-page--home p,
-#studio1903.s1903-page--home .s1903-btn,
-#studio1903.s1903-page--home .s1903-ghost,
-#studio1903.s1903-page--home .s1903-nav__link,
-#studio1903.s1903-page--home .s1903-menu__link {
-  font-family: var(--s1903-font);
-  font-weight: 500;
-}
-
-#studio1903.s1903-page--home .s1903-hero__location,
-#studio1903.s1903-page--home .s1903-micro,
-#studio1903.s1903-page--home .s1903-caption,
-#studio1903.s1903-page--home .s1903-footer__bottom {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-weight: 400;
 }
 
 </style>
