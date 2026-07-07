@@ -166,22 +166,25 @@ function shellFooter() {
 }
 
 /* --- HOME (standalone full bundle for backward compat) --- */
-const homeStart = read('index.html').indexOf('<div id="studio1903">');
+const homeStart = read('index.html').indexOf('<div id="studio1903"');
 const homeEnd = read('index.html').indexOf('<!-- ==================== END STUDIO19.03 ==================== -->');
-const homeBlock = read('index.html').slice(homeStart + '<div id="studio1903">'.length, homeEnd).trim();
+const homeOpenEnd = read('index.html').indexOf('>', homeStart) + 1;
+const homeBlock = read('index.html').slice(homeOpenEnd, homeEnd).trim();
 
 const homeStandalone = `<!-- STUDIO19.03 — HTML Block для Tilda (главная, автономный) -->
 <!-- ВАЖНО: разметка ПЕРВОЙ -->
 
-<div id="studio1903">
+<div id="studio1903" class="s1903-page s1903-page--home">
 ${homeBlock}
 </div>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
 <style>
 ${cssBundle}
+${read('css/pages/home.css')}
 </style>
 <script>
 ${imagesRaw}

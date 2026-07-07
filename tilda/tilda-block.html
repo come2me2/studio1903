@@ -1,7 +1,7 @@
 <!-- STUDIO19.03 — HTML Block для Tilda (главная, автономный) -->
 <!-- ВАЖНО: разметка ПЕРВОЙ -->
 
-<div id="studio1903">
+<div id="studio1903" class="s1903-page s1903-page--home">
 <!-- ==================== BLOCK: HEADER ==================== -->
     <header class="s1903-header" role="banner">
       <div class="s1903-container s1903-header__inner">
@@ -224,6 +224,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
    STUDIO19.03 — Design Tokens
@@ -3401,6 +3402,47 @@
 #studio1903.s1903-js-ready.s1903--loaded .s1903-hero__content {
   opacity: 1;
   transform: none;
+}
+
+/* STUDIO19.03 — главная: STIX Two Text Medium */
+
+#studio1903.s1903-page--home {
+  --s1903-font: 'STIX Two Text', Georgia, 'Times New Roman', serif;
+  font-family: var(--s1903-font);
+  font-weight: 500;
+}
+
+#studio1903.s1903-page--home .s1903-hero__title,
+#studio1903.s1903-page--home .s1903-title,
+#studio1903.s1903-page--home .s1903-founder__name,
+#studio1903.s1903-page--home .s1903-case__title,
+#studio1903.s1903-page--home .s1903-trust__title,
+#studio1903.s1903-page--home h1,
+#studio1903.s1903-page--home h2,
+#studio1903.s1903-page--home h3 {
+  font-family: var(--s1903-font);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+#studio1903.s1903-page--home .s1903-hero__subtitle,
+#studio1903.s1903-page--home .s1903-subtitle,
+#studio1903.s1903-page--home .s1903-body,
+#studio1903.s1903-page--home p,
+#studio1903.s1903-page--home .s1903-btn,
+#studio1903.s1903-page--home .s1903-ghost,
+#studio1903.s1903-page--home .s1903-nav__link,
+#studio1903.s1903-page--home .s1903-menu__link {
+  font-family: var(--s1903-font);
+  font-weight: 500;
+}
+
+#studio1903.s1903-page--home .s1903-hero__location,
+#studio1903.s1903-page--home .s1903-micro,
+#studio1903.s1903-page--home .s1903-caption,
+#studio1903.s1903-page--home .s1903-footer__bottom {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
 }
 
 </style>
