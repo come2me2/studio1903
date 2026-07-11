@@ -1117,6 +1117,14 @@
   margin: var(--s1903-space-4) 0 0;
 }
 
+#studio1903 .s1903-case__desc {
+  font-size: var(--s1903-text-body);
+  color: var(--s1903-text-secondary);
+  line-height: 1.5;
+  margin: var(--s1903-space-2) 0 0;
+  max-width: 36ch;
+}
+
 #studio1903 .s1903-case__meta {
   font-size: var(--s1903-text-caption);
   color: var(--s1903-text-tertiary);
@@ -1568,6 +1576,14 @@
   font-weight: 400;
   letter-spacing: 0.02em;
   margin-top: clamp(20px, 2vw, 28px);
+}
+
+#studio1903 .s1903-case__desc {
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.55;
+  color: var(--s1903-text-secondary);
+  margin-top: 10px;
+  max-width: 38ch;
 }
 
 #studio1903 .s1903-case__meta {
@@ -3377,6 +3393,7 @@
 #studio1903 .s1903-title,
 #studio1903 .s1903-founder__name,
 #studio1903 .s1903-case__title,
+#studio1903 .s1903-case__desc,
 #studio1903 .s1903-trust__title,
 #studio1903 .s1903-portfolio-hero__title,
 #studio1903 .s1903-portfolio-item__title,
@@ -3394,6 +3411,7 @@
 
 #studio1903 .s1903-hero__subtitle,
 #studio1903 .s1903-subtitle,
+#studio1903 .s1903-case__desc,
 #studio1903 .s1903-body,
 #studio1903 p,
 #studio1903 .s1903-btn,
@@ -8451,12 +8469,42 @@ window.STUDIO1903_HOME = {
     title: 'От проекта до реализации — без разрыва',
     subtitle: 'Избранные интерьеры',
     items: [
-      { title: 'ROCHE 82', meta: 'Квартира', slug: 'roche82' },
-      { title: 'SLOW 19', meta: 'Квартира', slug: 'slow19' },
-      { title: 'BRODSKY-19', meta: 'Квартира', slug: 'brodsky-19' },
-      { title: 'TITUL 70', meta: 'Квартира', slug: 'titul70' },
-      { title: 'SAVIN HAUZ', meta: 'Таунхаус', slug: 'savinhauz' },
-      { title: 'FLATT 50', meta: 'Квартира', slug: 'flatt50' }
+      {
+        title: 'ROCHE 82',
+        meta: 'Квартира',
+        slug: 'roche82',
+        description: 'Современная квартира с элементами французской классики'
+      },
+      {
+        title: 'SLOW 19',
+        meta: 'Квартира',
+        slug: 'slow19',
+        description: 'Интерьер в стиле Japandi'
+      },
+      {
+        title: 'BRODSKY-19',
+        meta: 'Квартира',
+        slug: 'brodsky-19',
+        description: 'Апартаменты в центре Москвы, для интеллигентной семьи с ребенком'
+      },
+      {
+        title: 'TITUL 70',
+        meta: 'Квартира',
+        slug: 'titul70',
+        description: 'Элегантный интерьер в постельных тонах для творческой девушки'
+      },
+      {
+        title: 'SAVIN HAUZ',
+        meta: 'Таунхаус',
+        slug: 'savinhauz',
+        description: '38 м2 в которых поместилось всё'
+      },
+      {
+        title: 'FLATT 50',
+        meta: 'Квартира',
+        slug: 'flatt50',
+        description: 'Интерьер, который покорил мировые журналы и завирусился на Pinterest'
+      }
     ],
     cta: 'Обсудить проект',
     micro: 'Расскажите о помещении — договоримся о встрече',
@@ -9101,7 +9149,11 @@ window.STUDIO1903Core = (function () {
         item.title +
         '" loading="lazy" width="800" height="1000"></div><h3 class="s1903-case__title">' +
         item.title +
-        '</h3><p class="s1903-case__meta">' +
+        '</h3>' +
+        (item.description
+          ? '<p class="s1903-case__desc">' + item.description + '</p>'
+          : '') +
+        '<p class="s1903-case__meta">' +
         item.meta +
         '</p></a>';
       wrap.appendChild(article);

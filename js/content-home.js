@@ -103,12 +103,42 @@ window.STUDIO1903_HOME = {
     title: 'От проекта до реализации — без разрыва',
     subtitle: 'Избранные интерьеры',
     items: [
-      { title: 'ROCHE 82', meta: 'Квартира', slug: 'roche82' },
-      { title: 'SLOW 19', meta: 'Квартира', slug: 'slow19' },
-      { title: 'BRODSKY-19', meta: 'Квартира', slug: 'brodsky-19' },
-      { title: 'TITUL 70', meta: 'Квартира', slug: 'titul70' },
-      { title: 'SAVIN HAUZ', meta: 'Таунхаус', slug: 'savinhauz' },
-      { title: 'FLATT 50', meta: 'Квартира', slug: 'flatt50' }
+      {
+        title: 'ROCHE 82',
+        meta: 'Квартира',
+        slug: 'roche82',
+        description: 'Современная квартира с элементами французской классики'
+      },
+      {
+        title: 'SLOW 19',
+        meta: 'Квартира',
+        slug: 'slow19',
+        description: 'Интерьер в стиле Japandi'
+      },
+      {
+        title: 'BRODSKY-19',
+        meta: 'Квартира',
+        slug: 'brodsky-19',
+        description: 'Апартаменты в центре Москвы, для интеллигентной семьи с ребенком'
+      },
+      {
+        title: 'TITUL 70',
+        meta: 'Квартира',
+        slug: 'titul70',
+        description: 'Элегантный интерьер в постельных тонах для творческой девушки'
+      },
+      {
+        title: 'SAVIN HAUZ',
+        meta: 'Таунхаус',
+        slug: 'savinhauz',
+        description: '38 м2 в которых поместилось всё'
+      },
+      {
+        title: 'FLATT 50',
+        meta: 'Квартира',
+        slug: 'flatt50',
+        description: 'Интерьер, который покорил мировые журналы и завирусился на Pinterest'
+      }
     ],
     cta: 'Обсудить проект',
     micro: 'Расскажите о помещении — договоримся о встрече',

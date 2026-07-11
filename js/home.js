@@ -109,7 +109,11 @@
         item.title +
         '" loading="lazy" width="800" height="1000"></div><h3 class="s1903-case__title">' +
         item.title +
-        '</h3><p class="s1903-case__meta">' +
+        '</h3>' +
+        (item.description
+          ? '<p class="s1903-case__desc">' + item.description + '</p>'
+          : '') +
+        '<p class="s1903-case__meta">' +
         item.meta +
         '</p></a>';
       wrap.appendChild(article);

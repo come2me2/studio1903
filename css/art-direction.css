@@ -195,6 +195,14 @@
   margin-top: clamp(20px, 2vw, 28px);
 }
 
+#studio1903 .s1903-case__desc {
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.55;
+  color: var(--s1903-text-secondary);
+  margin-top: 10px;
+  max-width: 38ch;
+}
+
 #studio1903 .s1903-case__meta {
   letter-spacing: 0.08em;
   text-transform: uppercase;
