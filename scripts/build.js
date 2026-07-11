@@ -287,6 +287,7 @@ const portfolioCatalog = projects.map(function (p) {
     slug: p.slug,
     title: p.title,
     city: p.city,
+    rc: p.rc,
     area: p.area,
     type: p.type,
     path: p.path,

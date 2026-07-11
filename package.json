@@ -4,6 +4,8 @@
   "description": "Studio19.03 — сайт студии дизайна интерьеров",
   "scripts": {
     "build": "node scripts/build.js",
+    "export:copy": "node scripts/export-copy.js",
+    "import:copy": "node scripts/import-copy.js",
     "preview": "npx --yes serve dist -l 8080"
   }
 }

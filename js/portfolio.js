@@ -9,7 +9,7 @@
   }
 
   function projectMeta(project) {
-    return [project.city || 'Москва', project.area, project.type].filter(Boolean).join(' · ');
+    return [project.city || 'Москва', project.rc, project.area, project.type].filter(Boolean).join(' · ');
   }
 
   function renderPortfolioHero(api, root, c) {

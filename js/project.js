@@ -101,6 +101,7 @@
     var facts = [
       { label: lbl.factArea     || 'Площадь',           value: project.area },
       { label: lbl.factCity     || 'Город',              value: project.city || 'Москва' },
+      { label: lbl.factRc       || 'Жилой комплекс',     value: project.rc },
       { label: lbl.factYear     || 'Год',                value: project.year },
       { label: lbl.factStyle    || 'Стиль',              value: project.style },
       { label: lbl.factDuration || 'Срок реализации',    value: project.duration }
@@ -527,7 +528,7 @@
     };
     setText('[data-s1903="project.title"]', project.title);
     setText('[data-s1903="project.meta"]',
-      [project.city || 'Москва', project.type, project.area].filter(Boolean).join(' · '));
+      [project.city || 'Москва', project.rc, project.type, project.area].filter(Boolean).join(' · '));
 
     /* Back link */
     var backLink = root.querySelector('[data-s1903="project.back"]');

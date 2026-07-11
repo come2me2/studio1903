@@ -6,6 +6,7 @@ window.STUDIO1903_PAGE = {
     introLabel: 'О проекте',
     factArea: 'Площадь',
     factCity: 'Город',
+    factRc: 'Жилой комплекс',
     factYear: 'Год',
     factStyle: 'Стиль',
     factDuration: 'Срок реализации',

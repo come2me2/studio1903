@@ -25,6 +25,7 @@ const updated = projects.map(function (p, i) {
 
   return Object.assign({}, p, {
     city: p.city || 'Москва',
+    rc: ed.rc || p.rc,
     area: directed.area || ed.area || p.area,
     style: ed.style || p.style || 'Современный минимализм',
     year: ed.year || p.year || '2022',
