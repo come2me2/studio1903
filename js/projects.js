@@ -780,35 +780,13 @@ window.STUDIO1903_PROJECTS = [
       "solution": "Смешение современного стиля.со стилем 70-х годов",
       "result": "Цельное восприятие проекта — от холла до приватных пространств."
     },
-    "heroImage": "https://static.tildacdn.com/tild3835-3966-4361-b736-633134663164/11.jpg",
+    "heroImage": "https://static.tildacdn.com/tild6231-3462-4161-b837-633438613835/12.jpg",
     "story": {
       "compositionMode": "vertical",
       "publicationVersion": 6,
       "sequence": [
         {
           "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
-            {
-              "url": "https://static.tildacdn.com/tild6231-3462-4161-b837-633438613835/12.jpg",
-              "orientation": "portrait",
-              "w": 1680,
-              "h": 2100,
-              "area": 3528000,
-              "ratio": 0.8,
-              "shot": "room",
-              "room": "Гардероб",
-              "quality": "secondary",
-              "galleryIndex": 10
-            }
-          ]
-        },
-        {
-          "type": "text"
-        },
-        {
-          "composition": "small",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -823,7 +801,17 @@ window.STUDIO1903_PROJECTS = [
               "room": "Гостиная",
               "quality": "secondary",
               "galleryIndex": 1
-            },
+            }
+          ]
+        },
+        {
+          "type": "text"
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild6235-3834-4964-b337-633732613538/4.jpg",
               "orientation": "portrait",
@@ -835,14 +823,7 @@ window.STUDIO1903_PROJECTS = [
               "room": "Кухня",
               "quality": "secondary",
               "galleryIndex": 2
-            }
-          ]
-        },
-        {
-          "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
+            },
             {
               "url": "https://static.tildacdn.com/tild6364-6263-4561-a135-343137363830/6.jpg",
               "orientation": "portrait",
@@ -858,7 +839,7 @@ window.STUDIO1903_PROJECTS = [
           ]
         },
         {
-          "composition": "small",
+          "composition": "large",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -873,7 +854,14 @@ window.STUDIO1903_PROJECTS = [
               "room": "Кухня",
               "quality": "secondary",
               "galleryIndex": 3
-            },
+            }
+          ]
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild3037-6338-4166-a531-653762646232/8.jpg",
               "orientation": "portrait",
@@ -885,6 +873,18 @@ window.STUDIO1903_PROJECTS = [
               "room": "Ванная",
               "quality": "secondary",
               "galleryIndex": 6
+            },
+            {
+              "url": "https://static.tildacdn.com/tild3837-3432-4262-b132-303636363663/7__.jpg",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Спальня",
+              "quality": "secondary",
+              "galleryIndex": 5
             }
           ]
         },
@@ -916,16 +916,16 @@ window.STUDIO1903_PROJECTS = [
           "role": null,
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild3837-3432-4262-b132-303636363663/7__.jpg",
+              "url": "https://static.tildacdn.com/tild6435-3032-4362-b538-393363643963/9.jpg",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Спальня",
+              "room": "Ванная",
               "quality": "secondary",
-              "galleryIndex": 5
+              "galleryIndex": 7
             },
             {
               "url": "https://static.tildacdn.com/tild6664-6461-4431-a164-643361636436/14.jpg",
@@ -947,16 +947,16 @@ window.STUDIO1903_PROJECTS = [
           "role": "finale",
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild6435-3032-4362-b538-393363643963/9.jpg",
+              "url": "https://static.tildacdn.com/tild3062-3937-4965-a537-666337383939/10.jpg",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Ванная",
+              "room": "Прихожая",
               "quality": "secondary",
-              "galleryIndex": 7
+              "galleryIndex": 8
             }
           ]
         }
@@ -1265,7 +1265,7 @@ window.STUDIO1903_PROJECTS = [
       "https://static.tildacdn.com/tild3937-6135-4165-a431-353438343135/25.jpg",
       "https://static.tildacdn.com/tild3031-3338-4439-a364-653337313138/1.jpg"
     ],
-    "excerpt": "Задачей перед нашей студией была создать в центре Москвы оазис южного аутентичного дома. Песочные тона, натуральный камень, дерево и льняной текстиль стали основой всего интерьера. А благодаря высокому потолку и большим панорамным окнам пространство часто залито солнечными лучами.",
+    "excerpt": "Квартира в центре Москвы как оазис южного аутентичного дома. Песочные тона, натуральный камень, дерево и льняной текстиль стали основой всего интерьера.",
     "description": "Проект SLOW 19 реализован командой Studio19.03 под ключ.",
     "category": "apartment",
     "city": "Москва",
@@ -1278,39 +1278,17 @@ window.STUDIO1903_PROJECTS = [
     "year": "2026",
     "duration": "12 месяцев",
     "about": {
-      "task": "Задачей перед нашей студией была создать в центре Москвы оазис южного аутентичного дома. Песочные тона, натуральный камень, дерево и льняной текстиль стали основой всего интерьера. А благодаря высокому потолку и большим панорамным окнам пространство часто залито солнечными лучами.",
+      "task": "Квартира в центре Москвы как оазис южного аутентичного дома. Песочные тона, натуральный камень, дерево и льняной текстиль стали основой всего интерьера.",
       "solution": "Натуральный лён, травертин, микроцемент и шпон дерева.",
       "result": "Дом как место восстановления — без декоративного шума, с фокусом на ощущениях."
     },
-    "heroImage": "https://static.tildacdn.com/tild6138-3162-4531-b564-383466663338/8.jpg",
+    "heroImage": "https://static.tildacdn.com/tild3362-3433-4131-b831-376366633332/9.jpg",
     "story": {
       "compositionMode": "vertical",
       "publicationVersion": 6,
       "sequence": [
         {
           "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
-            {
-              "url": "https://static.tildacdn.com/tild3362-3433-4131-b831-376366633332/9.jpg",
-              "orientation": "portrait",
-              "w": 1680,
-              "h": 2100,
-              "area": 3528000,
-              "ratio": 0.8,
-              "shot": "room",
-              "room": "Спальня",
-              "quality": "secondary",
-              "galleryIndex": 8
-            }
-          ]
-        },
-        {
-          "type": "text"
-        },
-        {
-          "composition": "small",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -1325,7 +1303,17 @@ window.STUDIO1903_PROJECTS = [
               "room": "Ванная",
               "quality": "secondary",
               "galleryIndex": 11
-            },
+            }
+          ]
+        },
+        {
+          "type": "text"
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild3239-3031-4130-b831-393834396562/2.jpg",
               "orientation": "portrait",
@@ -1337,14 +1325,7 @@ window.STUDIO1903_PROJECTS = [
               "room": "Гостиная",
               "quality": "secondary",
               "galleryIndex": 1
-            }
-          ]
-        },
-        {
-          "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
+            },
             {
               "url": "https://static.tildacdn.com/tild3536-3237-4935-b336-393039623837/4.jpg",
               "orientation": "portrait",
@@ -1360,7 +1341,7 @@ window.STUDIO1903_PROJECTS = [
           ]
         },
         {
-          "composition": "small",
+          "composition": "large",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -1375,7 +1356,14 @@ window.STUDIO1903_PROJECTS = [
               "room": "Гостиная",
               "quality": "secondary",
               "galleryIndex": 2
-            },
+            }
+          ]
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild6362-6563-4632-b230-643230356439/5.jpg",
               "orientation": "portrait",
@@ -1387,17 +1375,7 @@ window.STUDIO1903_PROJECTS = [
               "room": "Кухня",
               "quality": "secondary",
               "galleryIndex": 4
-            }
-          ]
-        },
-        {
-          "type": "editorial"
-        },
-        {
-          "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
+            },
             {
               "url": "https://static.tildacdn.com/tild3166-3237-4934-b466-306237383436/7.jpg",
               "orientation": "portrait",
@@ -1413,7 +1391,10 @@ window.STUDIO1903_PROJECTS = [
           ]
         },
         {
-          "composition": "small",
+          "type": "editorial"
+        },
+        {
+          "composition": "large",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -1428,6 +1409,25 @@ window.STUDIO1903_PROJECTS = [
               "room": "Кухня",
               "quality": "secondary",
               "galleryIndex": 5
+            }
+          ]
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
+            {
+              "url": "https://static.tildacdn.com/tild6138-3162-4531-b564-383466663338/8.jpg",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Спальня",
+              "quality": "secondary",
+              "galleryIndex": 7
             },
             {
               "url": "https://static.tildacdn.com/tild6136-3137-4838-b838-383333323237/7.jpg",
@@ -1794,35 +1794,13 @@ window.STUDIO1903_PROJECTS = [
       "solution": "Спокойная глубокая палитра, крупные горизонтали в отделке и мебели, точечный свет на деталях.",
       "result": "Интерьер как продолжение пейзажа за окном — собранный и уверенный."
     },
-    "heroImage": "https://static.tildacdn.com/tild3764-3234-4961-b436-356361343561/01_01_Post.jpg",
+    "heroImage": "https://static.tildacdn.com/tild3430-6239-4339-b339-646664616366/01_12_Post.jpg",
     "story": {
       "compositionMode": "vertical",
       "publicationVersion": 6,
       "sequence": [
         {
           "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
-            {
-              "url": "https://static.tildacdn.com/tild3430-6239-4339-b339-646664616366/01_12_Post.jpg",
-              "orientation": "portrait",
-              "w": 1680,
-              "h": 2240,
-              "area": 3763200,
-              "ratio": 0.75,
-              "shot": "room",
-              "room": "Гардероб",
-              "quality": "secondary",
-              "galleryIndex": 9
-            }
-          ]
-        },
-        {
-          "type": "text"
-        },
-        {
-          "composition": "small",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -1837,7 +1815,17 @@ window.STUDIO1903_PROJECTS = [
               "room": "Гардероб",
               "quality": "secondary",
               "galleryIndex": 10
-            },
+            }
+          ]
+        },
+        {
+          "type": "text"
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild3363-3034-4665-b933-396361323631/01_02_Post.jpg",
               "orientation": "portrait",
@@ -1849,14 +1837,7 @@ window.STUDIO1903_PROJECTS = [
               "room": "Гостиная",
               "quality": "secondary",
               "galleryIndex": 1
-            }
-          ]
-        },
-        {
-          "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
+            },
             {
               "url": "https://static.tildacdn.com/tild6563-3263-4063-b335-626363326639/01_07_Post.jpg",
               "orientation": "portrait",
@@ -1872,7 +1853,7 @@ window.STUDIO1903_PROJECTS = [
           ]
         },
         {
-          "composition": "small",
+          "composition": "large",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -1887,7 +1868,14 @@ window.STUDIO1903_PROJECTS = [
               "room": "Спальня",
               "quality": "secondary",
               "galleryIndex": 4
-            },
+            }
+          ]
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild3535-6165-4637-b265-306333616535/01_03_Post.jpg",
               "orientation": "portrait",
@@ -1899,6 +1887,18 @@ window.STUDIO1903_PROJECTS = [
               "room": "Кухня",
               "quality": "secondary",
               "galleryIndex": 3
+            },
+            {
+              "url": "https://static.tildacdn.com/tild3764-3234-4961-b436-356361343561/01_01_Post.jpg",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Ванная",
+              "quality": "secondary",
+              "galleryIndex": 6
             }
           ]
         },
@@ -1930,16 +1930,16 @@ window.STUDIO1903_PROJECTS = [
           "role": null,
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild3938-6639-4334-a433-666332326463/01_09_Post.jpg",
+              "url": "https://static.tildacdn.com/tild6432-3761-4337-a537-616337303336/01_05_Post.jpg",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Ванная",
+              "room": "Спальня",
               "quality": "secondary",
-              "galleryIndex": 7
+              "galleryIndex": 5
             },
             {
               "url": "https://static.tildacdn.com/tild3862-3936-4335-b531-643537646264/01_11_Post.jpg",
@@ -1961,16 +1961,16 @@ window.STUDIO1903_PROJECTS = [
           "role": "finale",
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild6432-3761-4337-a537-616337303336/01_05_Post.jpg",
+              "url": "https://static.tildacdn.com/tild3938-6639-4334-a433-666332326463/01_09_Post.jpg",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Спальня",
+              "room": "Ванная",
               "quality": "secondary",
-              "galleryIndex": 5
+              "galleryIndex": 7
             }
           ]
         }
@@ -2297,6 +2297,59 @@ window.STUDIO1903_PROJECTS = [
           "role": null,
           "items": [
             {
+              "url": "https://static.tildacdn.com/tild3034-6637-4461-a162-393961373530/2023-07-11_105405.jpg",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Гостиная",
+              "quality": "secondary",
+              "galleryIndex": 1
+            }
+          ]
+        },
+        {
+          "type": "text"
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
+            {
+              "url": "https://static.tildacdn.com/tild6138-6662-4361-a561-353230393864/2023-07-11_105415.jpg",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Кухня",
+              "quality": "secondary",
+              "galleryIndex": 2
+            },
+            {
+              "url": "https://static.tildacdn.com/tild3033-3964-4265-b864-613636653436/2023-07-11_105725.jpg",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Спальня",
+              "quality": "secondary",
+              "galleryIndex": 4
+            }
+          ]
+        },
+        {
+          "composition": "large",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
+            {
               "url": "https://static.tildacdn.com/tild3965-3861-4632-b835-643537353663/2023-07-11_105356.jpg",
               "orientation": "portrait",
               "w": 1600,
@@ -2311,25 +2364,10 @@ window.STUDIO1903_PROJECTS = [
           ]
         },
         {
-          "type": "text"
-        },
-        {
           "composition": "small",
           "orientation": "portrait",
           "role": null,
           "items": [
-            {
-              "url": "https://static.tildacdn.com/tild3033-3964-4265-b864-613636653436/2023-07-11_105725.jpg",
-              "orientation": "portrait",
-              "w": 1600,
-              "h": 2000,
-              "area": 3200000,
-              "ratio": 0.8,
-              "shot": "room",
-              "room": "Спальня",
-              "quality": "secondary",
-              "galleryIndex": 4
-            },
             {
               "url": "https://static.tildacdn.com/tild6364-3966-4565-b262-646638373062/2023-07-11_105401.jpg",
               "orientation": "portrait",
@@ -2341,14 +2379,7 @@ window.STUDIO1903_PROJECTS = [
               "room": "Ванная",
               "quality": "secondary",
               "galleryIndex": 6
-            }
-          ]
-        },
-        {
-          "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
+            },
             {
               "url": "https://static.tildacdn.com/tild3533-3738-4735-b833-383236303835/2023-07-11_105419.jpg",
               "orientation": "portrait",
@@ -2360,37 +2391,6 @@ window.STUDIO1903_PROJECTS = [
               "room": "Спальня",
               "quality": "secondary",
               "galleryIndex": 5
-            }
-          ]
-        },
-        {
-          "composition": "small",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
-            {
-              "url": "https://static.tildacdn.com/tild3464-3863-4364-b738-383233376431/2023-07-11_105409.jpg",
-              "orientation": "portrait",
-              "w": 1600,
-              "h": 2000,
-              "area": 3200000,
-              "ratio": 0.8,
-              "shot": "room",
-              "room": "Ванная",
-              "quality": "secondary",
-              "galleryIndex": 7
-            },
-            {
-              "url": "https://static.tildacdn.com/tild3732-3435-4462-b132-663466336534/2023-07-11_105424.jpg",
-              "orientation": "portrait",
-              "w": 1600,
-              "h": 2000,
-              "area": 3200000,
-              "ratio": 0.8,
-              "shot": "room",
-              "room": "Прихожая",
-              "quality": "secondary",
-              "galleryIndex": 8
             }
           ]
         },
@@ -2422,16 +2422,16 @@ window.STUDIO1903_PROJECTS = [
           "role": null,
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild3266-6232-4631-b531-333239646662/__63.jpg",
+              "url": "https://static.tildacdn.com/tild3464-3863-4364-b738-383233376431/2023-07-11_105409.jpg",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Гардероб",
+              "room": "Ванная",
               "quality": "secondary",
-              "galleryIndex": 9
+              "galleryIndex": 7
             },
             {
               "url": "https://static.tildacdn.com/tild3835-3831-4865-a532-313135363635/2023-07-11_105428.jpg",
@@ -2453,16 +2453,16 @@ window.STUDIO1903_PROJECTS = [
           "role": "finale",
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild3437-3537-4261-b038-346166323865/2023-07-11_105706.jpg",
+              "url": "https://static.tildacdn.com/tild3732-3435-4462-b132-663466336534/2023-07-11_105424.jpg",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Гардероб",
+              "room": "Прихожая",
               "quality": "secondary",
-              "galleryIndex": 10
+              "galleryIndex": 8
             }
           ]
         }
@@ -3516,35 +3516,13 @@ window.STUDIO1903_PROJECTS = [
       "solution": "Единый визуальный поток, зеркала в нужных точках и мебель по индивидуальным размерам.",
       "result": "41 м² воспринимаются как полноценная однокомнатная квартира с характером."
     },
-    "heroImage": "https://static.tildacdn.com/tild6435-3131-4836-a434-393035343166/IMG_0300.JPG",
+    "heroImage": "https://static.tildacdn.com/tild3730-3038-4164-a535-633364303738/IMG_0333.JPG",
     "story": {
       "compositionMode": "vertical",
       "publicationVersion": 6,
       "sequence": [
         {
           "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
-            {
-              "url": "https://static.tildacdn.com/tild3730-3038-4164-a535-633364303738/IMG_0333.JPG",
-              "orientation": "portrait",
-              "w": 1680,
-              "h": 2100,
-              "area": 3528000,
-              "ratio": 0.8,
-              "shot": "room",
-              "room": "Ванная",
-              "quality": "secondary",
-              "galleryIndex": 7
-            }
-          ]
-        },
-        {
-          "type": "text"
-        },
-        {
-          "composition": "small",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -3559,7 +3537,17 @@ window.STUDIO1903_PROJECTS = [
               "room": "Прихожая",
               "quality": "secondary",
               "galleryIndex": 8
-            },
+            }
+          ]
+        },
+        {
+          "type": "text"
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild6634-6266-4534-a461-303863343463/IMG_0335.JPG",
               "orientation": "portrait",
@@ -3571,14 +3559,7 @@ window.STUDIO1903_PROJECTS = [
               "room": "Гардероб",
               "quality": "secondary",
               "galleryIndex": 10
-            }
-          ]
-        },
-        {
-          "composition": "large",
-          "orientation": "portrait",
-          "role": null,
-          "items": [
+            },
             {
               "url": "https://static.tildacdn.com/tild3732-3161-4230-a666-373730303266/IMG_0296.JPG",
               "orientation": "portrait",
@@ -3594,7 +3575,7 @@ window.STUDIO1903_PROJECTS = [
           ]
         },
         {
-          "composition": "small",
+          "composition": "large",
           "orientation": "portrait",
           "role": null,
           "items": [
@@ -3609,7 +3590,14 @@ window.STUDIO1903_PROJECTS = [
               "room": "Кухня",
               "quality": "secondary",
               "galleryIndex": 2
-            },
+            }
+          ]
+        },
+        {
+          "composition": "small",
+          "orientation": "portrait",
+          "role": null,
+          "items": [
             {
               "url": "https://static.tildacdn.com/tild3335-6530-4564-a430-363232623337/IMG_0298.JPG",
               "orientation": "portrait",
@@ -3621,6 +3609,18 @@ window.STUDIO1903_PROJECTS = [
               "room": "Спальня",
               "quality": "secondary",
               "galleryIndex": 4
+            },
+            {
+              "url": "https://static.tildacdn.com/tild3833-3737-4934-b566-316538343135/IMG_0297.JPG",
+              "orientation": "portrait",
+              "w": 1600,
+              "h": 2000,
+              "area": 3200000,
+              "ratio": 0.8,
+              "shot": "room",
+              "room": "Кухня",
+              "quality": "secondary",
+              "galleryIndex": 3
             }
           ]
         },
@@ -3652,16 +3652,16 @@ window.STUDIO1903_PROJECTS = [
           "role": null,
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild3833-3737-4934-b566-316538343135/IMG_0297.JPG",
+              "url": "https://static.tildacdn.com/tild6435-3131-4836-a434-393035343166/IMG_0300.JPG",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Кухня",
+              "room": "Ванная",
               "quality": "secondary",
-              "galleryIndex": 3
+              "galleryIndex": 6
             },
             {
               "url": "https://static.tildacdn.com/tild3634-3431-4335-a462-376365636539/IMG_0324.JPG",
@@ -3683,16 +3683,16 @@ window.STUDIO1903_PROJECTS = [
           "role": "finale",
           "items": [
             {
-              "url": "https://static.tildacdn.com/tild3738-6461-4438-b266-383035666663/IMG_0355.JPG",
+              "url": "https://static.tildacdn.com/tild3838-3064-4231-b162-663138653165/IMG_0299.JPG",
               "orientation": "portrait",
               "w": 1600,
               "h": 2000,
               "area": 3200000,
               "ratio": 0.8,
               "shot": "room",
-              "room": "Гардероб",
+              "room": "Спальня",
               "quality": "secondary",
-              "galleryIndex": 9
+              "galleryIndex": 5
             }
           ]
         }
