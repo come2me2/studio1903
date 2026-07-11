@@ -382,7 +382,6 @@ const priceBody = `${shellHeader(false)}
         <div class="s1903-container">
           <h1 class="s1903-title s1903-reveal" data-s1903="price.title"></h1>
           <p class="s1903-subtitle s1903-reveal" data-s1903="price.subtitle"></p>
-          <p class="s1903-price__fact s1903-reveal" data-s1903="price.fact"></p>
         </div>
       </section>
       <section class="s1903-page-section">

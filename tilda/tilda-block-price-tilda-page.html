@@ -39,7 +39,6 @@
         <div class="s1903-container">
           <h1 class="s1903-title s1903-reveal" data-s1903="price.title"></h1>
           <p class="s1903-subtitle s1903-reveal" data-s1903="price.subtitle"></p>
-          <p class="s1903-price__fact s1903-reveal" data-s1903="price.fact"></p>
         </div>
       </section>
       <section class="s1903-page-section">
@@ -244,7 +243,6 @@ window.STUDIO1903_PAGE = {
   price: {
     title: 'Стоимость',
     subtitle: 'Прозрачные ориентиры по форматам работы',
-    fact: 'Точная смета — после обмеров и брифа. Работаем с объектами, где бюджет отделки под ключ — от 200 000 ₽ за квадратный метр.',
     plans: [
       {
         title: 'Планировочный проект',
@@ -323,7 +321,6 @@ window.STUDIO1903_CONTENT = Object.assign({}, window.STUDIO1903_SHARED || {}, wi
     if (c.price) {
       api.setText('[data-s1903="price.title"]', c.price.title);
       api.setText('[data-s1903="price.subtitle"]', c.price.subtitle);
-      api.setText('[data-s1903="price.fact"]', c.price.fact);
       api.setText('[data-s1903="price.cta"]', c.price.cta);
       api.setText('[data-s1903="price.micro"]', c.price.micro);
       api.renderPriceCards('[data-s1903="price.plans"]', c.price.plans);
