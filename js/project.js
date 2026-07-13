@@ -141,7 +141,7 @@
      FEED — журнальная вёрстка
      Ритм задаётся самой историей проекта (large/small/full),
      а не механическим разбиением на пары.
-       - large → «глава»: одна крупная фотография, номер + название комнаты
+       - large → «глава»: одна крупная фотография
        - small → пара фотографий, компактный ритм
        - full  → полноширинный кадр (кульминация/финал)
        - ландшафтное фото всегда полноширинное, вне зависимости от блока
@@ -154,7 +154,7 @@
     var img = makeImg(item.url, item.room || altText, item.w, item.h);
     fig.appendChild(img);
 
-    var captionText = item.caption || item.room;
+    var captionText = item.caption;
     if (captionText && showCaption) {
       var cap = document.createElement('figcaption');
       cap.className = 's1903-feed__caption';
@@ -165,7 +165,7 @@
     return fig;
   }
 
-  function makeChapter(photo, altText, chapterNum) {
+  function makeChapter(photo, altText) {
     var wrap = document.createElement('div');
     wrap.className = 's1903-feed__chapter';
     if (photo.orientation === 'landscape') {
@@ -173,20 +173,6 @@
     }
 
     wrap.appendChild(makeFigure(photo, altText, false));
-
-    if (photo.room) {
-      var label = document.createElement('div');
-      label.className = 's1903-feed__chapter-label';
-      var numSpan = document.createElement('span');
-      numSpan.className = 's1903-feed__chapter-num';
-      numSpan.textContent = String(chapterNum).padStart(2, '0');
-      var roomSpan = document.createElement('span');
-      roomSpan.className = 's1903-feed__chapter-room';
-      roomSpan.textContent = photo.room;
-      label.appendChild(numSpan);
-      label.appendChild(roomSpan);
-      wrap.appendChild(label);
-    }
 
     if (photo.caption) {
       var note = document.createElement('p');
@@ -358,7 +344,6 @@
 
     var alt = project.title;
     var groupIndex = startIdx;
-    var chapterNum = 0;
     var largeBlocksSeen = 0;
     var materialsInserted = false;
     var quoteInserted = false;
@@ -396,8 +381,7 @@
 
       if (comp === 'large' || comp === 'asymmetric') {
         items.forEach(function (photo) {
-          chapterNum += 1;
-          appendGroup(makeChapter(photo, alt, chapterNum));
+          appendGroup(makeChapter(photo, alt));
         });
         largeBlocksSeen += 1;
 
