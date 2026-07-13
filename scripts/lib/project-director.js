@@ -17,6 +17,67 @@ const ROOM_TYPES = [
 
 const DETAIL_SHOTS = { detail: 1, 'close-up': 1, material: 1 };
 
+function fileNameFromUrl(url) {
+  return ((url || '').split('/').pop() || '').toLowerCase();
+}
+
+function isLikelyFloorPlan(photo, total) {
+  const fname = fileNameFromUrl(photo.url);
+  if (/plan|план|layout|схем|planirov|чертеж|эскиз|floorplan/i.test(fname)) return true;
+  if (photo.index >= total - 1 && DETAIL_SHOTS[photo.shot]) {
+    if (/^1\.(jpe?g|png|webp)$/i.test(fname)) return true;
+    if (/^plan/i.test(fname)) return true;
+  }
+  return false;
+}
+
+function materialPhotoScore(photo, total) {
+  let score = 0;
+  if (photo.shot === 'material') score += 40;
+  if (photo.shot === 'detail') score += 30;
+  if (photo.shot === 'close-up') score += 20;
+  score += photo.area / 10000;
+  if (photo.index >= total - 1) score -= 1000;
+  if (photo.index >= total - 3) score -= 100;
+  if (photo.index <= 1) score -= 20;
+  return score;
+}
+
+function selectMaterialPhotos(photos, usedUrls, limit) {
+  const max = limit || 2;
+  const total = photos.length;
+  const blocked = usedUrls || {};
+
+  const candidates = photos.filter(function (p) {
+    return !blocked[p.url] && !isLikelyFloorPlan(p, total);
+  });
+
+  let picked = candidates
+    .filter(function (p) {
+      return DETAIL_SHOTS[p.shot] || p.shot === 'material';
+    })
+    .sort(function (a, b) {
+      return materialPhotoScore(b, total) - materialPhotoScore(a, total) || a.index - b.index;
+    });
+
+  if (picked.length < max) {
+    const seen = {};
+    picked.forEach(function (p) {
+      seen[p.url] = true;
+    });
+    const fallback = candidates
+      .filter(function (p) {
+        return !seen[p.url] && p.index > 0 && p.index < total - 1;
+      })
+      .sort(function (a, b) {
+        return materialPhotoScore(b, total) - materialPhotoScore(a, total) || b.area - a.area;
+      });
+    picked = picked.concat(fallback);
+  }
+
+  return picked.slice(0, max);
+}
+
 function imageSize(url) {
   try {
     const out = execSync(
@@ -513,15 +574,7 @@ function insertEditorialBlock(rows) {
 }
 
 function pickMaterials(photos, captions, usedUrls) {
-  const mats = photos
-    .filter(function (p) {
-      return (p.shot === 'material' || p.shot === 'detail' || p.shot === 'close-up') && !usedUrls[p.url];
-    })
-    .sort(function (a, b) {
-      return (a.shot === 'material' ? 1 : 0) - (b.shot === 'material' ? 1 : 0) || a.area - b.area;
-    })
-    .slice(0, 4);
-
+  const mats = selectMaterialPhotos(photos, usedUrls, 4);
   if (mats.length < 2) return [];
   return mats.map(function (m, i) {
     return {
@@ -764,15 +817,7 @@ function pickFinaleCandidate(pool, mode) {
 }
 
 function reserveMaterialPhotos(photos, limit) {
-  const max = limit || 2;
-  return photos
-    .filter(function (p) {
-      return DETAIL_SHOTS[p.shot] || p.shot === 'material';
-    })
-    .sort(function (a, b) {
-      return a.index - b.index;
-    })
-    .slice(-max);
+  return selectMaterialPhotos(photos, {}, limit || 2);
 }
 
 function buildMaterialsFromReserve(reserved, captions) {
