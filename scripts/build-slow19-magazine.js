@@ -5,6 +5,7 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { filterGalleryFloorPlans } = require('./lib/project-director');
 
 const root = path.join(__dirname, '..');
 const projectsPath = path.join(root, 'data/projects.json');
@@ -50,7 +51,7 @@ function photo(url, room, caption) {
 }
 
 const html = curl('https://studio1903.ru/slow19');
-const gallery = extractGallery(html);
+const gallery = filterGalleryFloorPlans(extractGallery(html));
 
 const rooms = [
   'Обложка', 'Гостиная', 'Кухня', 'Кухня', 'Спальня', 'Спальня',

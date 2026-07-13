@@ -21,14 +21,18 @@ function fileNameFromUrl(url) {
   return ((url || '').split('/').pop() || '').toLowerCase();
 }
 
-function isLikelyFloorPlan(photo, total) {
-  const fname = fileNameFromUrl(photo.url);
+function isFloorPlanUrl(url, index, total) {
+  const fname = fileNameFromUrl(url);
   if (/plan|план|layout|схем|planirov|чертеж|эскиз|floorplan/i.test(fname)) return true;
-  if (photo.index >= total - 1 && DETAIL_SHOTS[photo.shot]) {
-    if (/^1\.(jpe?g|png|webp)$/i.test(fname)) return true;
-    if (/^plan/i.test(fname)) return true;
+  if (total != null && index != null && total > 1 && index >= total - 1 && /^1\.(jpe?g|png|webp)$/i.test(fname)) {
+    return true;
   }
   return false;
+}
+
+function isLikelyFloorPlan(photo, total) {
+  const count = total != null ? total : photo.total;
+  return isFloorPlanUrl(photo.url, photo.index, count);
 }
 
 function materialPhotoScore(photo, total) {
@@ -41,6 +45,71 @@ function materialPhotoScore(photo, total) {
   if (photo.index >= total - 3) score -= 100;
   if (photo.index <= 1) score -= 20;
   return score;
+}
+
+function filterGalleryFloorPlans(gallery) {
+  const total = gallery.length;
+  return gallery.filter(function (url, index) {
+    return !isFloorPlanUrl(url, index, total);
+  });
+}
+
+function collectFloorPlanUrls(gallery) {
+  const blocked = {};
+  const total = gallery.length;
+  gallery.forEach(function (url, index) {
+    if (isFloorPlanUrl(url, index, total)) blocked[url] = true;
+  });
+  return blocked;
+}
+
+function sanitizeMagazineSpreads(spreads, blocked) {
+  if (!spreads || !spreads.length) return spreads;
+  return spreads
+    .map(function (spread) {
+      if (!spread.items) return spread;
+      const items = spread.items.filter(function (item) {
+        return item.url && !blocked[item.url];
+      });
+      if (!items.length) return null;
+      return Object.assign({}, spread, { items: items });
+    })
+    .filter(Boolean);
+}
+
+function sanitizeStorySequence(story, blocked) {
+  if (!story || !story.sequence) return story;
+  const sequence = story.sequence
+    .map(function (row) {
+      if (!row.items) return row;
+      const items = row.items.filter(function (item) {
+        const url = item.url || item.image;
+        return url && !blocked[url];
+      });
+      if (!items.length) return null;
+      return Object.assign({}, row, { items: items });
+    })
+    .filter(Boolean);
+  return Object.assign({}, story, { sequence: sequence });
+}
+
+function sanitizeProjectMedia(project) {
+  const sourceGallery = project.gallery && project.gallery.length ? project.gallery : [];
+  const blocked = collectFloorPlanUrls(sourceGallery);
+  const gallery = sourceGallery.filter(function (url) {
+    return !blocked[url];
+  });
+
+  const materials = (project.materials || []).filter(function (m) {
+    return m.image && !blocked[m.image];
+  });
+
+  return Object.assign({}, project, {
+    gallery: gallery,
+    materials: materials,
+    magazineSpreads: sanitizeMagazineSpreads(project.magazineSpreads, blocked),
+    story: sanitizeStorySequence(project.story, blocked)
+  });
 }
 
 function selectMaterialPhotos(photos, usedUrls, limit) {
@@ -783,7 +852,8 @@ function classifyGallery(gallery, cache, skipProbe) {
 
 function analyzePhotos(project, options) {
   const skipProbe = options && options.skipProbe;
-  const gallery = project.gallery && project.gallery.length ? project.gallery : [project.cover];
+  const rawGallery = project.gallery && project.gallery.length ? project.gallery : [project.cover];
+  const gallery = filterGalleryFloorPlans(rawGallery);
   const cache = cachedDimsFromProject(project);
   const photos = classifyGallery(gallery, cache, skipProbe);
   const stats = buildStats(photos);
@@ -1191,5 +1261,8 @@ module.exports = {
   compositionMode,
   classifyGallery,
   imageSize,
-  scoreHero
+  scoreHero,
+  isFloorPlanUrl,
+  filterGalleryFloorPlans,
+  sanitizeProjectMedia
 };

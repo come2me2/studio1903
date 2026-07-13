@@ -6,7 +6,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { directProjectPublication } = require('./lib/project-director');
+const { directProjectPublication, sanitizeProjectMedia } = require('./lib/project-director');
 
 const root = path.join(__dirname, '..');
 const projectsPath = path.join(root, 'data/projects.json');
@@ -23,25 +23,27 @@ const updated = projects.map(function (p, i) {
   const directed = directProjectPublication(p, editorial, { skipProbe: SKIP_PROBE });
   const ed = editorial[p.slug] || {};
 
-  return Object.assign({}, p, {
-    city: p.city || 'Москва',
-    rc: ed.rc || p.rc,
-    area: directed.area || ed.area || p.area,
-    style: ed.style || p.style || 'Современный минимализм',
-    year: ed.year || p.year || '2022',
-    duration: ed.duration || p.duration || '6 месяцев',
-    excerpt: (ed.about && ed.about.task) || p.excerpt || p.description,
-    about: ed.about ||
-      p.about || {
-        task: p.description,
-        solution: 'Комплексное решение Studio19.03 — от планировки до реализации.',
-        result: 'Интерьер, готовый к жизни с первого дня.'
-      },
-    compositionMode: directed.compositionMode,
-    heroImage: directed.heroImage,
-    materials: directed.materials,
-    story: directed.story
-  });
+  return sanitizeProjectMedia(
+    Object.assign({}, p, {
+      city: p.city || 'Москва',
+      rc: ed.rc || p.rc,
+      area: directed.area || ed.area || p.area,
+      style: ed.style || p.style || 'Современный минимализм',
+      year: ed.year || p.year || '2022',
+      duration: ed.duration || p.duration || '6 месяцев',
+      excerpt: (ed.about && ed.about.task) || p.excerpt || p.description,
+      about: ed.about ||
+        p.about || {
+          task: p.description,
+          solution: 'Комплексное решение Studio19.03 — от планировки до реализации.',
+          result: 'Интерьер, готовый к жизни с первого дня.'
+        },
+      compositionMode: directed.compositionMode,
+      heroImage: directed.heroImage,
+      materials: directed.materials,
+      story: directed.story
+    })
+  );
 });
 
 fs.writeFileSync(projectsPath, JSON.stringify(updated, null, 2) + '\n');
