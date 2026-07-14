@@ -26,9 +26,13 @@ jobs:
           NRZ_TOKEN: ${{ secrets.NRZ_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_API_BASE: ${{ secrets.TELEGRAM_API_BASE }}
         run: |
           if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
             nrz env set TELEGRAM_BOT_TOKEN="$TELEGRAM_BOT_TOKEN" --env production
             nrz env set TELEGRAM_CHAT_ID="$TELEGRAM_CHAT_ID" --env production
+          fi
+          if [ -n "$TELEGRAM_API_BASE" ]; then
+            nrz env set TELEGRAM_API_BASE="$TELEGRAM_API_BASE" --env production
           fi
           nrz deploy --prod

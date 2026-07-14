@@ -82,24 +82,37 @@ export default {
     if (page) lines.push('Страница: ' + page);
 
     var text = lines.join('\n');
+    var apiBase = String(
+      ctx.env.TELEGRAM_API_BASE ||
+        'https://studio1903-telegram-proxy.classic-constellation.workers.dev'
+    ).replace(/\/$/, '');
     var delivered = 0;
-    var lastError = '';
 
     for (var i = 0; i < chatIds.length; i++) {
-      var tgRes = await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatIds[i],
-          text: text,
-          disable_web_page_preview: true
-        })
-      });
+      var tgRes;
+      try {
+        tgRes = await fetch(apiBase + '/bot' + token + '/sendMessage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatIds[i],
+            text: text,
+            disable_web_page_preview: true
+          }),
+          signal: AbortSignal.timeout(8000)
+        });
+      } catch (err) {
+        await ctx.log.error('telegram fetch error', {
+          chatId: chatIds[i],
+          message: String(err)
+        });
+        continue;
+      }
 
       if (tgRes.ok) {
         delivered += 1;
       } else {
-        lastError = await tgRes.text();
+        var lastError = await tgRes.text();
         await ctx.log.error('telegram send failed', {
           chatId: chatIds[i],
           status: tgRes.status,
