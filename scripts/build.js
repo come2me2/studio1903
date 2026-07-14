@@ -478,6 +478,30 @@ fs.writeFileSync(
   buildTildaBlock('Контакты', contactsBody, { content: ['js/content-contacts.js'], runtime: read('js/pages.js') })
 );
 
+/* --- PRIVACY --- */
+const privacyBody = `${shellHeader(false)}
+    <main class="s1903-page--inner">
+      <section class="s1903-page-hero">
+        <div class="s1903-container">
+          <h1 class="s1903-title s1903-reveal" data-s1903="privacy.title"></h1>
+        </div>
+      </section>
+      <section class="s1903-page-section">
+        <div class="s1903-container">
+          <div class="s1903-legal s1903-reveal" data-s1903="privacy.body"></div>
+        </div>
+      </section>
+    </main>
+${shellFooter()}`;
+
+fs.writeFileSync(
+  path.join(tildaDir, 'tilda-block-privacy.html'),
+  buildTildaBlock('Политика конфиденциальности', privacyBody, {
+    content: ['js/content-privacy.js'],
+    runtime: read('js/pages.js')
+  })
+);
+
 /* --- Local HTML pages --- */
 function pageHtml(title, desc, bodyMain, contentScript, runtimeScript, extraCss) {
   const cssLinks = [
@@ -575,6 +599,18 @@ fs.writeFileSync(
   ])
 );
 
+fs.writeFileSync(
+  path.join(pagesDir, 'privacy.html'),
+  pageHtml(
+    'Политика конфиденциальности — Studio19.03',
+    'Политика в отношении обработки персональных данных Studio19.03',
+    privacyBody,
+    'content-privacy.js',
+    'pages.js',
+    ['../css/pages/inner.css']
+  )
+);
+
 /* --- Tilda standalone (2 блока без site-head/site-core) --- */
 buildTildaStandalone('Портфолио', 'portfolio', portfolioBody, ['js/content-portfolio.js'], read('js/portfolio.js'), [
   'css/pages/portfolio.css'
@@ -585,11 +621,14 @@ buildTildaStandalone('О нас', 'about', aboutBody, ['js/content-about.js'], r
 buildTildaStandalone('Контакты', 'contacts', contactsBody, ['js/content-contacts.js'], read('js/pages.js'), [
   'css/pages/inner.css'
 ]);
+buildTildaStandalone('Политика конфиденциальности', 'privacy', privacyBody, ['js/content-privacy.js'], read('js/pages.js'), [
+  'css/pages/inner.css'
+]);
 
 console.log('Built site-head.html, site-core.html');
 console.log('Built tilda-block.html + inner pages');
 console.log('Built', projects.length, 'project blocks in tilda/projects/');
-console.log('Built standalone Tilda blocks for portfolio, steps, price, about, contacts');
+console.log('Built standalone Tilda blocks for portfolio, steps, price, about, contacts, privacy');
 console.log('Built local pages in pages/');
 
 /* --- ONREZA dist (static deploy) --- */
@@ -636,7 +675,8 @@ function buildOnrezaRules() {
     { id: 'steps', path: '/steps', target: '/pages/steps.html' },
     { id: 'price', path: '/price', target: '/pages/price.html' },
     { id: 'about', path: '/about', target: '/pages/about.html' },
-    { id: 'contacts', path: '/contacts', target: '/pages/contacts.html' }
+    { id: 'contacts', path: '/contacts', target: '/pages/contacts.html' },
+    { id: 'privacy', path: '/privacy', target: '/pages/privacy.html' }
   ];
 
   let rules =

@@ -359,6 +359,64 @@ window.STUDIO1903_CONTENT = Object.assign({}, window.STUDIO1903_SHARED || {}, wi
       api.renderAdvantages('[data-s1903="contacts.advantages"]', c.contacts.advantages);
       api.initForm();
     }
+
+    if (c.privacy) {
+      api.setText('[data-s1903="privacy.title"]', c.privacy.title);
+      var legalEl = root.querySelector('[data-s1903="privacy.body"]');
+      if (legalEl && c.privacy.sections) {
+        legalEl.innerHTML = c.privacy.sections
+          .map(function (section) {
+            var html = '<section class="s1903-legal__section">';
+            if (section.title) {
+              html += '<h2 class="s1903-legal__heading">' + section.title + '</h2>';
+            }
+            if (section.paragraphs) {
+              section.paragraphs.forEach(function (p) {
+                html += '<p class="s1903-legal__p">' + p + '</p>';
+              });
+            }
+            if (section.definitions) {
+              html += '<dl class="s1903-legal__definitions">';
+              section.definitions.forEach(function (def) {
+                html +=
+                  '<div class="s1903-legal__def"><dt class="s1903-legal__term">' +
+                  def[0] +
+                  '</dt><dd class="s1903-legal__desc">— ' +
+                  def[1] +
+                  '</dd></div>';
+              });
+              html += '</dl>';
+            }
+            if (section.subsections) {
+              section.subsections.forEach(function (sub) {
+                html += '<h3 class="s1903-legal__subheading">' + sub.title + '</h3>';
+                if (sub.items) {
+                  html += '<ul class="s1903-legal__list">';
+                  sub.items.forEach(function (item) {
+                    html += '<li class="s1903-legal__list-item">' + item + '</li>';
+                  });
+                  html += '</ul>';
+                }
+              });
+            }
+            if (section.table) {
+              html += '<table class="s1903-legal__table"><tbody>';
+              section.table.forEach(function (row) {
+                html +=
+                  '<tr><th scope="row" class="s1903-legal__table-label">' +
+                  row[0] +
+                  '</th><td class="s1903-legal__table-value">' +
+                  row[1] +
+                  '</td></tr>';
+              });
+              html += '</tbody></table>';
+            }
+            html += '</section>';
+            return html;
+          })
+          .join('');
+      }
+    }
   });
 })();
 /**

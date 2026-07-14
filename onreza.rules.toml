@@ -28,6 +28,11 @@ when.path = { exact = "/contacts" }
 action.rewrite = { target = "/pages/contacts.html", if_no_file = false }
 
 [[rule]]
+id = "rewrite-privacy"
+when.path = { exact = "/privacy" }
+action.rewrite = { target = "/pages/privacy.html", if_no_file = false }
+
+[[rule]]
 id = "rewrite-project-airhaus"
 when.path = { exact = "/airhaus" }
 action.rewrite = { target = "/pages/project.html", if_no_file = false }
