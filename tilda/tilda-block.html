@@ -28,6 +28,10 @@
 
     <!-- Mobile menu -->
     <div class="s1903-menu" id="s1903-menu" aria-hidden="true">
+      <button class="s1903-menu__close" type="button" aria-label="Закрыть меню">
+        <span class="s1903-menu__close-line" aria-hidden="true"></span>
+        <span class="s1903-menu__close-line" aria-hidden="true"></span>
+      </button>
       <nav class="s1903-menu__links" data-s1903="nav.mobile" aria-label="Мобильная навигация"></nav>
       <div class="s1903-menu__footer">
         <a class="s1903-menu__phone" data-s1903="header.phone" data-s1903-href="header.phone" href="tel:+79662508450"></a>
@@ -709,6 +713,44 @@
 #studio1903 .s1903-menu--open {
   opacity: 1;
   visibility: visible;
+}
+
+#studio1903:has(.s1903-menu--open) .s1903-header {
+  z-index: 201;
+}
+
+#studio1903 .s1903-menu__close {
+  position: fixed;
+  top: calc((var(--s1903-header-height-mobile) - 32px) / 2);
+  right: var(--s1903-container-pad);
+  z-index: 202;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#studio1903 .s1903-menu__close-line {
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background: var(--s1903-text-primary);
+  transition: background var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-menu__close-line:first-child {
+  transform: rotate(45deg);
+}
+
+#studio1903 .s1903-menu__close-line:last-child {
+  transform: rotate(-45deg);
 }
 
 #studio1903 .s1903-menu__links {
@@ -8658,6 +8700,7 @@ window.STUDIO1903Core = (function () {
       burger.classList.remove('s1903-burger--open');
       menu.classList.remove('s1903-menu--open');
       burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Открыть меню');
       menu.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
@@ -8666,6 +8709,7 @@ window.STUDIO1903Core = (function () {
       burger.classList.add('s1903-burger--open');
       menu.classList.add('s1903-menu--open');
       burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Закрыть меню');
       menu.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
@@ -8680,6 +8724,15 @@ window.STUDIO1903Core = (function () {
     }
 
     burger.addEventListener('click', toggle);
+
+    var menuClose = menu.querySelector('.s1903-menu__close');
+    if (menuClose) {
+      menuClose.addEventListener('click', function (event) {
+        event.preventDefault();
+        close();
+      });
+    }
+
     menu.addEventListener('click', function (event) {
       if (event.target.closest('a')) close();
     });
@@ -8695,6 +8748,7 @@ window.STUDIO1903Core = (function () {
           if (activeBurger) {
             activeBurger.classList.remove('s1903-burger--open');
             activeBurger.setAttribute('aria-expanded', 'false');
+            activeBurger.setAttribute('aria-label', 'Открыть меню');
           }
           activeMenu.classList.remove('s1903-menu--open');
           activeMenu.setAttribute('aria-hidden', 'true');

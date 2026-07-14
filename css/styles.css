@@ -483,6 +483,44 @@
   visibility: visible;
 }
 
+#studio1903:has(.s1903-menu--open) .s1903-header {
+  z-index: 201;
+}
+
+#studio1903 .s1903-menu__close {
+  position: fixed;
+  top: calc((var(--s1903-header-height-mobile) - 32px) / 2);
+  right: var(--s1903-container-pad);
+  z-index: 202;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#studio1903 .s1903-menu__close-line {
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background: var(--s1903-text-primary);
+  transition: background var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-menu__close-line:first-child {
+  transform: rotate(45deg);
+}
+
+#studio1903 .s1903-menu__close-line:last-child {
+  transform: rotate(-45deg);
+}
+
 #studio1903 .s1903-menu__links {
   display: flex;
   flex-direction: column;

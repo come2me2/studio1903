@@ -24,6 +24,7 @@ window.STUDIO1903Core = (function () {
       burger.classList.remove('s1903-burger--open');
       menu.classList.remove('s1903-menu--open');
       burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Открыть меню');
       menu.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
@@ -32,6 +33,7 @@ window.STUDIO1903Core = (function () {
       burger.classList.add('s1903-burger--open');
       menu.classList.add('s1903-menu--open');
       burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Закрыть меню');
       menu.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
@@ -46,6 +48,15 @@ window.STUDIO1903Core = (function () {
     }
 
     burger.addEventListener('click', toggle);
+
+    var menuClose = menu.querySelector('.s1903-menu__close');
+    if (menuClose) {
+      menuClose.addEventListener('click', function (event) {
+        event.preventDefault();
+        close();
+      });
+    }
+
     menu.addEventListener('click', function (event) {
       if (event.target.closest('a')) close();
     });
@@ -61,6 +72,7 @@ window.STUDIO1903Core = (function () {
           if (activeBurger) {
             activeBurger.classList.remove('s1903-burger--open');
             activeBurger.setAttribute('aria-expanded', 'false');
+            activeBurger.setAttribute('aria-label', 'Открыть меню');
           }
           activeMenu.classList.remove('s1903-menu--open');
           activeMenu.setAttribute('aria-hidden', 'true');
