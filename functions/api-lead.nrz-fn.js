@@ -50,14 +50,6 @@ export default {
     }
 
     var ip = clientIp(request);
-    try {
-      var hits = await ctx.kv.incr('lead-rate:' + ip, { ttl: 60 });
-      if (hits > 8) {
-        return json({ ok: false, error: 'rate_limit' }, 429);
-      }
-    } catch (err) {
-      await ctx.log.warn('rate limit skipped', { message: String(err) });
-    }
 
     var body;
     try {
