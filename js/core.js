@@ -458,9 +458,42 @@ window.STUDIO1903Core = (function () {
           valid = false;
         }
         if (!valid) return;
-        form.hidden = true;
-        if (success) success.hidden = false;
-        formBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        var submitBtn = form.querySelector('[type="submit"]');
+        var submitLabel = submitBtn ? submitBtn.textContent : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Отправка…';
+        }
+
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name.value.trim(),
+            phone: phone.value.trim(),
+            area: area.value.trim(),
+            page: window.location.href
+          })
+        })
+          .then(function (res) {
+            return res.json().then(function (data) {
+              if (!res.ok || !data.ok) throw new Error(data.error || 'submit_failed');
+              form.hidden = true;
+              if (success) success.hidden = false;
+              formBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+          })
+          .catch(function () {
+            var submitErr = root.querySelector('[data-error-for="s1903-form-submit"]');
+            if (submitErr) submitErr.textContent = errors.submit || '';
+          })
+          .finally(function () {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = submitLabel;
+            }
+          });
       });
     }
 

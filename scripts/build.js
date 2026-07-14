@@ -711,6 +711,13 @@ function buildOnrezaRules() {
       'action.rewrite = { target = "/pages/project.html", if_no_file = false }\n\n';
   });
 
+  rules +=
+    '[[rule]]\n' +
+    'id = "api-lead"\n' +
+    'when.path = { exact = "/api/lead" }\n' +
+    'when.methods = ["POST", "OPTIONS"]\n' +
+    'action.pipeline = { override = true, steps = [{ handle = "api-lead" }] }\n\n';
+
   fs.writeFileSync(path.join(root, 'onreza.rules.toml'), rules);
 }
 

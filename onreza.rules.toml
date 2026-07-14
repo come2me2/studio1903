@@ -122,3 +122,9 @@ id = "rewrite-project-square29"
 when.path = { exact = "/square29" }
 action.rewrite = { target = "/pages/project.html", if_no_file = false }
 
+[[rule]]
+id = "api-lead"
+when.path = { exact = "/api/lead" }
+when.methods = ["POST", "OPTIONS"]
+action.pipeline = { override = true, steps = [{ handle = "api-lead" }] }
+
