@@ -112,12 +112,15 @@ export default {
       if (tgRes.ok) {
         delivered += 1;
       } else {
-        var lastError = await tgRes.text();
+        var failBody = await tgRes.text();
         await ctx.log.error('telegram send failed', {
           chatId: chatIds[i],
           status: tgRes.status,
-          body: lastError.slice(0, 500)
+          body: failBody.slice(0, 500)
         });
+        if (!delivered && i === chatIds.length - 1) {
+          return json({ ok: false, error: 'delivery', status: tgRes.status, detail: failBody.slice(0, 160) }, 502);
+        }
       }
     }
 
