@@ -1,0 +1,8 @@
+{
+  "name": "studio1903-telegram-proxy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

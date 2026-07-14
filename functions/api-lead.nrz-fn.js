@@ -82,10 +82,11 @@ export default {
     if (page) lines.push('Страница: ' + page);
 
     var text = lines.join('\n');
-    var apiBase = String(
-      ctx.env.TELEGRAM_API_BASE ||
-        'https://studio1903-telegram-proxy.classic-constellation.workers.dev'
-    ).replace(/\/$/, '');
+    var apiBase = String(ctx.env.TELEGRAM_API_BASE || '').replace(/\/$/, '');
+    if (!apiBase) {
+      await ctx.log.error('TELEGRAM_API_BASE missing');
+      return json({ ok: false, error: 'server_config' }, 503);
+    }
     var delivered = 0;
 
     for (var i = 0; i < chatIds.length; i++) {
@@ -98,8 +99,7 @@ export default {
             chat_id: chatIds[i],
             text: text,
             disable_web_page_preview: true
-          }),
-          signal: AbortSignal.timeout(8000)
+          })
         });
       } catch (err) {
         await ctx.log.error('telegram fetch error', {
@@ -118,9 +118,6 @@ export default {
           status: tgRes.status,
           body: failBody.slice(0, 500)
         });
-        if (!delivered && i === chatIds.length - 1) {
-          return json({ ok: false, error: 'delivery', status: tgRes.status, detail: failBody.slice(0, 160) }, 502);
-        }
       }
     }
 
