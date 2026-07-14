@@ -42,7 +42,7 @@
       </section>
       <section class="s1903-page-section">
         <div class="s1903-container">
-          <div class="s1903-legal s1903-reveal" data-s1903="privacy.body"></div>
+          <div class="s1903-legal" data-s1903="privacy.body"></div>
         </div>
       </section>
     </main>
@@ -228,7 +228,7 @@ window.STUDIO1903_PAGE = {
         title: '6. Цели обработки персональных данных',
         table: [
           ['Цель обработки', 'информирование Пользователя посредством отправки электронных писем'],
-          ['Персональные данные', 'фамилия, имя, отчество; электронный адрес; номера телефонов'],
+          ['Персональные данные', 'фамилия, имя, отчество<br>электронный адрес<br>номера телефонов'],
           ['Правовые основания', 'уставные (учредительные) документы Оператора'],
           ['Виды обработки персональных данных', 'Отправка информационных писем на адрес электронной почты']
         ]
@@ -894,7 +894,7 @@ window.STUDIO1903Core = (function () {
       if (legalEl && c.privacy.sections) {
         legalEl.innerHTML = c.privacy.sections
           .map(function (section) {
-            var html = '<section class="s1903-legal__section">';
+            var html = '<section class="s1903-legal__section s1903-reveal">';
             if (section.title) {
               html += '<h2 class="s1903-legal__heading">' + section.title + '</h2>';
             }
@@ -943,6 +943,7 @@ window.STUDIO1903Core = (function () {
             return html;
           })
           .join('');
+        api.observeReveal(legalEl.querySelectorAll('.s1903-legal__section'));
       }
     }
   });

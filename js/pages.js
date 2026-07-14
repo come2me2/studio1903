@@ -75,7 +75,7 @@
       if (legalEl && c.privacy.sections) {
         legalEl.innerHTML = c.privacy.sections
           .map(function (section) {
-            var html = '<section class="s1903-legal__section">';
+            var html = '<section class="s1903-legal__section s1903-reveal">';
             if (section.title) {
               html += '<h2 class="s1903-legal__heading">' + section.title + '</h2>';
             }
@@ -124,6 +124,7 @@
             return html;
           })
           .join('');
+        api.observeReveal(legalEl.querySelectorAll('.s1903-legal__section'));
       }
     }
   });

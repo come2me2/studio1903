@@ -488,7 +488,7 @@ const privacyBody = `${shellHeader(false)}
       </section>
       <section class="s1903-page-section">
         <div class="s1903-container">
-          <div class="s1903-legal s1903-reveal" data-s1903="privacy.body"></div>
+          <div class="s1903-legal" data-s1903="privacy.body"></div>
         </div>
       </section>
     </main>
