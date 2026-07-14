@@ -12,6 +12,15 @@ function clientIp(request) {
   return request.headers.get('cf-connecting-ip') || 'unknown';
 }
 
+function parseChatIds(raw) {
+  return String(raw || '')
+    .split(/[,\s]+/)
+    .map(function (id) {
+      return id.trim();
+    })
+    .filter(Boolean);
+}
+
 export default {
   async fetch(request, ctx) {
     if (request.method === 'OPTIONS') {
@@ -31,11 +40,11 @@ export default {
     }
 
     var token = ctx.env.TELEGRAM_BOT_TOKEN;
-    var chatId = ctx.env.TELEGRAM_CHAT_ID;
-    if (!token || !chatId) {
+    var chatIds = parseChatIds(ctx.env.TELEGRAM_CHAT_ID);
+    if (!token || !chatIds.length) {
       await ctx.log.error('telegram env missing', {
         hasToken: Boolean(token),
-        hasChatId: Boolean(chatId)
+        chatCount: chatIds.length
       });
       return json({ ok: false, error: 'server_config' }, 503);
     }
@@ -80,26 +89,38 @@ export default {
     ];
     if (page) lines.push('Страница: ' + page);
 
-    var tgRes = await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: lines.join('\n'),
-        disable_web_page_preview: true
-      })
-    });
+    var text = lines.join('\n');
+    var delivered = 0;
+    var lastError = '';
 
-    if (!tgRes.ok) {
-      var tgText = await tgRes.text();
-      await ctx.log.error('telegram send failed', {
-        status: tgRes.status,
-        body: tgText.slice(0, 500)
+    for (var i = 0; i < chatIds.length; i++) {
+      var tgRes = await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatIds[i],
+          text: text,
+          disable_web_page_preview: true
+        })
       });
+
+      if (tgRes.ok) {
+        delivered += 1;
+      } else {
+        lastError = await tgRes.text();
+        await ctx.log.error('telegram send failed', {
+          chatId: chatIds[i],
+          status: tgRes.status,
+          body: lastError.slice(0, 500)
+        });
+      }
+    }
+
+    if (!delivered) {
       return json({ ok: false, error: 'delivery' }, 502);
     }
 
-    await ctx.log.info('lead sent', { ip: ip });
+    await ctx.log.info('lead sent', { ip: ip, delivered: delivered, total: chatIds.length });
     return json({ ok: true });
   }
 };

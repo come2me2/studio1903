@@ -36,8 +36,13 @@ async function main() {
   updates.result.forEach(function (update) {
     var msg = update.message || update.edited_message;
     if (!msg || !msg.chat) return;
-    var id = msg.chat.id;
-    if (chats.indexOf(id) === -1) chats.push(id);
+    var chat = msg.chat;
+    var key = String(chat.id);
+    if (chats.some(function (item) { return item.id === key; })) return;
+    chats.push({
+      id: key,
+      label: chat.username ? '@' + chat.username : [chat.first_name, chat.last_name].filter(Boolean).join(' ')
+    });
   });
 
   if (!chats.length) {
@@ -46,12 +51,13 @@ async function main() {
   }
 
   console.log('\nНайденные chat_id:');
-  chats.forEach(function (id) {
-    console.log('  ' + id);
+  chats.forEach(function (chat) {
+    console.log('  ' + chat.id + ' — ' + chat.label);
   });
+  var chatIds = chats.map(function (chat) { return chat.id; }).join(',');
   console.log('\nДобавьте в ONREZA (production):');
   console.log('  nrz env set TELEGRAM_BOT_TOKEN="' + token + '" --env production');
-  console.log('  nrz env set TELEGRAM_CHAT_ID="' + chats[0] + '" --env production');
+  console.log('  nrz env set TELEGRAM_CHAT_ID="' + chatIds + '" --env production');
   console.log('\nИли в GitHub Secrets: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID');
 }
 
