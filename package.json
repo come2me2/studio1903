@@ -6,6 +6,7 @@
     "build": "node scripts/build.js",
     "export:copy": "node scripts/export-copy.js",
     "import:copy": "node scripts/import-copy.js",
+    "dev": "node scripts/serve-local.js",
     "preview": "npx --yes serve dist -l 8080"
   }
 }

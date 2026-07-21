@@ -151,15 +151,30 @@ function extractGalleryFromPage(html) {
   return filterGalleryFloorPlans(pickBestBlock(unique));
 }
 
+function extractFloorPlanFromPage(html) {
+  const parts = html.split(/id="rec\d+"/i);
+  let lastSingle = null;
+
+  for (let i = 1; i < parts.length; i += 1) {
+    const urls = extractUrlsFromBlock(parts[i]);
+    if (urls.length === 1) lastSingle = urls[0];
+  }
+
+  return lastSingle;
+}
+
 const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
 
 const updated = projects.map(function (p) {
   const html = curl(BASE_URL + p.path);
   const gallery = extractGalleryFromPage(html);
+  const floorPlan = extractFloorPlanFromPage(html);
   const cover = gallery[0] || p.cover;
   const gal = gallery.length ? gallery : p.gallery || [cover];
-  console.log(p.slug + ': ' + gal.length + ' photos');
-  return Object.assign({}, p, { cover: cover, gallery: gal });
+  console.log(
+    p.slug + ': ' + gal.length + ' photos' + (floorPlan ? ', floor plan' : '')
+  );
+  return Object.assign({}, p, { cover: cover, gallery: gal, floorPlan: floorPlan });
 });
 
 fs.writeFileSync(projectsPath, JSON.stringify(updated, null, 2) + '\n');

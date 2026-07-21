@@ -107,6 +107,7 @@ function sanitizeProjectMedia(project) {
 
   return Object.assign({}, project, {
     gallery: gallery,
+    floorPlan: project.floorPlan || null,
     materials: materials,
     magazineSpreads: sanitizeMagazineSpreads(project.magazineSpreads, blocked),
     story: sanitizeStorySequence(project.story, blocked)

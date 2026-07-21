@@ -518,7 +518,8 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "area": "259 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6261-6531-4838-a163-666337653166/2.jpg"
   },
   {
     "title": "FRENCH 64",
@@ -1004,7 +1005,8 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "rc": "ЖК Cameo Moscow",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6433-3835-4339-a132-366234363633/1.jpg"
   },
   {
     "title": "LEVEL-M",
@@ -1404,7 +1406,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "ЖК Level Мичуринский",
     "area": "49 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3730-3936-4830-b864-613661636462/1.jpg"
   },
   {
     "title": "LEVEL-P",
@@ -1738,7 +1741,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "ЖК Level Причальный",
     "area": "50 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3034-6430-4237-b066-353366353636/1.jpg"
   },
   {
     "title": "ROCHE 82",
@@ -1746,7 +1750,7 @@ window.STUDIO1903_PROJECTS = [
     "slug": "roche82",
     "type": "Квартира",
     "area": "82 м²",
-    "cover": "https://static.tildacdn.com/tild3934-6335-4966-a332-383037353862/15.jpg",
+    "cover": "https://static.tildacdn.com/tild6134-6261-4534-b261-653933663736/1.jpg",
     "gallery": [
       "https://static.tildacdn.com/tild6134-6261-4534-b261-653933663736/1.jpg",
       "https://static.tildacdn.com/tild6230-3162-4263-a334-336433643564/2.jpg",
@@ -2158,7 +2162,8 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "rc": "ЖК Селигер Сити",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6266-3036-4864-b461-363936633530/1.jpg"
   },
   {
     "title": "SLOW 19",
@@ -2652,7 +2657,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "area": "109 м²",
     "magazineSpreads": [],
-    "rc": "ЖК Свобода"
+    "rc": "ЖК Свобода",
+    "floorPlan": "https://static.tildacdn.com/tild3031-3338-4439-a364-653337313138/1.jpg"
   },
   {
     "title": "BRODSKY-19",
@@ -3171,7 +3177,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "ЖК Бродский",
     "area": "106 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6334-3637-4661-b939-383466396266/photo.jpg"
   },
   {
     "title": "HP-52",
@@ -3179,7 +3186,7 @@ window.STUDIO1903_PROJECTS = [
     "slug": "hp-52",
     "type": "Квартира",
     "area": "52 м²",
-    "cover": "https://static.tildacdn.com/tild3364-3231-4362-b336-326465393664/IMG_9330.JPG",
+    "cover": "https://static.tildacdn.com/tild3762-3231-4130-a439-643263303066/__11.jpg",
     "gallery": [
       "https://static.tildacdn.com/tild3762-3231-4130-a439-643263303066/__11.jpg",
       "https://static.tildacdn.com/tild6539-3136-4663-a231-386666626166/__22.jpg",
@@ -3505,7 +3512,8 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "rc": "ЖК Садовые Кварталы",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3762-6638-4830-a338-366434653239/HP.jpg"
   },
   {
     "title": "T-HOUSE 03",
@@ -4036,14 +4044,15 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "area": "460 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": null
   },
   {
     "title": "DARQ HOUSE",
     "path": "/darqhouse",
     "slug": "darqhouse",
     "type": "Квартира",
-    "cover": "https://static.tildacdn.com/tild3136-6338-4234-b434-666564663437/8.jpg",
+    "cover": "https://static.tildacdn.com/tild3437-6166-4436-b363-643834396662/2.jpg",
     "gallery": [
       "https://static.tildacdn.com/tild3437-6166-4436-b363-643834396662/2.jpg",
       "https://static.tildacdn.com/tild6666-3636-4038-b334-666662653538/1.jpg",
@@ -4595,7 +4604,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "ЖК D1",
     "area": "71 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3064-6363-4632-a263-343064313839/DARQ_H.jpg"
   },
   {
     "title": "TITUL 70",
@@ -5061,7 +5071,8 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "rc": "ЖК Титул",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3332-6539-4434-a139-366339363363/TITUL_70.jpg"
   },
   {
     "title": "Z CITTY",
@@ -5382,7 +5393,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "Москва Сити",
     "area": "63 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": null
   },
   {
     "title": "PLAY HAUZ",
@@ -5736,7 +5748,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "ЖК Play",
     "area": "38 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6162-6331-4632-b331-613966393637/PLAY.jpg"
   },
   {
     "title": "DP-41",
@@ -6090,7 +6103,8 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Editorial",
     "compositionMode": "vertical",
     "rc": "ЖК Discovery Park",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6432-3538-4735-a138-346436303962/DP_41.jpg"
   },
   {
     "title": "FLATT 50",
@@ -6357,7 +6371,8 @@ window.STUDIO1903_PROJECTS = [
     "template": "D",
     "templateName": "Editorial",
     "compositionMode": "vertical",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3466-3034-4465-b536-383330316136/FLATT_50.jpg"
   },
   {
     "title": "U-CAVE 139",
@@ -6677,7 +6692,8 @@ window.STUDIO1903_PROJECTS = [
     "template": "A",
     "templateName": "Portrait",
     "compositionMode": "vertical",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": null
   },
   {
     "title": "SAVIN HAUZ",
@@ -6998,7 +7014,8 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "rc": "ЖК Savin House",
     "area": "38 м2",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild6230-6234-4633-a236-363639313938/SAVIN.jpg"
   },
   {
     "title": "SQUARE 29",
@@ -7379,6 +7396,7 @@ window.STUDIO1903_PROJECTS = [
     "templateName": "Portrait",
     "compositionMode": "vertical",
     "rc": "ЖК Царская Площадь",
-    "magazineSpreads": []
+    "magazineSpreads": [],
+    "floorPlan": "https://static.tildacdn.com/tild3262-3062-4233-b961-626166386330/SQUARE_29.jpg"
   }
 ];

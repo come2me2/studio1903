@@ -35,7 +35,7 @@
   /* Typography */
   --s1903-font: 'STIX Two Text', Georgia, 'Times New Roman', serif;
   --s1903-font-display: 'STIX Two Text', Georgia, 'Times New Roman', serif;
-  --s1903-font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --s1903-font-ui: 'STIX Two Text', Georgia, 'Times New Roman', serif;
   --s1903-text-hero: clamp(2rem, 4vw + 1rem, 3.5rem);
   --s1903-text-h1: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
   --s1903-text-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
@@ -80,6 +80,7 @@
   --s1903-aspect-founder-mobile: 4 / 3;
 
   font-family: var(--s1903-font);
+  font-weight: 500;
   font-size: var(--s1903-text-body);
   line-height: 1.65;
   color: var(--s1903-text-primary);
@@ -136,7 +137,7 @@
 
 #studio1903 .s1903-title {
   font-size: var(--s1903-text-h1);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.01em;
   margin: 0;
@@ -144,7 +145,7 @@
 
 #studio1903 .s1903-subtitle {
   font-size: var(--s1903-text-sm);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.6;
   color: var(--s1903-text-secondary);
   margin: var(--s1903-space-4) 0 0;
@@ -529,7 +530,7 @@
 
 #studio1903 .s1903-menu__link {
   font-size: clamp(1.5rem, 4vw, 1.75rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -633,7 +634,7 @@
 
 #studio1903 .s1903-hero__title {
   font-size: var(--s1903-text-hero);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--s1903-text-inverse);
@@ -705,7 +706,7 @@
 
 #studio1903 .s1903-founder__name {
   font-size: var(--s1903-text-h1);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.01em;
   margin: 0;

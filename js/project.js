@@ -91,6 +91,36 @@
   }
 
   /* ----------------------------------------------------------------
+     FLOOR PLAN — планировка после intro
+  ---------------------------------------------------------------- */
+
+  function renderFloorPlan(project, container, idx) {
+    if (!project.floorPlan) return;
+
+    var sec = document.createElement('section');
+    sec.className = 's1903-proj-floorplan s1903-reveal s1903-reveal--visible';
+    revealDelay(sec, idx);
+
+    var inner = document.createElement('div');
+    inner.className = 's1903-proj-floorplan__inner';
+
+    var label = document.createElement('p');
+    label.className = 's1903-proj-floorplan__label';
+    label.textContent = 'Планировка';
+    inner.appendChild(label);
+
+    var fig = document.createElement('figure');
+    fig.className = 's1903-feed__figure';
+    fig.appendChild(
+      makeImg(project.floorPlan, 'Планировка — ' + project.title, null, null, 'eager')
+    );
+    inner.appendChild(fig);
+    sec.appendChild(inner);
+
+    container.appendChild(sec);
+  }
+
+  /* ----------------------------------------------------------------
      EDITORIAL — факты проекта
   ---------------------------------------------------------------- */
 
@@ -531,7 +561,10 @@
       /* 1. Intro: описание проекта */
       renderIntro(about, storyRoot, blockIdx++);
 
-      /* 2. Фотолента: главы, пары, материалы, финал */
+      /* 2. Планировка */
+      renderFloorPlan(project, storyRoot, blockIdx++);
+
+      /* 3. Фотолента: главы, пары, материалы, финал */
       var hasPhotos = (project.magazineSpreads && project.magazineSpreads.length) ||
         sequence.some(function (b) { return b.items && b.items.length; });
       if (hasPhotos) {
