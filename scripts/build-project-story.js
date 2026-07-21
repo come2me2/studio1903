@@ -25,6 +25,7 @@ const updated = projects.map(function (p, i) {
 
   return sanitizeProjectMedia(
     Object.assign({}, p, {
+      magazineSpreads: [],
       city: p.city || 'Москва',
       rc: ed.rc || p.rc,
       area: directed.area || ed.area || p.area,

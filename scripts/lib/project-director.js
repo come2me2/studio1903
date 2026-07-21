@@ -24,8 +24,9 @@ function fileNameFromUrl(url) {
 function isFloorPlanUrl(url, index, total) {
   const fname = fileNameFromUrl(url);
   if (/plan|план|layout|схем|planirov|чертеж|эскиз|floorplan/i.test(fname)) return true;
-  if (total != null && index != null && total > 1 && index >= total - 1 && /^1\.(jpe?g|png|webp)$/i.test(fname)) {
-    return true;
+  if (total != null && index != null && total > 1 && index >= total - 1) {
+    if (/^1\.(jpe?g|png|webp)$/i.test(fname)) return true;
+    if (/^(?!img)[a-z]{2,}_\d+\.(jpe?g|png|webp)$/i.test(fname)) return true;
   }
   return false;
 }
@@ -543,6 +544,96 @@ function buildCompositionV6(pool, state, mode) {
   // Screen 10: full-width atmospheric (landscape or strongest remaining)
   const full1 = takeFullFinale(pool, state, mode);
   if (full1) sequence.push(full1);
+
+  return sequence;
+}
+
+function isPortraitOrientation(photo) {
+  return photo.orientation === 'portrait' || photo.orientation === 'square';
+}
+
+function buildCompositionOrdered(photos, mode) {
+  if (!photos.length) return [];
+
+  const rest = photos.slice(1);
+  const total = photos.length;
+  const editorialAt = Math.floor(total * 0.37);
+  const sequence = [];
+  let i = 0;
+  let editorialInserted = false;
+
+  if (rest.length > 0) {
+    sequence.push(makeRow('large', [rest[i]]));
+    i += 1;
+  }
+
+  sequence.push({ type: 'text' });
+
+  while (i < rest.length) {
+    const currentIndex = i + 1;
+    if (!editorialInserted && currentIndex >= editorialAt) {
+      sequence.push({ type: 'editorial' });
+      editorialInserted = true;
+    }
+
+    const remaining = rest.length - i;
+    const photo = rest[i];
+
+    if (remaining === 1) {
+      const comp = photo.orientation === 'landscape' ? 'full' : 'large';
+      sequence.push(makeRow(comp, [photo], 'finale'));
+      i += 1;
+      continue;
+    }
+
+    if (photo.orientation === 'landscape') {
+      sequence.push(makeRow('full', [photo]));
+      i += 1;
+      continue;
+    }
+
+    if (isPortraitOrientation(photo) && i + 1 < rest.length) {
+      const next = rest[i + 1];
+      if (isPortraitOrientation(next) && remaining > 2) {
+        sequence.push(makeRow('small', [photo, next]));
+        i += 2;
+        continue;
+      }
+    }
+
+    sequence.push(makeRow('large', [photo]));
+    i += 1;
+  }
+
+  if (!editorialInserted) {
+    let lastPhotoIdx = -1;
+    for (let j = sequence.length - 1; j >= 0; j -= 1) {
+      if (sequence[j].composition) {
+        lastPhotoIdx = j;
+        break;
+      }
+    }
+    if (lastPhotoIdx >= 0) sequence.splice(lastPhotoIdx, 0, { type: 'editorial' });
+    else sequence.push({ type: 'editorial' });
+  }
+
+  const lastRow = sequence.filter(function (r) {
+    return r.composition && r.items && r.items.length;
+  }).pop();
+  if (lastRow && lastRow.role !== 'finale') {
+    if (lastRow.composition === 'large' || lastRow.composition === 'full') {
+      lastRow.role = 'finale';
+    } else if (lastRow.composition === 'small' && lastRow.items.length === 1) {
+      lastRow.role = 'finale';
+    } else if (lastRow.composition === 'small' && lastRow.items.length === 2) {
+      const lastItem = lastRow.items[1];
+      if (lastItem.orientation === 'landscape') {
+        sequence.push(makeRow('full', [lastItem], 'finale'));
+      } else {
+        lastRow.role = 'finale';
+      }
+    }
+  }
 
   return sequence;
 }
@@ -1098,23 +1189,20 @@ function directProjectPublication(project, editorial, options) {
   const photos = analyzed.photos;
   const stats = analyzed.stats;
   const mode = analyzed.mode;
-  const hero = scoreHero(photos);
-  const coverUrl = photos[0] && photos[0].url;
-  const pool = orderByRoomDiversity(
-    curatePhotos(photos, 14, hero.url).filter(function (p) {
-      return p.url !== hero.url && p.url !== coverUrl;
-    })
-  );
-  const state = { used: {}, lastRoom: null, sameRoomStreak: 0 };
+  const hero = photos[0] || { url: project.cover };
 
-  const sequence = buildCompositionV6(pool, state, mode);
+  photos.forEach(function (p, idx) {
+    p.galleryIndex = idx;
+  });
+
+  const sequence = buildCompositionOrdered(photos, mode);
   const validated = validateSequence(sequence, mode);
   const finalSequence = validated.sequence;
 
   const materialReserve = reserveMaterialPhotos(photos);
   const materials = buildMaterialsFromReserve(materialReserve, ed.materialCaptions || []);
 
-  const publicationVersion = 6;
+  const publicationVersion = 7;
 
   return {
     compositionMode: mode,
@@ -1263,6 +1351,8 @@ module.exports = {
   imageSize,
   scoreHero,
   isFloorPlanUrl,
+  fileNameFromUrl,
   filterGalleryFloorPlans,
-  sanitizeProjectMedia
+  sanitizeProjectMedia,
+  buildCompositionOrdered
 };
