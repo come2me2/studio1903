@@ -1,6 +1,7 @@
 #:schema https://docs.onreza.ru/schemas/onreza-project-v1.schema.json
 
 [project]
+id = "019f3811-6c1d-7dc0-8789-87bab5a69cc1"
 name = "studio1903"
 # После регистрации на onreza.ru выполните:
 #   nrz login
