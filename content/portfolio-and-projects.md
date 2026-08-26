@@ -158,7 +158,7 @@ materials:
 title: SLOW 19
 type: Квартира
 city: Москва
-rc: ЖК Свобода
+rc: ЖК Событие
 area: 109 м²
 style: Джапанди
 year: 2026

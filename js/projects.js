@@ -2657,7 +2657,7 @@ window.STUDIO1903_PROJECTS = [
     "compositionMode": "vertical",
     "area": "109 м²",
     "magazineSpreads": [],
-    "rc": "ЖК Свобода",
+    "rc": "ЖК Событие",
     "floorPlan": "https://static.tildacdn.com/tild3031-3338-4439-a364-653337313138/1.jpg"
   },
   {
