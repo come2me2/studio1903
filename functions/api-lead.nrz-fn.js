@@ -96,6 +96,7 @@ export default {
 
     var text = lines.join('\n');
     var delivered = 0;
+    var lastFail = null;
 
     for (var i = 0; i < chatIds.length; i++) {
       var tgRes;
@@ -110,6 +111,7 @@ export default {
           })
         });
       } catch (err) {
+        lastFail = 'fetch:' + String(err).slice(0, 200);
         await ctx.log.error('telegram fetch error', {
           chatId: chatIds[i],
           message: String(err)
@@ -121,6 +123,7 @@ export default {
         delivered += 1;
       } else {
         var failBody = await tgRes.text();
+        lastFail = 'status:' + tgRes.status + ' body:' + failBody.slice(0, 300);
         await ctx.log.error('telegram send failed', {
           chatId: chatIds[i],
           status: tgRes.status,
@@ -130,7 +133,14 @@ export default {
     }
 
     if (!delivered) {
-      return json({ ok: false, error: 'delivery' }, 502);
+      return json(
+        {
+          ok: false,
+          error: 'delivery',
+          detail: lastFail || 'telegram_unreachable'
+        },
+        502
+      );
     }
 
     await ctx.log.info('lead sent', { ip: ip, delivered: delivered, total: chatIds.length });
