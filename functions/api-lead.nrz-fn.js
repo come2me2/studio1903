@@ -41,12 +41,25 @@ export default {
 
     var token = ctx.env.TELEGRAM_BOT_TOKEN;
     var chatIds = parseChatIds(ctx.env.TELEGRAM_CHAT_ID);
-    if (!token || !chatIds.length) {
+    var apiBase = String(ctx.env.TELEGRAM_API_BASE || '').replace(/\/$/, '');
+    if (!token || !chatIds.length || !apiBase) {
       await ctx.log.error('telegram env missing', {
         hasToken: Boolean(token),
-        chatCount: chatIds.length
+        chatCount: chatIds.length,
+        hasApiBase: Boolean(apiBase)
       });
-      return json({ ok: false, error: 'server_config' }, 503);
+      return json(
+        {
+          ok: false,
+          error: 'server_config',
+          missing: {
+            TELEGRAM_BOT_TOKEN: !token,
+            TELEGRAM_CHAT_ID: !chatIds.length,
+            TELEGRAM_API_BASE: !apiBase
+          }
+        },
+        503
+      );
     }
 
     var ip = clientIp(request);
@@ -82,11 +95,6 @@ export default {
     if (page) lines.push('Страница: ' + page);
 
     var text = lines.join('\n');
-    var apiBase = String(ctx.env.TELEGRAM_API_BASE || '').replace(/\/$/, '');
-    if (!apiBase) {
-      await ctx.log.error('TELEGRAM_API_BASE missing');
-      return json({ ok: false, error: 'server_config' }, 503);
-    }
     var delivered = 0;
 
     for (var i = 0; i < chatIds.length; i++) {
