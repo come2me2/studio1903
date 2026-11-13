@@ -52,6 +52,7 @@ python3 -m http.server 8080
 | http://localhost:8080/pages/price.html | Цены |
 | http://localhost:8080/pages/about.html | О нас |
 | http://localhost:8080/pages/contacts.html | Контакты |
+| http://localhost:8080/journal | Журнал (нужен `npm run dev`) |
 
 ## Сборка
 
@@ -125,6 +126,7 @@ node scripts/build.js
 | Проекты | `data/projects.json` |
 | Фото | `js/images.js` + `projects.json` |
 | Стили | `css/*.css` |
+| Журнал | `content/journal/<slug>.md` — см. `content/journal/README.md` |
 
 После правок: `node scripts/build.js`
 
@@ -183,7 +185,7 @@ npm run preview
 # http://localhost:8080 — с чистыми URL (/portfolio, /slow19, …)
 ```
 
-Маршруты `/portfolio`, `/steps`, `/price`, `/about`, `/contacts` и страницы проектов (`/slow19`, …) настраиваются в `onreza.rules.toml` (генерируется при сборке).
+Маршруты `/portfolio`, `/steps`, `/price`, `/about`, `/contacts`, `/journal`, `/journal/<slug>` и страницы проектов (`/slow19`, …) настраиваются в `onreza.rules.toml` (генерируется при сборке).
 
 ## Форма
 

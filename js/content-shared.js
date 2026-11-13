@@ -10,6 +10,7 @@ window.STUDIO1903_SHARED = {
     menuAddress: 'Москва · ул. Нагатинская набережная, 10А, корп. Б',
     nav: [
       { label: 'Портфолио', href: '/portfolio' },
+      { label: 'Журнал', href: '/journal' },
       { label: 'Этапы', href: '/steps' },
       { label: 'Цены', href: '/price' },
       { label: 'О нас', href: '/about' },

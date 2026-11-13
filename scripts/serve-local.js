@@ -21,9 +21,14 @@ const menuRoutes = {
 };
 
 const projects = JSON.parse(fs.readFileSync(path.join(root, 'data/projects.json'), 'utf8'));
+const journal = require('./lib/journal');
+const journalArticles = journal.loadArticles(root);
 const rewrites = Object.assign({}, menuRoutes);
 projects.forEach(function (p) {
   if (p.path) rewrites[p.path] = '/pages/project.html';
+});
+journal.journalRoutes(journalArticles).forEach(function (route) {
+  rewrites[route.path] = route.target;
 });
 
 const mimeTypes = {
@@ -90,4 +95,5 @@ server.listen(port, function () {
   console.log('Local preview: http://localhost:' + port);
   console.log('Projects:     http://localhost:' + port + '/airhaus');
   console.log('Portfolio:    http://localhost:' + port + '/portfolio');
+  console.log('Journal:      http://localhost:' + port + '/journal');
 });

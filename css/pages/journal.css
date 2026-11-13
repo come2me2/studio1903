@@ -1,0 +1,273 @@
+/* STUDIO19.03 — журнал. Картинки целиком: ширина 100%, высота по пропорции, без обрезки боков. */
+
+#studio1903 .s1903-journal-page-note {
+  margin: clamp(20px, 2vw, 28px) 0 0;
+  font-size: var(--s1903-text-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-journal-empty {
+  margin: 0;
+  max-width: 36ch;
+  font-size: var(--s1903-text-body);
+  line-height: 1.6;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-journal-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(48px, 6vw, 88px);
+}
+
+@media (min-width: 768px) {
+  #studio1903 .s1903-journal-list {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(24px, 3vw, 40px);
+    row-gap: clamp(56px, 6vw, 88px);
+    align-items: start;
+  }
+}
+
+#studio1903 .s1903-journal-card {
+  min-width: 0;
+}
+
+#studio1903 .s1903-journal-card__link {
+  display: block;
+  color: inherit;
+}
+
+#studio1903 .s1903-journal-card__link:focus-visible {
+  outline: 2px solid var(--s1903-focus-ring);
+  outline-offset: 4px;
+}
+
+#studio1903 .s1903-journal-card__img,
+#studio1903 .s1903-journal-cover img,
+#studio1903 .s1903-journal-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+#studio1903 .s1903-journal-card__body {
+  padding-top: clamp(16px, 2vw, 24px);
+}
+
+#studio1903 .s1903-journal-card__date,
+#studio1903 .s1903-journal-date {
+  margin: 0;
+  font-size: var(--s1903-text-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-journal-card__title {
+  margin: 12px 0 0;
+  font-size: clamp(1.25rem, 1.2vw + 0.8rem, 1.5rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-journal-card__link:hover .s1903-journal-card__title {
+  text-decoration-color: currentColor;
+}
+
+#studio1903 .s1903-journal-card__excerpt {
+  margin: 12px 0 0;
+  max-width: 42ch;
+  font-size: var(--s1903-text-sm);
+  line-height: 1.6;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-journal-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: 28px;
+  border-top: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-journal-pager a {
+  font-size: var(--s1903-text-sm);
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-journal-pager a[aria-current='page'] {
+  border-bottom: 1px solid currentColor;
+}
+
+#studio1903 .s1903-journal-pager__pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#studio1903 .s1903-journal-kicker {
+  margin: 0 0 16px;
+  font-size: var(--s1903-text-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-journal-kicker a {
+  color: inherit;
+  border-bottom: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-journal-kicker a:hover {
+  color: var(--s1903-text-primary);
+  border-bottom-color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-journal-article .s1903-page-hero .s1903-title {
+  max-width: 28ch;
+}
+
+#studio1903 .s1903-journal-date {
+  margin-top: clamp(16px, 2vw, 24px);
+}
+
+#studio1903 .s1903-journal-body {
+  padding-block: clamp(40px, 5vw, 72px) clamp(80px, 8vw, 140px);
+}
+
+#studio1903 .s1903-journal-cover {
+  margin: 0 0 clamp(40px, 5vw, 72px);
+}
+
+#studio1903 .s1903-journal-prose {
+  max-width: 960px;
+  margin-inline: auto;
+  overflow-wrap: break-word;
+}
+
+#studio1903 .s1903-journal-prose > p,
+#studio1903 .s1903-journal-prose > h2,
+#studio1903 .s1903-journal-prose > h3,
+#studio1903 .s1903-journal-prose > ul,
+#studio1903 .s1903-journal-prose > .s1903-journal-faq {
+  max-width: 40rem;
+}
+
+#studio1903 .s1903-journal-prose > h2 {
+  margin: clamp(40px, 5vw, 64px) 0 16px;
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+#studio1903 .s1903-journal-prose > h2:first-child {
+  margin-top: 0;
+}
+
+#studio1903 .s1903-journal-prose > h3 {
+  margin: clamp(28px, 3vw, 40px) 0 12px;
+  font-size: var(--s1903-text-h3);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+#studio1903 .s1903-journal-prose p,
+#studio1903 .s1903-journal-prose li {
+  font-size: var(--s1903-text-body);
+  line-height: 1.7;
+  color: var(--s1903-text-secondary);
+}
+
+#studio1903 .s1903-journal-prose > p {
+  margin: 0 0 1em;
+}
+
+#studio1903 .s1903-journal-prose a {
+  color: var(--s1903-text-primary);
+  border-bottom: 1px solid var(--s1903-border);
+  transition: border-color var(--s1903-duration) var(--s1903-ease);
+}
+
+#studio1903 .s1903-journal-prose a:hover {
+  border-bottom-color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-journal-prose ul {
+  margin: 0 0 1em;
+  padding-left: 1.15em;
+}
+
+#studio1903 .s1903-journal-prose li + li {
+  margin-top: 0.4em;
+}
+
+#studio1903 .s1903-journal-figure {
+  margin: clamp(28px, 4vw, 48px) 0;
+  max-width: 100%;
+}
+
+#studio1903 .s1903-journal-figure figcaption {
+  margin-top: 12px;
+  max-width: 40rem;
+  font-size: var(--s1903-text-caption);
+  line-height: 1.5;
+  color: var(--s1903-text-tertiary);
+}
+
+#studio1903 .s1903-journal-faq {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: clamp(28px, 4vw, 40px);
+  border-top: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-journal-faq h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+#studio1903 .s1903-journal-faq__item {
+  padding-top: 24px;
+}
+
+#studio1903 .s1903-journal-faq__item + .s1903-journal-faq__item {
+  margin-top: 8px;
+  border-top: 1px solid var(--s1903-border);
+}
+
+#studio1903 .s1903-journal-faq h3 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--s1903-text-primary);
+}
+
+#studio1903 .s1903-journal-faq p {
+  margin: 0;
+}
+
+#studio1903 .s1903-journal-faq p + p {
+  margin-top: 0.75em;
+}

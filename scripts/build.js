@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const journal = require('./lib/journal');
 
 const root = path.join(__dirname, '..');
 const partials = path.join(root, 'partials');
@@ -627,6 +628,60 @@ console.log('Built', projects.length, 'project blocks in tilda/projects/');
 console.log('Built standalone Tilda blocks for portfolio, steps, price, about, contacts, privacy');
 console.log('Built local pages in pages/');
 
+/* --- JOURNAL --- */
+function buildJournalPages() {
+  const articles = journal.loadArticles(root);
+  const journalDir = path.join(pagesDir, 'journal');
+  fs.rmSync(journalDir, { recursive: true, force: true });
+
+  const header = shellHeader(false);
+  const footer = shellFooter();
+  const totalPages = journal.totalPagesFor(articles.length);
+
+  fs.writeFileSync(
+    path.join(pagesDir, 'journal.html'),
+    journal.renderListPage({
+      articles: articles,
+      page: 1,
+      totalPages: totalPages,
+      header: header,
+      footer: footer
+    })
+  );
+
+  for (let page = 2; page <= totalPages && articles.length; page += 1) {
+    const pageDir = path.join(journalDir, 'page');
+    fs.mkdirSync(pageDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(pageDir, page + '.html'),
+      journal.renderListPage({
+        articles: articles,
+        page: page,
+        totalPages: totalPages,
+        header: header,
+        footer: footer
+      })
+    );
+  }
+
+  articles.forEach(function (article) {
+    fs.mkdirSync(journalDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(journalDir, article.slug + '.html'),
+      journal.renderArticlePage({
+        article: article,
+        header: header,
+        footer: footer
+      })
+    );
+  });
+
+  console.log('Built journal:', articles.length, 'articles,', articles.length ? totalPages : 1, 'list page(s)');
+  return articles;
+}
+
+const journalArticles = buildJournalPages();
+
 /* --- ONREZA dist (static deploy) --- */
 const distDir = path.join(root, 'dist');
 
@@ -647,6 +702,10 @@ function buildDist() {
   ['css', 'js', 'pages'].forEach(function (dir) {
     copyRecursive(path.join(root, dir), path.join(distDir, dir));
   });
+  const imagesDir = path.join(root, 'images');
+  if (fs.existsSync(imagesDir)) {
+    copyRecursive(imagesDir, path.join(distDir, 'images'));
+  }
   fs.copyFileSync(path.join(root, 'index.html'), path.join(distDir, 'index.html'));
 
   const manifestDir = path.join(distDir, '.onreza');
@@ -673,7 +732,7 @@ function buildOnrezaRules() {
     { id: 'about', path: '/about', target: '/pages/about.html' },
     { id: 'contacts', path: '/contacts', target: '/pages/contacts.html' },
     { id: 'privacy', path: '/privacy', target: '/pages/privacy.html' }
-  ];
+  ].concat(journal.journalRoutes(journalArticles));
 
   let rules =
     '# Генерируется scripts/build.js — чистые URL для продакшена\n' +
