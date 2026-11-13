@@ -13,6 +13,7 @@ window.STUDIO1903_SHARED = {
       { label: 'Этапы', href: '/steps' },
       { label: 'Цены', href: '/price' },
       { label: 'О нас', href: '/about' },
+      { label: 'Журнал', href: '/journal' },
       { label: 'Контакты', href: '/contacts' }
     ]
   },

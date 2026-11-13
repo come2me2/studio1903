@@ -83,6 +83,7 @@ window.STUDIO1903_SHARED = {
       { label: 'Этапы', href: '/steps' },
       { label: 'Цены', href: '/price' },
       { label: 'О нас', href: '/about' },
+      { label: 'Журнал', href: '/journal' },
       { label: 'Контакты', href: '/contacts' }
     ]
   },
@@ -439,6 +440,14 @@ window.STUDIO1903Core = (function () {
 
       var navDesktop = root.querySelector('[data-s1903="nav.desktop"]');
       var navMobile = root.querySelector('[data-s1903="nav.mobile"]');
+
+      function navIsCurrent(href) {
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        if (href === path) return true;
+        if (href && href !== '/' && path.indexOf(href + '/') === 0) return true;
+        return false;
+      }
+
       if (navDesktop && c.header.nav) {
         navDesktop.innerHTML = '';
         c.header.nav.forEach(function (item) {
@@ -446,7 +455,7 @@ window.STUDIO1903Core = (function () {
           a.className = 's1903-nav__link';
           a.href = item.href;
           a.textContent = item.label;
-          if (item.href === window.location.pathname) a.setAttribute('aria-current', 'page');
+          if (navIsCurrent(item.href)) a.setAttribute('aria-current', 'page');
           navDesktop.appendChild(a);
         });
       }
@@ -457,6 +466,7 @@ window.STUDIO1903Core = (function () {
           a.className = 's1903-menu__link';
           a.href = item.href;
           a.textContent = item.label;
+          if (navIsCurrent(item.href)) a.setAttribute('aria-current', 'page');
           navMobile.appendChild(a);
         });
       }
