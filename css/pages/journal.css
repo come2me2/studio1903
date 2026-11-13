@@ -165,6 +165,7 @@
 #studio1903 .s1903-journal-prose > h2,
 #studio1903 .s1903-journal-prose > h3,
 #studio1903 .s1903-journal-prose > ul,
+#studio1903 .s1903-journal-prose > ol,
 #studio1903 .s1903-journal-prose > .s1903-journal-faq {
   max-width: 40rem;
 }
@@ -210,7 +211,8 @@
   border-bottom-color: var(--s1903-text-primary);
 }
 
-#studio1903 .s1903-journal-prose ul {
+#studio1903 .s1903-journal-prose ul,
+#studio1903 .s1903-journal-prose ol {
   margin: 0 0 1em;
   padding-left: 1.15em;
 }

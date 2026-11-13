@@ -160,7 +160,8 @@ function isBlockStart(line) {
     value.startsWith('### ') ||
     value === ':::faq' ||
     /^!\[([^\]]*)\]\(/.test(value) ||
-    value.startsWith('- ')
+    value.startsWith('- ') ||
+    /^\d+\.\s/.test(value)
   );
 }
 
@@ -273,6 +274,16 @@ function renderMarkdown(md, fileLabel) {
         i += 1;
       }
       html.push('<ul>' + items.join('') + '</ul>');
+      continue;
+    }
+
+    if (/^\d+\.\s/.test(trimmed)) {
+      const items = [];
+      while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
+        items.push('<li>' + renderInline(lines[i].trim().replace(/^\d+\.\s+/, ''), fileLabel) + '</li>');
+        i += 1;
+      }
+      html.push('<ol>' + items.join('') + '</ol>');
       continue;
     }
 
