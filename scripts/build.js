@@ -681,6 +681,7 @@ function buildJournalPages() {
 }
 
 const journalArticles = buildJournalPages();
+fs.writeFileSync(path.join(root, 'sitemap.xml'), journal.renderSitemap(journalArticles));
 
 /* --- ONREZA dist (static deploy) --- */
 const distDir = path.join(root, 'dist');
@@ -707,6 +708,10 @@ function buildDist() {
     copyRecursive(imagesDir, path.join(distDir, 'images'));
   }
   fs.copyFileSync(path.join(root, 'index.html'), path.join(distDir, 'index.html'));
+  const sitemapPath = path.join(root, 'sitemap.xml');
+  if (fs.existsSync(sitemapPath)) {
+    fs.copyFileSync(sitemapPath, path.join(distDir, 'sitemap.xml'));
+  }
 
   const manifestDir = path.join(distDir, '.onreza');
   fs.mkdirSync(manifestDir, { recursive: true });
