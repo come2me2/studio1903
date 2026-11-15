@@ -764,6 +764,39 @@ function renderArticlePage(options) {
   });
 }
 
+function renderSitemap(articles) {
+  const list = articles || [];
+  const urls = [
+    {
+      loc: SITE_ORIGIN + '/journal',
+      lastmod: list.length ? list[0].updated || list[0].date : ''
+    }
+  ];
+  list.forEach(function (article) {
+    urls.push({
+      loc: absoluteUrl(articlePath(article.slug)),
+      lastmod: article.updated || article.date
+    });
+  });
+  const body = urls
+    .map(function (url) {
+      return (
+        '  <url>\n    <loc>' +
+        escapeHtml(url.loc) +
+        '</loc>\n' +
+        (url.lastmod ? '    <lastmod>' + escapeHtml(url.lastmod) + '</lastmod>\n' : '') +
+        '  </url>'
+      );
+    })
+    .join('\n');
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    body +
+    '\n</urlset>\n'
+  );
+}
+
 function journalRoutes(articles) {
   const routes = [
     { id: 'journal', path: '/journal', target: '/pages/journal.html' }
@@ -799,5 +832,6 @@ module.exports = {
   renderListPage: renderListPage,
   renderArticlePage: renderArticlePage,
   journalRoutes: journalRoutes,
+  renderSitemap: renderSitemap,
   formatDate: formatDate
 };
