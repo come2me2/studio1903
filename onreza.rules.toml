@@ -38,6 +38,11 @@ when.path = { exact = "/journal" }
 action.rewrite = { target = "/pages/journal.html", if_no_file = false }
 
 [[rule]]
+id = "rewrite-journal-dizajn-kuhni-gostinoj"
+when.path = { exact = "/journal/dizajn-kuhni-gostinoj" }
+action.rewrite = { target = "/pages/journal/dizajn-kuhni-gostinoj.html", if_no_file = false }
+
+[[rule]]
 id = "rewrite-journal-dizajn-vannoj-komnaty"
 when.path = { exact = "/journal/dizajn-vannoj-komnaty" }
 action.rewrite = { target = "/pages/journal/dizajn-vannoj-komnaty.html", if_no_file = false }
